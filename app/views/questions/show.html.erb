@@ -1,0 +1,220 @@
+<% provide(:title, "Question") %>
+
+<%= render "layouts/nav_admin_top" %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render "layouts/nav_admin_left" %>
+    <div class="col-lg-10 col-md-10 col-sm-10 cont-q">
+      <div class="div-answers">
+        <h2>Answer</h2>
+        <div class="answers-cont">
+        <div class="row question-temp">
+          <div class="col-lg-10 col-md-10 col-sm-10">
+            <p><%= @question.content %></p>
+            <table class="table table-bordered">
+              <tbody>
+                <tr>
+                  <td>
+                    Kind of Animal -
+                    <% if (@question.animal_type == 1) %>
+                      Cat
+                    <% else %>
+                      Dog
+                    <% end %>
+                  </td>
+                  <td>
+                    Current Conditions -
+                    <% if (@question.current_medical_conditions == 1 && @question.current_medical_conditions_detail != '') %>
+                      <%= @question.current_medical_conditions_detail %>
+                    <% elsif (@question.current_medical_conditions == 1) %>
+                      Yes
+                    <% elsif (@question.current_medical_conditions == 0) %>
+                      No
+                    <% else %>
+                      Not Sure
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Age -
+                    <% if (@question.animal_age == 1) %>
+                      less than one month
+                    <% elsif (@question.animal_age == 2) %>
+                      1-3 months
+                    <% elsif (@question.animal_age == 3) %>
+                      3 months-1 year
+                    <% elsif (@question.animal_age == 4) %>
+                      1-3 years
+                    <% elsif (@question.animal_age == 5) %>
+                      3-5 years
+                    <% elsif (@question.animal_age == 6) %>
+                      5-8 years
+                    <% elsif (@question.animal_age == 7) %>
+                      8 years-10 years
+                    <% elsif (@question.animal_age == 8) %>
+                      10-15 years
+                    <% elsif (@question.animal_age == 9) %>
+                      15+ years
+                    <% end %>
+                  </td>
+                  <td>
+                    Previous Conditions -
+                    <% if (@question.previous_medical_conditions == 1 && @question.previous_medical_conditions_detail != '') %>
+                      <%= @question.previous_medical_conditions_detail %>
+                    <% elsif (@question.previous_medical_conditions == 1) %>
+                      Yes
+                    <% elsif (@question.previous_medical_conditions == 0) %>
+                      No
+                    <% else %>
+                      Not Sure
+                    <% end %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    Medications -
+                    <% if (@question.medication == 1 && @question.medication_detail != '') %>
+                      <%= @question.medication_detail %>
+                    <% elsif (@question.medication == 1) %>
+                      Yes
+                    <% elsif (@question.medication == 0) %>
+                      No
+                    <% else %>
+                      Not Sure
+                    <% end %>
+                  </td>
+                  <td>Feed - <%= @question.feed_pet_detail %></td>
+                </tr>
+                <tr>
+                  <td>
+                    Flea Preventions -
+                    <% if (@question.flea_preventives == 1 && @question.flea_preventives_detail != '') %>
+                      <%= @question.flea_preventives_detail %>
+                    <% elsif (@question.flea_preventives == 1) %>
+                      Yes
+                    <% elsif (@question.flea_preventives == 0) %>
+                      No
+                    <% else %>
+                      Not Sure
+                    <% end %>
+                  </td>
+                  <td></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="col-lg-2 col-md-2 col-sm-2">
+            <span>Asked By :</span><br/>
+            <span>
+              <a href="<%= user_show_path(:id => @question.user.id) %>"><%= @question.user.name %></a>
+            </span>
+            <br/>
+            <span><%= @question.user.detail.zipcode %></span>
+          </div>
+        </div>
+
+        <% @question.answers.each do |answer| %>
+          <% if (current_user.is_vet) %>
+            <div class="row answer-temp-doc">
+          <% else %>
+            <div class="row answer-temp-user">
+          <% end %>
+            <div class="col-lg-2 col-md-3 col-sm-3 text-center">
+              <img src="" width="100" height="100"><br><br>
+              <span>
+                <a href="<%= user_show_path(:id => answer.user.id) %>"><%= answer.user.name %></a>
+              </span>
+            </div>
+            <div class="col-lg-8 col-md-6 col-sm-6">
+              <p>
+                <%= answer.answer %>
+              </p>
+            </div>
+
+            <% if (current_user.is_vet && current_user != answer.user) %>
+              <div class="col-lg-2 col-md-3 col-sm-3">
+                <div class="form-horizontal">
+                  <div class="form-group">
+                    <div class="col-sm-6 col-xs-6 text-left">
+                      <% if has_agreed(answer.id) %>
+                        <a class="btn btn-sm btn-default" href="<%= agree_remove_path(:answer_id => answer.id) %>">Agreed</a>
+                      <% else %>
+                        <a class="btn btn-sm btn-default" href="<%= agree_path(:answer_id => answer.id) %>">Agree</a>
+                      <% end %>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 text-right">
+                      <a class="btn btn-sm btn-default" href="#">Share</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% elsif !current_user.is_vet %>
+              <div class="col-lg-2 col-md-3 col-sm-3">
+                <div class="form-horizontal">
+                  <div class="form-group">
+                    <div class="col-sm-6 col-xs-6 text-left">
+                      <% if has_thanked(answer.id) %>
+                        <a class="btn btn-sm btn-default" href="<%= thanks_remove_path(:answer_id => answer.id) %>">Thanked</a>
+                      <% else %>
+                        <a class="btn btn-sm btn-default" href="<%= thanks_path(:answer_id => answer.id) %>">Thank</a>
+                      <% end %>
+                    </div>
+                    <div class="col-sm-6 col-xs-6 text-right">
+                      <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#share-modal-<% answer.id %>">Share</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+        <% @question.answers.each do |answer| %>
+          <div class="modal fade" id="share-modal-<% answer.id %>" tabindex="-1" role="dialog" aria-labelledby="appointment-modal-label-<% answer.id %>" aria-hidden="true">
+              <div class="modal-dialog">
+                <%= form_tag share_answer_path(:id => answer.id), :method => :post do %>
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title" id="appointment-modal-label-<% answer.id %>">Share this answer</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="form-group">
+                        <input type="text" name="to_name" placeholder="Name" class="form-control" required>
+                      </div>
+                      <div class="form-group">
+                        <input type="email" name="to_email" placeholder="Email" class="form-control" required>
+                      </div>
+                      <input type="hidden" name="id" value="<%= answer.id %>">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                      <button type="submit" class="btn btn-primary">Share Answer</button>
+                    </div>
+                  </div>
+                <% end %>
+              </div>
+            </div>
+        <% end %>
+
+        <% if current_user.is_vet %>
+          <div class="row answer-temp">
+            <div class="col-lg-12">
+              <%= form_for @answer, url: {controller: "answers", action: "create"} do |f| %>
+                <%= f.hidden_field :question_id, :value => @question.id %>
+                <div class="form-group">
+                  <%= f.text_area :answer, :class => "form-control", :placeholder => "Your Answer" %>
+                </div>
+                <div class="form-group">
+                  <%= f.submit "Answer Question", class: "btn btn-success" %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

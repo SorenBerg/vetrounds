@@ -1,0 +1,14 @@
+Hello <%= @to_name %>,
+
+<%= @current_user.name %> has shared an answer with you!
+
+<%= @answer.user.name %> posted the following answer:
+
+<%= @answer.answer %>
+
+The question asked was:
+
+<%= @answer.question.content %>
+
+You can view the question and answer by following the link :
+<%= question_show_url(:id => @answer.question.id) %>

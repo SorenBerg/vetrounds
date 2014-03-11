@@ -1,0 +1,13 @@
+Hello <%= @question.user.name %>,
+
+<%= @answer.user.name %> has posted the below mentioned answer :
+
+<%= @answer.answer %>
+
+Your Question:
+==============
+
+<%= @question.content %>
+
+You can view the question and answer by following the link :
+<%= question_show_url(:id => @question.id) %>

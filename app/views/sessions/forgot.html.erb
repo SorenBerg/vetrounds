@@ -1,0 +1,21 @@
+<% provide(:title, "Forgot Password") %>
+
+<div class="container-fluid">
+  <div class="row login-bg">
+    <div class="col-lg-12">
+      <div class="login-container">
+        <div class="login-header text-center"><span class="vet">Vet</span><span class="rounds">rounds</span></div>
+        <div class="text-center">Forgot your password? Enter your email below</div>
+        <br>
+        <%= form_for :user, url: password_forgot_post_path, html: {class: "login-form"} do |f| %>
+          <div class="form-group">
+            <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-primary">Send Link</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

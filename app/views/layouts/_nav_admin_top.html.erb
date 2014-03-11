@@ -1,0 +1,45 @@
+<nav class="navbar navbar-q" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <% if signed_in? %>
+        <% if current_user.is_admin %>
+          <a class="navbar-brand" href="<%= admin_path %>">
+        <% else %>
+          <a class="navbar-brand" href="<%= root_path %>">
+        <% end %>
+      <% else %>
+        <a class="navbar-brand" href="<%= root_path %>">
+      <% end %>
+          <span class="vet-q">Vet</span><span class="rounds-q">rounds</span>
+        </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <% if signed_in? %>
+        <% if !current_user.is_admin %>
+          <%= form_tag search_path, class: "navbar-form navbar-left", method: "get" do |f| %>
+              <div class="form-group">
+                <%= text_field_tag :search, params[:search], class: "form-control" %>
+              </div>
+          <% end %>
+        <% end %>
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.name %> <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li><a href="<%= logout_path %>">Logout</a></li>
+            </ul>
+          </li>
+        </ul>
+      <% end %>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

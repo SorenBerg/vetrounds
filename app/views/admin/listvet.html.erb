@@ -1,0 +1,44 @@
+<% provide(:title, "Vets") %>
+
+<%= render "layouts/nav_admin_top" %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render "layouts/nav_admin_left" %>
+    <div class="col-lg-10 col-md-10 col-sm-10 cont-q">
+      <div class="tab-cont-q">
+        <div class="tab-content">
+          <div class="tab-pane active" id="ans-q">
+            <div class="tab-cont-head">
+              <span>Vets</span>
+            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="20%">Name</th>
+                  <th width="60%">Email</th>
+                  <th width="20%">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @vets.each do |vet| %>
+                  <tr>
+                    <td><%= vet.name %></td>
+                    <td><%= vet.email %></td>
+                    <td>
+                      <% if !vet.enabled %>
+                        <a class="btn btn-xs btn-success" href="<%= admin_enable_vet_path(:id => vet.id) %>">Enable</a>
+                      <% else %>
+                        <a class="btn btn-xs btn-danger" href="<%= admin_disable_vet_path(:id => vet.id) %>">Disable</a>
+                      <% end %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

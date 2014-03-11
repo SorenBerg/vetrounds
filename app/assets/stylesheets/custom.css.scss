@@ -1,0 +1,604 @@
+@import "bootstrap";
+@import "font-awesome";
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400);
+
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+body {
+    font-family: 'Lato', sans-serif !important;
+}
+
+.vet {
+    color: #007aff;
+    font-weight: 400;
+}
+
+.rounds {
+    color: #ababab;
+    font-weight: lighter;
+}
+
+/*--Login page style starts here--*/
+
+.login-bg {
+    height: 100%;
+    min-height: 660px;
+    background-color: #f2f2f2;
+    background-image: url(image-path('login-bg.jpg'));
+    background-position: center -100px;
+    background-repeat: no-repeat;
+    background-size: 100% 880px;
+}
+
+@media (max-width: 767px) {
+    .login-bg {
+        background: none;
+        min-height: auto !important;
+    }
+    .login-container {
+        margin: 50px auto !important;
+    }
+}
+
+.login-container {
+    min-height: 310px;
+    width: 330px;
+    box-shadow: 0px 0px 25px #d6d5d2;
+    background-color: #fff;
+    border-radius: 4px;
+    margin: 160px auto;
+    padding: 20px;
+}
+
+.login-header {
+    padding-bottom: 20px;
+    font-size: 30px;
+}
+
+.login-form .form-control{
+    border-radius: 0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    box-shadow: none;
+
+}
+
+.login-form .checkbox {
+    padding-bottom: 20px;
+}
+
+.login-form .btn {
+    width: 48%
+}
+
+/*--Login page style ends--*/
+
+/*--Home page style starts here--*/
+
+.home-bg {
+    background-image: url(image-path('home-bg.jpg'));
+    min-height: 800px;
+    background-size: 100% 1000px;
+    background-position: center -200px;
+    background-repeat: no-repeat;
+}
+
+.navbar-vetround {
+    text-transform: uppercase;
+}
+
+.navbar-vetround .navbar-brand {
+    text-transform: none;
+}
+
+.navbar-vetround .navbar-brand .vet-home {
+    font-size: 30px;
+    font-weight: 400;
+}
+
+.navbar-vetround .navbar-brand .rounds-home {
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.navbar-vetround .navbar-brand .tag-line {
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 6px;
+}
+
+.navbar-vetround a {
+    color: #fff;
+}
+
+.navbar-vetround .nav {
+    margin-top: 20px;
+}
+
+.navbar-vetround .nav > li > a {
+    font-size: 12px;
+    font-weight: 400 !important;
+    
+}
+
+.navbar-vetround .nav > li > a:hover, .navbar-vetround .nav > li > a:focus {
+    background-color: #fff;
+    opacity: .5;
+    color: #000;
+}
+
+.navbar-toggle, .navbar-toggle .icon-bar {
+    border: 1px solid #fff;
+}
+
+@media (min-width: 768px) {
+  .navbar-vetround .navbar-nav > li > a {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 30px;
+    padding-left: 30px;
+  }
+
+}
+
+@media (max-width: 768px) {
+  .navbar-vetround .navbar-nav > li > a {
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+
+  .home-bg {
+        background-image: url('../images/home-bg.jpg');
+        min-height: 800px;
+        background-size: auto 1000px;
+        background-position: center -200px;
+        background-repeat: no-repeat;
+    }
+
+}
+
+@media (max-width: 1024px) {
+    .home-bg {
+        background-image: url('../images/home-bg.jpg');
+        min-height: 800px;
+        background-size: auto 1000px;
+        background-position: center -200px;
+        background-repeat: no-repeat;
+    }
+}
+
+
+.btn-login {
+    border: 1px solid #fff;
+    border-radius: 0px;
+    text-transform: uppercase;
+    background-color: transparent;  
+}
+
+.slider-vet {
+}
+
+.slider-vet .item {
+    height: 700px;
+    color: #fff;
+    padding-top: 200px;
+}
+@media (max-width: 767px) {
+    .slider-vet .item {
+        padding-top: 60px;
+        height: 500px;
+    }
+}
+
+.slider-head {
+    font-size: 60px;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+@media (max-width: 767px) {
+    .slider-head {
+        font-size: 30px;
+        padding-bottom: 20px;
+    }
+
+    .navbar-vetround .navbar-header {
+        padding-bottom: 15px;
+    }
+}
+
+.slider-vet .item p {
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+    padding-bottom: 20px
+}
+
+.slider-vet .item .form-control {
+    width: 40%;
+    margin: 0 auto;
+    font-style: italic;
+    font-size: 12px;
+    height: auto;
+    padding: 25px;
+}
+
+.carousel-control {
+    width: 6%;
+}
+
+.carousel-control .glyphicon {
+    padding: 12px;
+    color: #506226;
+    text-shadow: none;
+    background-color: #fff;
+    opacity: 0.5;
+    border-radius: 2px;
+    font-weight: lighter !important;
+}
+
+.carousel-control.left, .carousel-control.right {
+
+    background: none;
+}
+
+.carousel-indicators li {
+    border-radius: 4px;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    opacity: .5;
+    margin: 0;
+}
+
+.carousel-indicators .active {
+    border-radius: 4px;
+    width: 15px;
+    height: 15px;
+    background-color: #fff;
+    opacity: 1;
+    margin: 0;
+}
+
+.content {
+    
+}
+
+.content-row1 {
+    padding: 50px 0px 0px 0px;
+}
+
+.content-row2 {
+    padding: 0px 0px 50px 0px;
+}
+
+.cont-template {
+    padding-top: 50px;
+}
+
+.cont-template .cont-icon {
+    background-color: #56a466;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    margin: 0 auto;
+    color: #fff;
+    font-size: 40px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.cont-template-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 20px 0px 20px 0px;
+    text-align: center;
+    font-size: 13px;
+    color: #585858;
+}
+
+.cont-header {
+    font-size: 35px;
+    padding-bottom: 20px;
+}
+
+.cont-template p {
+    color: #6d6d6d;
+}
+
+.join {
+    background-color: #2a3034;
+    color: #fff;
+    padding: 50px 0px 50px 0px;
+}
+
+.btn-joinvet {
+    background-color: transparent;
+    border: 1px solid #63bb75;
+    border-radius: 0;
+    font-size: 11px;
+    color: #63bb75;
+    text-transform: uppercase;
+    padding-left: 20px;
+    padding-right: 20px;
+    letter-spacing: 2px;
+}
+
+.btn-joinvet:hover {
+    background-color: #63bb75;
+    color: #2a3034;
+}
+
+.btn-joinvet:focus {
+    background-color: #63bb75;
+    color: #2a3034;
+}
+
+
+footer {
+    background-color: #363b3f;
+    color: #908f8f;
+}
+
+.footer-row1 {
+    padding: 0px 0px 40px 0px;
+}
+
+.foot-header {
+    color: #fff;
+    font-weight: 400;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+    padding-top: 40px;
+}
+
+.footer-row1 .list-unstyled > li {
+    padding: 10px 0px 10px 0px;
+}
+
+.footer-row1 .list-unstyled > li > a {
+    color: #908f8f;
+}
+
+.footer-row1 .list-unstyled > li  .fa {
+    padding-right: 5px;
+}
+
+.foot-content .list-inline > li > a {
+    color: #363b3f;
+}
+
+.foot-content .list-inline > li  div {
+    width: 55px;
+    height: 55px;
+    border-radius: 55px;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 5px;
+    background-color: #2a3034;
+}
+
+.foot-green {
+    color: #63bb75;
+}
+
+.footer-row2 {
+    border-top: 1px solid #908f8f;
+    padding: 20px 0px 20px 0px;
+}
+
+.footer-row2 div {
+    padding-left: 0px;
+}
+
+.vet-foot {
+    color: #fff;
+    font-weight: bold;
+}
+
+/*--Home page style ends--*/
+
+/*--Question page style starts--*/
+
+.navbar-q {
+    margin-bottom: 0;
+}
+
+.navbar-q .fa {
+    font-size: 18px;
+}
+
+.vet-q {
+    color: #007aff;
+    font-weight: 400;
+}
+
+.rounds-q {
+    color: #ababab;
+    font-weight: lighter;
+}
+
+.navbar-q {
+    border-bottom: 1px solid #bfbfbf;
+}
+
+@media (max-width: 767px) {
+    .side-menu-q {
+        height: auto !important;
+        padding-bottom: 20px;
+    }
+
+    .cont-q h2 {
+        margin-bottom: 10px;
+        padding-top: 10px;
+    }
+}
+
+.side-menu-q {
+    background-color: #ddd;
+    padding-right: 0;
+}
+
+.side-menu-q ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.side-menu-q ul li {
+    padding: 10px 0px 10px 0px;
+    border-bottom: 1px solid #bfbfbf;
+    color: #887777;
+}
+
+.side-menu-q ul li a {
+    color: #887777;
+}
+
+.side-menu-q ul li .fa {
+    font-size: 20px;
+    padding-right: 10px;
+}
+
+.cont-q {
+    background-color: #e8e8e8;
+    min-height: 610px;
+    padding-bottom: 20px;
+}
+
+.cont-q h2 {
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.tab-cont-q {
+    background-color: #fff;
+    min-height: 590px;
+    min-width: 767px;
+    overflow: auto;
+}
+
+.tab-cont-q > .nav-tabs > div {
+    padding-left: 10px;
+    padding-top: 10px;
+}
+    
+.tab-cont-q > .nav-tabs > li {
+    float: right;
+}
+
+.tab-cont-q > .nav-tabs > li > a {
+    border-radius: 0;
+}
+
+.tab-cont-q > .nav-tabs {
+    padding-top: 10px;
+    background-color: #f5f5f5;
+}
+
+.tab-cont-q  .tab-cont-head {
+    padding: 10px;
+}
+
+.tab-cont-q  .tab-cont-head form {
+    width: 280px;
+}
+
+.tab-cont-q  .tab-cont-head span {
+    font-size: 22px;
+    color: #666666;
+}
+
+/*--Question page style ends--*/
+
+/*--Signup page style starts--*/
+
+.signup-row {
+    background-color: #e8e8e8;
+}
+
+@media (max-width: 767px) {
+    .btn-signup-browse, .dp-signup {
+        margin-top: 20px !important;
+    }
+}
+
+.tab-signup, .div-benefits {
+    padding: 0px 10px 20px 10px;
+}
+
+.tab-signup > .nav-tabs {
+    padding-top: 10px;
+    background-color: #f5f5f5;
+}
+
+.tab-signup > .nav-tabs > li {
+}
+
+.tab-signup > .nav-tabs > li > a {
+    border-radius: 0;
+}
+
+.tab-signup .tab-pane {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.div-benefits .benefit-cont {
+    background-color: #fff;
+    padding: 20px;
+}
+
+.div-profile .profile-cont {
+    background-color: #fff;
+    padding: 20px 35px 20px 35px;
+}
+
+.btn-profile {
+    margin-top: 20px;
+}
+
+.div-search .search-cont {
+    background-color: #fff;
+    padding: 20px 35px 20px 35px;
+}
+
+.div-answers .answers-cont {
+    background-color: #fff;
+    padding: 20px 35px 20px 35px;
+}
+
+.question-temp {
+    padding-bottom: 20px;
+}
+
+.answer-temp-doc {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.answer-temp-user {
+    border-top: 1px solid #ddd;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+/*--Signup page style ends--*/

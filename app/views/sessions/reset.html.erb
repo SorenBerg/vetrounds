@@ -1,0 +1,23 @@
+<% provide(:title, "Reset your Password") %>
+
+<div class="container-fluid">
+  <div class="row login-bg">
+    <div class="col-lg-12">
+      <div class="login-container">
+        <div class="login-header text-center"><span class="vet">Vet</span><span class="rounds">rounds</span></div>
+        <div class="text-center">Reset your Password</div>
+        <%= form_for :user, url: password_reset_post_path(:id => @user.password_reset_token), html: {class: "login-form"} do |f| %>
+          <div class="form-group">
+            <%= f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+          </div>
+          <div class="form-group">
+            <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Confirm Password" %>
+          </div>
+          <div class="form-group text-center">
+            <button class="btn btn-primary">Reset Password</button>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

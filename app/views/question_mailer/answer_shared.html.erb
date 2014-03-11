@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello <%= @to_name %>,</p>
+
+    <p><a href="<%= user_show_url(:id => @current_user.id) %>"><%= @current_user.name %></a> has shared an answer with you!</p>
+
+    <p><%= @answer.user.name %> posted the following answer:</p>
+
+    <p><%= @answer.answer %></p>
+
+    <p>The question asked was:</p>
+
+    <p><%= @answer.question.content %></p>
+
+    <p>You can view the question and answer by clicking <a href="<%= question_show_url(:id => @answer.question.id) %>">here</a>
+  </body>
+</html>

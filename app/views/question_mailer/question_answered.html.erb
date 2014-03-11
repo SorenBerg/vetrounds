@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello <%= @question.user.name %></p>
+
+    <p>
+      <a href="<%= user_show_url(:id => @answer.user.id) %>"><%= @answer.user.name %></a> has posted the below mentioned answer:
+    </p>
+
+    <p>
+      <%= @answer.answer %>
+    </p>
+
+    <p>Your Question</p>
+
+    <p>
+      <%= @question.content %>
+    </p>
+
+    <p>
+      You can view the question and answer by clicking <a href="<%= question_show_url(:id => @question.id) %>">here</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<% provide(:title, "My Profile") %>
+
+<%= render "layouts/nav_admin_top" %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render "layouts/nav_admin_left" %>
+    <div class="col-lg-10 col-md-10 col-sm-10 cont-q">
+      <div class="div-profile">
+        <% if current_user == @user %>
+          <h2>My Profile</h2>
+        <% else %>
+          <h2><%= @user.name %>'s Profile</h2>
+        <% end %>
+        <div class="profile-cont">
+          <% if @user.is_vet %>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="form-horizontal">
+                  <div class="form-group">
+                    <label class="col-lg-4">Name</label>
+                    <span class="col-lg-8"><%= @user.name %></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-4">Email</label>
+                    <span class="col-lg-8"><%= @user.email %></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-4">Area of Practise</label>
+                    <span class="col-lg-8"><%= @user.detail.area_of_practise %></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-4">Zipcode</label>
+                    <span class="col-lg-8"><%= @user.detail.zipcode %></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-4">Vetinary School</label>
+                    <span class="col-lg-8"><%= @user.detail.vetinary_school %> (<%= @user.detail.vetinary_school_year %>)</span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-4">Degree</label>
+                    <span class="col-lg-8"><%= @user.detail.degree %></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-4">Licence Number</label>
+                    <span class="col-lg-8"><%= @user.detail.licence_number %> (<%= @user.detail.licence_state %>)</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="form-horizontal">
+                  <div class="form-group">
+                    <div class="col-lg-12">
+                      <span class="btn btn-default btn-profile"><%= get_agreement_count(@user.id) %> Doctor Aggrement</span>
+                      <span class="btn btn-default btn-profile"><%= get_thanks_count(@user.id) %> thank you notes</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <% if current_user == @user %>
+                  <h3>Your Answered Question</h3>
+                <% else %>
+                  <h3><%= @user.name %>'s Answered Question</h3>
+                <% end %>
+                <ol>
+                  <% @user.answers.each do |answer| %>
+                    <li>
+                      <a href="<%= question_show_path(:id => answer.question.id) %>"><%= truncate(answer.question.content) %></a>
+                    </li>
+                  <% end %>
+                </ol>
+              </div>
+            </div>
+          <% else %>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-sm-6">
+                <div class="form-horizontal">
+                  <div class="form-group">
+                    <label class="col-lg-4">Name</label>
+                    <span class="col-lg-8"><%= @user.name %></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-4">Email</label>
+                    <span class="col-lg-8"><%= @user.email %></span>
+                  </div>
+
+                  <div class="form-group">
+                    <label class="col-lg-4">Zipcode</label>
+                    <span class="col-lg-8"><%= @user.detail.zipcode %></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <% if current_user == @user %>
+                  <h3>Your Questions</h3>
+                <% else %>
+                  <h3><%= @user.name %>'s Questions</h3>
+                <% end %>
+                <ol>
+                  <% @user.questions.each do |question| %>
+                    <li>
+                      <a href="<%= question_show_path(:id => question.id)%>"><%= truncate(question.content) %></a>
+                    </li>
+                  <% end %>
+                </ol>
+              </div>
+            </div>
+          <% end %>
+       </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,58 @@
+<% provide(:title, "Search Results") %>
+
+<%= render "layouts/nav_admin_top" %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render "layouts/nav_admin_left" %>
+
+    <div class="col-lg-10 col-md-10 col-sm-10 cont-q">
+      <div class="tab-cont-q">
+        <div class="tab-content">
+          <div class="tab-pane active" id="ans-q">
+            <div class="tab-cont-head">
+              <span>Search Results</span>
+            </div>
+
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="60%">Question</th>
+                  <th width="20%">Asked By</th>
+                  <th width="10%">Asked On</th>
+                  <th width="10%">Answers</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% if @search_results.empty? %>
+                  <tr>
+                    <td colspan="4">
+                      <p class="no_results">No results found</p>
+                    </td>
+                  </tr>
+                <% else %>
+                  <% @search_results.each do |question| %>
+                    <tr>
+                      <td>
+                        <a href="<%= question_show_path(:id => question.id) %>">
+                          <%= truncate(question.content) %>
+                        </a>
+                      </td>
+                      <td>
+                        <a href="<%= user_show_path(:id => question.user.id) %>">
+                          <%= question.user.name %>
+                        </a>
+                      </td>
+                      <td><%= question.created_at.to_formatted_s(:long) %></td>
+                      <td><%= question.answers.count %></td>
+                    </tr>
+                  <% end %>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,109 @@
+<% provide(:title, "Questions") %>
+
+<%= render "layouts/nav_admin_top" %>
+
+<div class="container-fluid">
+  <div class="row">
+    <%= render "layouts/nav_admin_left" %>
+    <div class="col-lg-10 col-md-10 col-sm-10 cont-q">
+      <div class="tab-cont-q">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#ans-q" data-toggle="tab"><i class="fa fa-user"></i>&nbsp;Answered Question</a>
+          </li>
+          <li class="active">
+            <a href="#uans-q" data-toggle="tab"><i class="fa fa-comments"></i>&nbsp;Unanswered Question</a>
+          </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content">
+          <div class="tab-pane" id="post-q">
+            <div class="tab-cont-head"><span>Post a question</span></div>
+          </div>
+          <div class="tab-pane" id="ans-q">
+            <div class="tab-cont-head">
+              <span>Answered Question</span>
+              <div class="pull-right">
+              <form class="form-horizontal">
+                <label class="col-sm-3">Sort&nbsp;by:</label>
+                <div  class="col-sm-9">
+                  <select class="form-control">
+                  <option>Option</option>
+                  <option>Option</option>
+                  <option>Option</option>
+                  <option>Option</option>
+                </select>
+                </div>
+              </form>
+              </div>
+            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">First Name</th>
+                  <th width="60%">Question</th>
+                  <th width="10%">Posted</th>
+                  <th width="10%">Answer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @close_questions.each do |question| %>
+                  <tr>
+                    <td><%= question.user.name %></td>
+                    <td><%= truncate(question.content) %></td>
+                    <td><%= question.created_at %>
+                    <td>
+                      <a class="btn btn-xs btn-success" href="<%= question_show_path(:id => question.id) %>">Answer</a>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+          <div class="tab-pane active" id="uans-q">
+            <div class="tab-cont-head">
+              <span>Unanswered Question</span>
+              <div class="pull-right">
+              <form class="form-horizontal">
+                <label class="col-sm-3">Sort&nbsp;by:</label>
+                <div  class="col-sm-9">
+                  <select class="form-control">
+                  <option>Option</option>
+                  <option>Option</option>
+                  <option>Option</option>
+                  <option>Option</option>
+                </select> 
+                </div>
+              </form>
+              </div>
+            </div>
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th width="10%">Name</th>
+                  <th width="60%">Question</th>
+                  <th width="10%">Posted</th>
+                  <th width="10%">Answer</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% @open_questions.each do |question| %>
+                  <tr>
+                    <td><%= question.user.name %></td>
+                    <td><%= truncate(question.content) %></td>
+                    <td><%= question.created_at %>
+                    <td>
+                      <a class="btn btn-xs btn-success" href="<%= question_show_path(:id => question.id) %>">Answer</a>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
