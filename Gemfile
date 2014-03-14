@@ -1,6 +1,7 @@
 source "https://rubygems.org"
 
 ruby "2.0.0"
+#ruby-gemset=vetrounds
 
 gem "rails", "~> 4.0.3"
 
@@ -16,6 +17,7 @@ end
 group :development do
   gem "sqlite3", "~> 1.3.9"
   gem "rspec-rails", "~> 2.14.1"
+  gem "guard-rspec"
 end
 
 group :test do
