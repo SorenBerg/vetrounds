@@ -85,6 +85,6 @@ Vetrounds::Application.configure do
     domain:               'vetrounds.com'
   }
   config.action_mailer.default_url_options = {
-    host: ENV['http://vetrounds.herokuapp.com/']
+    'http://vetrounds.herokuapp.com/'
   }
 end

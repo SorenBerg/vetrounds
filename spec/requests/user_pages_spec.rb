@@ -24,7 +24,7 @@ describe "User pages" do
         find(:css, "#client_new_user #user_email").set("user@example.com")
         find(:css, "#client_new_user #user_password").set("foobar")
         find(:css, "#client_new_user #user_password_confirmation").set("foobar")
-        find(:css, "#client_new_user #user_detail_attributes_zipcode").set("123456")
+        find(:css, "#client_new_user #user_detail_attributes_zipcode").set("12345")
       end
 
       it "should create a client" do
@@ -44,7 +44,7 @@ describe "User pages" do
         find(:css, "#vet_new_user #user_email").set("user@example.com")
         find(:css, "#vet_new_user #user_password").set("foobar")
         find(:css, "#vet_new_user #user_password_confirmation").set("foobar")
-        find(:css, "#vet_new_user #user_detail_attributes_zipcode").set("123456")
+        find(:css, "#vet_new_user #user_detail_attributes_zipcode").set("12345")
       end
 
       it "should create a client" do

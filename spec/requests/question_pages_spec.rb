@@ -25,7 +25,7 @@ describe "Question pages" do
         fill_in "Email",            with: "user@example.com"
         fill_in "Password",         with: "foobar"
         fill_in "Confirm Password", with: "foobar"
-        fill_in "Zipcode",          with: "123456"
+        fill_in "Zipcode",          with: "12345"
       end
 
       it "should create a question" do
