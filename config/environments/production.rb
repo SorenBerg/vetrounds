@@ -79,12 +79,6 @@ Vetrounds::Application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.smtp_settings = {
-    address:              'localhost',
-    port:                 25,
-    domain:               'vetrounds.com'
-  }
-  config.action_mailer.default_url_options = {
-    'http://vetrounds.herokuapp.com/'
-  }
+  
+  config.action_mailer.default_url_options = { :host => 'smtp.sendgrid.net' }
 end
