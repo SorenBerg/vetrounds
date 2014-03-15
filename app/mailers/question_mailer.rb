@@ -5,6 +5,8 @@ class QuestionMailer < ActionMailer::Base
     @question = question
     @answer = answer
 
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
     mail(
       to: @question.user.email,
       subject: 'Your question has been answered on VetRounds.com'
@@ -15,6 +17,8 @@ class QuestionMailer < ActionMailer::Base
     @current_user = current_user
     @answer = answer
     @to_name = to_name
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
 
     mail(
       to: to_email,

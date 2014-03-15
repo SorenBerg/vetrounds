@@ -10,6 +10,8 @@ class UserMailer < ActionMailer::Base
       template_name = 'welcome_client_email'
     end
 
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
     mail(
       to: @user.email,
       subject: 'Welcome to Vetrounds',
@@ -19,6 +21,8 @@ class UserMailer < ActionMailer::Base
 
   def password_reset(user)
     @user = user
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
 
     mail(
       to: user.email,
