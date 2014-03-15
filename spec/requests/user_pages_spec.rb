@@ -52,4 +52,7 @@ describe "User pages" do
       end
     end
   end
+
+  #TODO: test show page
+
 end

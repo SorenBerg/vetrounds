@@ -33,4 +33,18 @@ describe "Question pages" do
       end
     end
   end
+
+
+  # describe "question show page" do
+  #   before do
+  #     @question = Question.new("test")
+  #     visit question_show_path + '/' + @question.id.to_s
+  #   end
+
+  #   it { should have_title(full_title("Question")) }
+
+  #   #TODO: test me
+  # end
+
+
 end
