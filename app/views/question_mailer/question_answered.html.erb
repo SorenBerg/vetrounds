@@ -6,22 +6,22 @@
   <body>
     <p>Hello <%= @question.user.name %></p>
 
-    <p>
-      <a href="<%= user_show_url(:id => @answer.user.id) %>"><%= @answer.user.name %></a> has posted the below mentioned answer:
+    <p>You recently posed the following question on <a href="vetrounds.com">VetRounds.com</a>:
     </p>
-
-    <p>
-      <%= @answer.answer %>
-    </p>
-
-    <p>Your Question</p>
 
     <p>
       <%= @question.content %>
     </p>
 
     <p>
-      You can view the question and answer by clicking <a href="<%= question_show_url(:id => @question.id) %>">here</a>
+      <a href="<%= user_show_url(:id => @answer.user.id) %>"><%= @answer.user.name %></a> has provided the following answer:
+    </p>
+
+    <p>
+      <%= @answer.answer %>
+    </p>
+
+      You can view the answer and send <%= @answer.user.name %> a thank you note by clicking <a href="<%= question_show_url(:id => @question.id) %>">here</a>
     </p>
   </body>
 </html>
