@@ -9,6 +9,7 @@ gem "bootstrap-sass", "~> 3.1.1.0"
 gem "font-awesome-rails", "~> 4.0.3.1"
 gem "bcrypt-ruby", "~> 3.1.5"
 gem "event_tracker", "~> 0.2.1"
+gem "sentry-raven", "~> 0.7.1"
 
 group :production do
   gem "pg", "~> 0.17.1"
