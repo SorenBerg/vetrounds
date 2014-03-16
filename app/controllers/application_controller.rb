@@ -5,4 +5,13 @@ class ApplicationController < ActionController::Base
   include SessionsHelper
   include AgreementsHelper
   include ThanksHelper
+  around_filter :append_event_tracking_tags
+
+  def mixpanel_distinct_id
+    current_visitor_id
+  end
+
+  def mixpanel_name_tag
+    current_user && current_user.email
+  end
 end
