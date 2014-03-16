@@ -122,7 +122,7 @@
             <div class="row answer-temp-user">
           <% end %>
             <div class="col-lg-2 col-md-3 col-sm-3 text-center">
-              <img src="" width="100" height="100"><br><br>
+              <img src="<%= image_path('vet-photo-small.jpg') %>" width="100" height="100"><br><br>
               <span>
                 <a href="<%= user_show_path(:id => answer.user.id) %>"><%= answer.user.name %></a>
               </span>
