@@ -1,7 +1,7 @@
 <% provide(:title, "Home") %>
 
 <div class="container-fluid">
-  <div class="row home-bg">
+  
     <div class="col-lg-12">
       <%= render "layouts/nav" %>
       <div id="carousel-example-generic" class="carousel slide slider-vet" data-ride="carousel">
@@ -15,9 +15,9 @@
         <!-- Wrapper for slides -->
         <div class="carousel-inner">
           <div class="item active">
+            <div class="home-bg1">
             <div class="slider-head">Licensed Veterinarians there for you, 
               24 hours a day</div>
-            <p></p>
             <%= form_tag(controller: "questions", action: "newpost") do %>
               <div class="form-group">
                 <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
@@ -27,10 +27,14 @@
               </div>
             </form>
             <% end %>
+
+            </div>
             <div class="carousel-caption">
             </div>
           </div>
+          
           <div class="item ">
+            <div class="home-bg2">
             <div class="slider-head">No waiting room necessary</div>
             <p></p>
             <%= form_tag(controller: "questions", action: "newpost") do %>
@@ -42,10 +46,16 @@
               </div>
             </form>
             <% end %>
+          </div>
             <div class="carousel-caption">
             </div>
+          
           </div>
+
+
           <div class="item ">
+
+            <div class="home-bg3">
             <div class="slider-head">Ask your question and have them answered for free</div>
             <p></p>
             <%= form_tag(controller: "questions", action: "newpost") do %>
@@ -57,9 +67,14 @@
               </div>
             </form>
             <% end %>
+          </div>
+
+
             <div class="carousel-caption">
             </div>
-          </div>
+          
+        </div>
+
         </div>
 
         <!-- Controls -->
@@ -72,7 +87,7 @@
       </div>
     </div>
   </div>
-</div>
+
 
 <div class="content">
   <div class="container">
