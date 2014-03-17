@@ -11,6 +11,7 @@ class QuestionsController < ApplicationController
   def newpost
     @question = Question.new
     @question.content = params[:question]
+    track_event("New Question")
 
     if !signed_in?
       @user = User.new
@@ -24,6 +25,7 @@ class QuestionsController < ApplicationController
       @question.user_id = current_user.id
 
       if (@question.save)
+        track_event("Create Question")
         redirect_to question_show_path(:id => @question.id)
       else
         render 'new'
