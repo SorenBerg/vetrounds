@@ -18,6 +18,8 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6 }, :if => :validate_password?
 
+  validates :terms, acceptance: true
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end

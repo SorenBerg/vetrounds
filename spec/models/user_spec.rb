@@ -90,6 +90,22 @@ describe User do
     it { should_not be_valid }
   end
 
+  describe "when terms of service are not accepted" do
+    before do
+      @user.terms = "0"
+    end
+
+    it { should_not be_valid}
+  end
+
+  describe "when terms of service are accepted" do
+    before do
+      @user.terms = "1"
+    end
+
+    it { should be_valid}
+  end
+
   describe "with a password that's too short" do
     before do
       @user.password = @user.password_confirmation = "a" * 5

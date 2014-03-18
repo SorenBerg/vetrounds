@@ -13,6 +13,7 @@ Vetrounds::Application.routes.draw do
   get "questions/show/:id" => 'questions#show', as: :question_show
   post "questions/newpost" => 'questions#newpost', as: :home_question_post
   root "static_pages#home"
+  get "terms" => "static_pages#terms", as: :terms
 
   get "signup" => "users#new", as: :signup
   get "login" => "sessions#new", as: :login
