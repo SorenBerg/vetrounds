@@ -91,27 +91,36 @@ body {
 
 .home-bg1 {
     background-image: url(image-path('home-bg1.jpg'));
-    min-height: 1300px;
-    background-size: 100% 1080px;
-    background-position: center -200px;
-    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 
 }
 
 .home-bg2 {
     background-image: url(image-path('home-bg2.jpg'));
-    min-height: 1300px;
-    background-size: 100% 1080px;
-    background-position: center -200px;
-    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .home-bg3 {
     background-image: url(image-path('home-bg3.jpg'));
-    min-height: 1300px;
-    background-size: 100% 1080px;
-    background-position: center -200px;
-    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
 }
 
 .navbar-vetround {
@@ -279,7 +288,7 @@ body {
 .slider-head {
     font-size: 60px;
     text-align: center;
-    padding-top:400px;
+    padding-top:30%;
 
 
 }
