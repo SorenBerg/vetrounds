@@ -1,40 +1,47 @@
 <% provide(:title, "Home") %>
 
 
-    <%= render "layouts/nav" %>
+<%= render "layouts/nav" %>
     
 
-      <div id="carousel-example-generic" class="carousel slide slider-vet" data-ride="carousel">
+<div id="carousel-example-generic" class="carousel slide slider-vet" data-ride="carousel">
         <!-- Indicators -->
-        <ol class="carousel-indicators">
-          <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="1"></li>
-          <li data-target="#carousel-example-generic" data-slide-to="2"></li>
-        </ol>
+  
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
 
         <!-- Wrapper for slides -->
-        <div class="carousel-inner">
-          <div class="item active">
-            <div class="home-bg1">
-
-            
-
-
+  <div class="carousel-inner">
+    
+    <div class="item active">
+        
+      <div class="home-bg1">
+      <div class="slider-head">Licensed Veterinarians there for you, 
+            24 hours a day
+        </div>
+          <%= form_tag(controller: "questions", action: "newpost") do %>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
             </div>
-            <div class="carousel-caption">
-              <div class="slider-head">Licensed Veterinarians there for you, 
-              24 hours a day</div>
-                          <%= form_tag(controller: "questions", action: "newpost") do %>
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
-              </div>
-              <div class="form-group" style="text-align: center;">
-                <button type="submit" class="btn btn-success">Ask Question</button>
-              </div>
-            </form>
-            <% end %>
+          
+            <div class="form-group" style="text-align: center;">
+          
+              <button type="submit" class="btn btn-success">Ask Question</button>
+        
             </div>
-          </div>
+          </form>
+          <% end %>
+
+                
+      <div class="carousel-caption">          
+
+      </div>
+    </div>
+  </div>
+
           
           <div class="item ">
             <div class="home-bg2">
