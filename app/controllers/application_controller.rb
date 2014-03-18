@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   around_filter :append_event_tracking_tags
 
   def mixpanel_distinct_id
-    current_user && current_user.id
+    current_user && current_user.id.to_s
   end
 
   def mixpanel_name_tag

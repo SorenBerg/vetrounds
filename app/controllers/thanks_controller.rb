@@ -26,6 +26,8 @@ class ThanksController < ApplicationController
 
     @thank.save
 
+    track_event("Thank")
+
     redirect_to question_show_path(:id => @answer.question_id)
     return
   end

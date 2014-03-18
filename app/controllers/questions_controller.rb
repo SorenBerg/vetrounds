@@ -1,6 +1,7 @@
 class QuestionsController < ApplicationController
   def new
     @question = Question.new
+    track_event("New1 Question")
 
     if !signed_in?
       @user = User.new
@@ -11,7 +12,7 @@ class QuestionsController < ApplicationController
   def newpost
     @question = Question.new
     @question.content = params[:question]
-    track_event("New Question")
+    track_event("New2 Question")
 
     if !signed_in?
       @user = User.new
@@ -25,7 +26,7 @@ class QuestionsController < ApplicationController
       @question.user_id = current_user.id
 
       if (@question.save)
-        track_event("Create Question")
+        track_event("Create1 Question")
         redirect_to question_show_path(:id => @question.id)
       else
         render 'new'
@@ -40,6 +41,13 @@ class QuestionsController < ApplicationController
         if (@question.save)
           UserMailer.welcome_email(@user).deliver
           sign_in @user
+
+          register_properties(created_at: @user.created_at, email: @user.email, user_type: "client")
+          track_event("Client Sign Up", signup_type: "combined")
+          track_event("Create2 Question")
+          mixpanel_alias(@user.id.to_s)
+
+
           redirect_to user_show_path(:id => @user.id)
           return
         else

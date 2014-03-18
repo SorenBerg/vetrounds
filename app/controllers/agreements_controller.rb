@@ -31,6 +31,8 @@ class AgreementsController < ApplicationController
 
     @agreement.save
 
+    track_event("Agree")
+
     redirect_to question_show_path(:id => @answer.question_id)
     return
   end

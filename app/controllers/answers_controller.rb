@@ -12,6 +12,7 @@ class AnswersController < ApplicationController
     @answer.user_id = current_user.id
 
     if (@answer.save)
+      track_event("Answer Question")
       @question = Question.find(@answer.question_id)
 
       @question.answered = true
@@ -53,6 +54,8 @@ class AnswersController < ApplicationController
       params[:to_name],
       params[:to_email]
     ).deliver
+
+    track_event("Share")
 
     redirect_to question_show_path(:id => @answer.question.id)
   end
