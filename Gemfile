@@ -16,15 +16,16 @@ group :production do
   gem "rails_12factor", "~> 0.0.2"
 end
 
-group :development do
+group :development, :test do
   gem "sqlite3", "~> 1.3.9"
   gem "rspec-rails", "~> 2.14.1"
-  gem "guard-rspec"
+  gem "libnotify"
 end
 
 group :test do
   gem "selenium-webdriver", "~> 2.40.0"
   gem "capybara", "~> 2.2.1"
+  gem "guard-rspec"
 end
 
 gem "sass-rails", "~> 4.0.1"
