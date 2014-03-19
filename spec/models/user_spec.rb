@@ -106,7 +106,9 @@ describe User do
     let(:found_user) { User.find_by(email: @user.email) }
 
     describe "with valid password" do
-      it { should eq found_user.authenticate(@user.password) }
+      it "should equal authenticated user" do
+        @user.should eq found_user.authenticate(@user.password)
+      end
     end
 
     describe "with invalid password" do

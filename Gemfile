@@ -20,6 +20,7 @@ group :development, :test do
   gem "sqlite3", "~> 1.3.9"
   gem "rspec-rails", "~> 2.14.1"
   gem "libnotify"
+  gem "factory_girl_rails"
 end
 
 group :test do

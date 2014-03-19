@@ -37,7 +37,7 @@ describe "Question pages" do
 
   # describe "question show page" do
   #   before do
-  #     @question = Question.new("test")
+  #     @question = Question.new(content: "Foobar")
   #     visit question_show_path + '/' + @question.id.to_s
   #   end
 
