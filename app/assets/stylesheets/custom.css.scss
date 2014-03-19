@@ -135,11 +135,16 @@ body {
     height: 70px;
     border-bottom: solid 1px #aaa;
     z-index: 2;
+
     
 }
 
+
+
 .navbar-vetround .navbar-brand {
     text-transform: none;
+    
+
  
     
 }
@@ -160,7 +165,14 @@ body {
     font-size: 12px;
     font-weight: 300;
     letter-spacing: 6px;
+    overflow-x: hidden;
+    z-index: 4;
+
+
 }
+
+
+
 
 .navbar-vetround a {
     color:black;
@@ -205,7 +217,7 @@ body {
 }
 
 .navbar-toggle, .navbar-toggle .icon-bar {
-    border: 1px solid #fff;
+    border: 1px solid #000;
 }
 
 @media (min-width: 768px) {
@@ -227,10 +239,14 @@ body {
 }
 
 @media (max-width: 768px) {
+    
   .navbar-vetround .navbar-nav > li > a {
+  background-color:black;
+  opacity: 0.6;
     padding:0.5em;
-    margin-left: 2em;
+   margin-left: 2em;
    margin-right: 2em;
+   color: white;
  
 
   -moz-border-radius-topleft: 10px;
@@ -285,10 +301,16 @@ body {
     }
 }
 
+
+
+
 .slider-head {
+
     font-size: 60px;
     text-align: center;
     padding-top:23%;
+    
+
 
 
 }
@@ -314,14 +336,22 @@ body {
 }
 
 .slider-vet .item .form-control {
-    width: 40%;
+    width: 60%;
     margin: 0 auto;
     font-style: italic;
-    font-size: 12px;
+    font-size: 20px;
     height: auto;
     padding: 25px;
     z-index: 3;
 }
+
+@media (max-width: 767px) {
+.slider-vet .item .form-control {
+    font-size: 12px;
+    }
+}
+
+
 
 .carousel-inner {
     top: -35px;
