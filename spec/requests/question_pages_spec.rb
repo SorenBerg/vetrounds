@@ -35,16 +35,23 @@ describe "Question pages" do
   end
 
 
-  # describe "question show page" do
-  #   before do
-  #     @question = Question.new(content: "Foobar")
-  #     visit question_show_path + '/' + @question.id.to_s
-  #   end
+  describe "question show page" do
+    before do
+      @question = create(:question)
+      @user = @question.user
+      log_in_as(@user)
 
-  #   it { should have_title(full_title("Question")) }
+      visit question_show_path({:id => @question.id})
+      save_and_open_page
+    end
 
-  #   #TODO: test me
-  # end
+    it "contains question" do
+      should have_content(@question.content)
+    end
+    #it { should have_title(full_title("Question")) }
+
+    #TODO: test me
+  end
 
 
 end
