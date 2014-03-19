@@ -69,6 +69,7 @@ GEM
     font-awesome-rails (4.0.3.1)
       railties (>= 3.2, < 5.0)
     formatador (0.2.4)
+    google-analytics-rails (0.0.5)
     guard (2.5.1)
       formatador (>= 0.2.4)
       listen (~> 2.6)
@@ -227,6 +228,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.1)
   event_tracker (~> 0.2.1)
   font-awesome-rails (~> 4.0.3.1)
+  google-analytics-rails
   guard-rspec
   jbuilder (~> 2.0.3)
   jquery-rails (~> 3.1.0)
