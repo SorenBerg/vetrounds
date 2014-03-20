@@ -23,7 +23,7 @@ Vetrounds::Application.configure do
   config.serve_static_assets = false
   
   # Google Analytics tracker code
-  GA.tracker = "UA-47778113-3"
+  GA.tracker = ENV['GA_KEY']
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
