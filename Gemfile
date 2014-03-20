@@ -28,6 +28,7 @@ group :test do
   gem "selenium-webdriver", "~> 2.40.0"
   gem "capybara", "~> 2.2.1"
   gem "guard-rspec"
+  gem "database_cleaner", "~> 1.2.0"
 end
 
 gem "sass-rails", "~> 4.0.1"

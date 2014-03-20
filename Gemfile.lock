@@ -58,6 +58,7 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    database_cleaner (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     event_tracker (0.2.1)
@@ -233,6 +234,7 @@ DEPENDENCIES
   bootstrap-sass (~> 3.1.1.0)
   capybara (~> 2.2.1)
   coffee-rails (~> 4.0.1)
+  database_cleaner (~> 1.2.0)
   event_tracker (~> 0.2.1)
   factory_girl_rails
   font-awesome-rails (~> 4.0.3.1)

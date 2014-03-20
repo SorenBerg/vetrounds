@@ -34,19 +34,26 @@ describe "Question pages" do
     end
   end
 
-
   describe "question show page" do
+
     before do
-      @question = create(:question)
-      @user = @question.user
-      log_in_as(@user)
+      @question = create(:answered_question)
+      log_in_as(@question.user)
 
       visit question_show_path({:id => @question.id})
-      save_and_open_page
     end
 
     it "contains question" do
       should have_content(@question.content)
+    end
+
+    it "contains user info" do
+      should have_content(@question.user.name)
+      should have_content(@question.user.detail.zipcode)
+    end
+
+    it "contains answer" do
+      should have_content(@question.answers[0].answer)
     end
     #it { should have_title(full_title("Question")) }
 
