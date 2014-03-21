@@ -21,6 +21,9 @@ Vetrounds::Application.configure do
 
   # Disable Rails's static asset server (Apache or nginx will already do this).
   config.serve_static_assets = false
+  
+  # Google Analytics tracker code
+  GA.tracker = ENV['GA_KEY']
 
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
