@@ -20,8 +20,7 @@ end
 group :development, :test do
   gem "sqlite3", "~> 1.3.9"
   gem "rspec-rails", "~> 2.14.1"
-  gem "libnotify" if /linux/ =~ RUBY_PLATFORM
-  gem "growl" if /darwin/ =~ RUBY_PLATFORM
+  gem "libnotify"
   gem "factory_girl_rails"
 end
 
