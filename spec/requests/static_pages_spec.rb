@@ -30,4 +30,11 @@ describe "StaticPages" do
       end  
     end
   end
+
+  describe "Terms of Service Page" do
+    it "should have the ToS" do
+      visit terms_url
+      expect(page).to have_content("Terms of Service")
+    end
+  end
 end

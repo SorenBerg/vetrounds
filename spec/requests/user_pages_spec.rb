@@ -8,9 +8,14 @@ describe "User pages" do
 
     it { should have_content("Join Today") }
     it { should have_title(full_title("Signup")) }
+    it { should have_content("Accept Terms of Service") }
 
     let(:submit_client) { "Sign Up as Pet Owner" }
     let(:submit_vet) { "Signup as Doctor" }
+
+    it "should have a link to the ToS" do
+      should have_link('Terms of Service', href: terms_path)
+    end
 
     describe "with invalid information for client" do
       it "should not create a client" do
@@ -25,6 +30,7 @@ describe "User pages" do
         find(:css, "#client_new_user #user_password").set("foobar")
         find(:css, "#client_new_user #user_password_confirmation").set("foobar")
         find(:css, "#client_new_user #user_detail_attributes_zipcode").set("12345")
+        find(:css, "#client_new_user #user_terms").set("1")
       end
 
       it "should create a client" do

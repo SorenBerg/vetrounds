@@ -22,12 +22,12 @@ group :development, :test do
   gem "rspec-rails", "~> 2.14.1"
   gem "libnotify"
   gem "factory_girl_rails"
-  gem "launchy", "~> 2.4.2"
 end
 
 group :test do
   gem "selenium-webdriver", "~> 2.40.0"
   gem "capybara", "~> 2.2.1"
+  gem "launchy", "~> 2.4.2"
   gem "guard-rspec"
   gem "database_cleaner", "~> 1.2.0"
 end
