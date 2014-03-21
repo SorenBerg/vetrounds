@@ -40,6 +40,7 @@ class QuestionsController < ApplicationController
 
         if (@question.save)
           UserMailer.welcome_email(@user).deliver
+          UserMailer.vet_notify_email().deliver
           sign_in @user
 
           register_properties(created_at: @user.created_at, email: @user.email, user_type: "client")
