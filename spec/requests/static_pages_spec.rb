@@ -14,12 +14,20 @@ describe "StaticPages" do
       expect(page).to have_title("Home | Vetrounds")
     end
 
-    it "should allow asking question" do
-      test = "test question"
-      fill_in "question", with: test, match: :first
-      click_button "Ask Question", match: :first
-      current_path.should eq(home_question_post_path)
-      page.should have_content test
+    describe "question box" do
+      before do
+        @test = "test question"
+        fill_in "question", with: @test, match: :first
+        click_button "Ask Question", match: :first
+      end
+
+      it "should go to new question path" do
+        current_path.should eq(home_question_post_path)
+      end
+
+      it "should pre-fill question" do
+        page.should have_content @test
+      end  
     end
   end
 end

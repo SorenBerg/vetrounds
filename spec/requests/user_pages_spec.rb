@@ -127,9 +127,6 @@ describe "User pages" do
       @vet = create(:vet)
       log_in_as(@user)
       visit user_show_path({:id => @vet.id})
-      
-      
-      save_and_open_page
     end
 
     it "does not have vet email" do

@@ -83,7 +83,6 @@ describe "Question pages" do
       @vet = create(:vet, :email => "NewVet@example.com", :name => "NewVet")
       log_in_as(@vet)
       visit question_show_path({:id => @question.id})
-      #save_and_open_page
     end
 
     let (:newAnswer) { "I dunno either" }
