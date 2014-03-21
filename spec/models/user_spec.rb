@@ -90,6 +90,22 @@ describe User do
     it { should_not be_valid }
   end
 
+  describe "when terms of service are not accepted" do
+    before do
+      @user.terms = "0"
+    end
+
+    it { should_not be_valid}
+  end
+
+  describe "when terms of service are accepted" do
+    before do
+      @user.terms = "1"
+    end
+
+    it { should be_valid}
+  end
+
   describe "with a password that's too short" do
     before do
       @user.password = @user.password_confirmation = "a" * 5
@@ -106,7 +122,9 @@ describe User do
     let(:found_user) { User.find_by(email: @user.email) }
 
     describe "with valid password" do
-      it { should eq found_user.authenticate(@user.password) }
+      it "should equal authenticated user" do
+        @user.should eq found_user.authenticate(@user.password)
+      end
     end
 
     describe "with invalid password" do

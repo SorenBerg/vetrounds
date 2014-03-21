@@ -10,21 +10,26 @@ gem "font-awesome-rails", "~> 4.0.3.1"
 gem "bcrypt-ruby", "~> 3.1.5"
 gem "event_tracker", "~> 0.2.1"
 gem "sentry-raven", "~> 0.7.1"
+gem 'google-analytics-rails'
 
 group :production do
   gem "pg", "~> 0.17.1"
   gem "rails_12factor", "~> 0.0.2"
 end
 
-group :development do
+group :development, :test do
   gem "sqlite3", "~> 1.3.9"
   gem "rspec-rails", "~> 2.14.1"
-  gem "guard-rspec"
+  gem "libnotify"
+  gem "factory_girl_rails"
 end
 
 group :test do
   gem "selenium-webdriver", "~> 2.40.0"
   gem "capybara", "~> 2.2.1"
+  gem "launchy", "~> 2.4.2"
+  gem "guard-rspec"
+  gem "database_cleaner", "~> 1.2.0"
 end
 
 gem "sass-rails", "~> 4.0.1"

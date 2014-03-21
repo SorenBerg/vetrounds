@@ -7,7 +7,7 @@
     <%= render "layouts/nav_admin_left" %>
     <div class="col-lg-10 col-md-10 col-sm-10 cont-q">
       <div class="div-answers">
-        <h2>Answer</h2>
+        <h2>Question</h2>
         <div class="answers-cont">
         <div class="row question-temp">
           <div class="col-lg-10 col-md-10 col-sm-10">
@@ -115,6 +115,9 @@
           </div>
         </div>
 
+        <% if (@question.answers.length > 0) %>
+          <h2><%= pluralize(@question.answers.length, 'Answer') %></h2>
+        <% end %>
         <% @question.answers.each do |answer| %>
           <% if (current_user.is_vet) %>
             <div class="row answer-temp-doc">
@@ -202,7 +205,7 @@
         <% if current_user.is_vet %>
           <div class="row answer-temp">
             <div class="col-lg-12">
-              <%= form_for @answer, url: {controller: "answers", action: "create"} do |f| %>
+              <%= form_for @newanswer, url: {controller: "answers", action: "create"} do |f| %>
                 <%= f.hidden_field :question_id, :value => @question.id %>
                 <div class="form-group">
                   <%= f.text_area :answer, :class => "form-control", :placeholder => "Your Answer" %>

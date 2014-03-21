@@ -57,6 +57,16 @@
                     <div class="col-sm-4"></div>
                   </div>
                 <% end %>
+
+                <div class="form-group">
+                  <div class="col-sm-8">
+                    <%= user_f.label :terms, :class => "checkbox inline" do %>
+                      <%= user_f.check_box :terms %> 
+                      Accept <%= link_to 'Terms of Service', terms_path, :target => '_blank' %>.
+                    <% end %>
+                  </div>
+                  <div class="col-sm-4"></div>
+                </div>
               <% end %>
             <% end %>
 
@@ -142,7 +152,7 @@
 
             <div class="form-group">
               <div class="col-sm-8">
-                <%= question_f.label :previous_medical_conditions, "Has your pet have any pre-existing medical conditions?" %>
+                <%= question_f.label :previous_medical_conditions, "Has your pet had any pre-existing medical conditions?" %>
                 <%=
                   question_f.select(
                     :previous_medical_conditions,
