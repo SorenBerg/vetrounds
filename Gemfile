@@ -21,13 +21,15 @@ group :development, :test do
   gem "sqlite3", "~> 1.3.9"
   gem "rspec-rails", "~> 2.14.1"
   gem "libnotify"
+  gem "factory_girl_rails"
 end
 
 group :test do
   gem "selenium-webdriver", "~> 2.40.0"
   gem "capybara", "~> 2.2.1"
-  gem "launchy"
+  gem "launchy", "~> 2.4.2"
   gem "guard-rspec"
+  gem "database_cleaner", "~> 1.2.0"
 end
 
 gem "sass-rails", "~> 4.0.1"
