@@ -54,6 +54,111 @@ describe "User pages" do
     # end
   end
 
-  #TODO: test show page
+  describe "user profile page as user" do
 
+    before do
+      @question = create(:question)
+      @user = @question.user
+      log_in_as(@user)
+
+      visit user_show_path({:id => @user.id})
+    end
+
+    it "contains user info" do
+      should have_selector("h2", :text => "My Profile")
+      should have_content(@user.name)
+      should have_content(@user.email)
+      should have_content(@user.detail.zipcode)
+    end
+
+    it "contains questions" do
+      should have_link(@user.questions[0].content, question_show_path(:id => @question.id))
+    end
+  end
+
+  describe "user profile page as other user" do
+
+    before do
+      @user = create(:user)
+      @secondUser = create(:user, :email => "secondUser@example.com")
+      log_in_as(@secondUser)
+      visit user_show_path({:id => @user.id})
+    end
+
+    it { should have_title(full_title("Profile")) }
+
+    it "does not have email or zipcode" do
+      should have_content(@user.name + "'s Profile")
+      should_not have_content(@user.email)
+      should_not have_content(@user.detail.zipcode)
+    end
+  end
+
+  describe "vet profile page as vet" do
+
+    before do
+      @question = create(:answered_question)
+      @vet = @question.answers[0].user
+      log_in_as(@vet)
+      visit user_show_path({:id => @vet.id})
+    end
+
+    it "contains vet info" do
+      should have_content(@vet.name)
+      should have_content(@vet.email)
+      should have_content(@vet.detail.zipcode)
+      should have_content(@vet.detail.area_of_practise)
+      should have_content(@vet.detail.vetinary_school)
+      should have_content(@vet.detail.vetinary_school_year)
+      should have_content(@vet.detail.degree)
+      should have_content(@vet.detail.licence_number)
+      should have_content(@vet.detail.licence_state)
+    end
+
+    it "contains answered question" do
+      should have_link(@question.content, question_show_path(:id => @question.id))
+    end
+  end
+
+  describe "vet profile page as other user" do
+
+    before do
+      @user = create(:user)
+      @vet = create(:vet)
+      log_in_as(@user)
+      visit user_show_path({:id => @vet.id})
+      
+      
+      save_and_open_page
+    end
+
+    it "does not have vet email" do
+      should have_content(@vet.name)
+      should_not have_content(@vet.email)
+    end
+
+    it "has thanks" do
+      should have_content "0 Thank You Notes"
+      should have_content "0 Doctor Agreements"
+    end
+  end
+
+  describe "vet profile page with feedback" do
+    it "has thank you and doctor agreement numbers" do
+      @question = create(:answered_question)
+      @vet = @question.answers[0].user
+      log_in_as(@question.user)
+      visit question_show_path({:id => @question.id})
+      click_link "Thank"
+      @newvet = create(:vet, :email => "NewVet@example.com", :name => "NewVet")
+      log_in_as(@newvet)
+      visit question_show_path({:id => @question.id})
+      click_link "Agree"
+      visit user_show_path({:id => @vet.id})
+
+
+      should have_content "1 Thank You Note"
+      should have_content "1 Doctor Agreement"
+    end
+  end
 end

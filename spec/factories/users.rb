@@ -8,11 +8,13 @@ FactoryGirl.define do
 		password_confirmation "bestpasswordever"
 
 		factory :client do
-			detail
 		end
 
 		factory :vet do
+			name "Steth O Scope"
 			email "vet@someplace.com"
+			is_vet true
+			enabled true
 			association :detail, factory: :vet_detail
 		end
 	end

@@ -77,7 +77,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     if current_user.is_vet
-      @answer = Answer.new
+      @newanswer = Answer.new
     end
   end
 
