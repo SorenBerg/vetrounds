@@ -77,7 +77,7 @@
                 <ol>
                   <% @user.answers.each do |answer| %>
                     <li>
-                      <a href="<%= question_show_path(:id => answer.question.id) %>"><%= truncate(answer.question.content) %></a>
+                      <a href="<%= question_show_path(:id => answer.question.id) %>"><%= answer.question.content.truncate(250) %></a>
                     </li>
                   <% end %>
                 </ol>
@@ -116,7 +116,7 @@
                 <ol>
                   <% @user.questions.each do |question| %>
                     <li>
-                      <a href="<%= question_show_path(:id => question.id)%>"><%= truncate(question.content) %></a>
+                      <a href="<%= question_show_path(:id => question.id)%>"><%= question.content.truncate(250) %></a>
                     </li>
                   <% end %>
                 </ol>
