@@ -21,6 +21,7 @@ class UsersController < ApplicationController
       UserMailer.welcome_email(@user).deliver
       sign_in @user
 
+      #Mixpanel
       register_properties(created_at: @user.created_at, email: @user.email, user_type: "client")
       track_event("Client Sign Up", signup_type: "seperate")
       mixpanel_alias(@user.id.to_s)
@@ -44,6 +45,7 @@ class UsersController < ApplicationController
     if (@user.save)
       UserMailer.welcome_email(@user).deliver
 
+      #Mixpanel
       register_properties(created_at: @user.created_at, email: @user.email, user_type: "vet")
       track_event("Vet Sign Up", signup_type: "seperate")
       mixpanel_alias(@user.id.to_s)

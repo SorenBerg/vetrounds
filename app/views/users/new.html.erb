@@ -54,6 +54,16 @@
               <% end %>
 
               <div class="form-group">
+                  <div class="col-sm-8">
+                    <%= f.label :terms do %>
+                      <%= f.check_box :terms %>
+                      Accept <%= link_to 'Terms of Service', terms_path, :target => '_blank' %>.
+                    <% end %>
+                  </div>
+                  <div class="col-sm-4"></div>
+                </div>
+
+              <div class="form-group">
                 <div class="col-sm-12">
                   <%= f.submit "Sign Up as Pet Owner", class: "btn btn-primary" %>
                 </div>

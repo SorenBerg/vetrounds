@@ -26,6 +26,7 @@ end
 group :test do
   gem "selenium-webdriver", "~> 2.40.0"
   gem "capybara", "~> 2.2.1"
+  gem "launchy"
   gem "guard-rspec"
 end
 
