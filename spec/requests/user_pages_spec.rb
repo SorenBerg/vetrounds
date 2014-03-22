@@ -117,7 +117,7 @@ describe "User pages" do
       should have_content(@vet.name)
       should have_content(@vet.email)
       should have_content(@vet.detail.zipcode)
-      should have_content(@vet.detail.area_of_practise)
+      should have_content(@vet.detail.area_of_practice)
       should have_content(@vet.detail.vetinary_school)
       should have_content(@vet.detail.vetinary_school_year)
       should have_content(@vet.detail.degree)

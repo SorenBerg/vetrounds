@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140307075600) do
+ActiveRecord::Schema.define(version: 20140322173459) do
 
   create_table "agreements", force: true do |t|
     t.integer  "question_id"
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20140307075600) do
   create_table "details", force: true do |t|
     t.integer  "user_id"
     t.string   "zipcode"
-    t.string   "area_of_practise"
+    t.string   "area_of_practice"
     t.string   "vetinary_school"
     t.string   "vetinary_school_year"
     t.string   "degree"

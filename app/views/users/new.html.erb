@@ -109,7 +109,7 @@
                     <div class="col-sm-8">
                       <%=
                         detail_f.select(
-                          :area_of_practise,
+                          :area_of_practice,
                           options_for_select(
                             [
                               ['Area of Practice', ''],
@@ -118,7 +118,7 @@
                               ['Mixed Animal', 'Mixed Animal'],
                               ['Other', 'Other']
                             ],
-                            @user.detail.area_of_practise
+                            @user.detail.area_of_practice
                           ),
                           {},
                           {
@@ -135,7 +135,7 @@
                     <div class="col-sm-8">
                       <%=
                         detail_f.text_field(
-                          :area_of_practise,
+                          :area_of_practice,
                           {
                             :class => "form-control",
                             :placeholder => "Specify your Area of Practice",
