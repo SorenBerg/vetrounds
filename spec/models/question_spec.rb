@@ -15,4 +15,24 @@ describe Question do
     before { @question.content = " " }
     it { should_not be_valid }
   end
+
+  describe "search" do
+    before do
+      @question = create(:answered_question)
+    end
+
+    it "finds question text" do
+      Question.search("cat").count.should eq(1)
+    end
+
+    it "finds answer text" do
+      Question.search("dunno").count.should eq(1)
+    end
+
+    it "finds nothing if no matches" do
+      Question.search("asfdsdfgf").count.should eq(0)
+    end
+  end
+
+  #TODO: test question link to thanks/agreements
 end

@@ -1,6 +1,8 @@
 class Question < ActiveRecord::Base
   belongs_to :user
   has_many :answers
+  has_many :thanks
+  has_many :agreements
 
   validates :content, presence: true
 
