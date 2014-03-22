@@ -1,6 +1,9 @@
 <% provide(:title, "My Profile") %>
 
 <%= render "layouts/nav_admin_top" %>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
 
 <div class="container-fluid">
   <div class="row">
