@@ -30,7 +30,8 @@ class UserMailer < ActionMailer::Base
     )
   end
   
-  def vet_notify_email()
+  def vet_notify_email(question)
+    @question = question
 
     template_name = 'vet_notify_email'
 

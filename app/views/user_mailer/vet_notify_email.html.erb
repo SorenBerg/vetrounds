@@ -5,9 +5,9 @@
   </head>
   <body>
     <h1>A question has been asked</h1>
-    <p>
-      Someone wants your wise advice. 
-    </p>
+  
+    <p> <%= link_to("Click here to answer the question", question_show_url(@question)) %>
+	</p>
     <p>
       When you have a chance, you should log in and answer their question</p>
   </body>
