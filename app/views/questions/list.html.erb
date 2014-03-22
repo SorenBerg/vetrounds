@@ -52,7 +52,7 @@
                 <% @close_questions.each do |question| %>
                   <tr>
                     <td><%= question.user.name %></td>
-                    <td><%= truncate(question.content) %></td>
+                    <td><%= question.content.truncate(250) %></td>
                     <td><%= question.created_at %>
                     <td>
                       <a class="btn btn-xs btn-success" href="<%= question_show_path(:id => question.id) %>">Answer</a>
@@ -92,7 +92,7 @@
                 <% @open_questions.each do |question| %>
                   <tr>
                     <td><%= question.user.name %></td>
-                    <td><%= truncate(question.content) %></td>
+                    <td><%= question.content.truncate(250) %></td>
                     <td><%= question.created_at %>
                     <td>
                       <a class="btn btn-xs btn-success" href="<%= question_show_path(:id => question.id) %>">Answer</a>
