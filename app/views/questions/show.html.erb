@@ -158,7 +158,7 @@
                 <div class="form-horizontal">
                   <div class="form-group">
                     <div class="col-sm-6 col-xs-6 text-left">
-                      <% if has_thanked(answer.id) %>
+                      <% if has_thanked(answer) %>
                         <a class="btn btn-sm btn-default" href="<%= thanks_remove_path(:answer_id => answer.id) %>">Thanked</a>
                       <% else %>
                         <a class="btn btn-sm btn-default" href="<%= thanks_path(:answer_id => answer.id) %>">Thank</a>

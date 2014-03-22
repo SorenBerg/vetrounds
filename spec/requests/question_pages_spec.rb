@@ -82,6 +82,8 @@ describe "Question pages" do
     it "allows user to thank vet" do
       expect { click_link "Thank" }.to change(Thank, :count).by(1)
       should have_link "Thanked"
+      expect { click_link "Thanked" }.to change(Thank, :count).by(-1)
+      should have_link "Thank"
     end
 
     it "should have headings" do
@@ -106,6 +108,8 @@ describe "Question pages" do
     it "allows vet to aggree with answer" do
       expect { click_link "Agree" }.to change(Agreement, :count).by(1)
       should have_link "Agreed"
+      expect { click_link "Agreed" }.to change(Agreement, :count).by(-1)
+      should have_link "Agree"
     end
 
     it "allows vet to answer question" do

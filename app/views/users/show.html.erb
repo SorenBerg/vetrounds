@@ -60,11 +60,9 @@
                 <div class="form-horizontal">
                   <div class="form-group">
                     <div class="col-lg-12">
-                      <% @agreement_count = get_agreement_count(@user.id) %>
-                      <% @thanks_count = get_thanks_count(@user.id) %>
-                      <span class="btn btn-default btn-profile"><%= pluralize(@agreement_count, "Doctor Agreement") %>
+                      <span class="btn btn-default btn-profile"><%= pluralize(@user.agreed.count, "Doctor Agreement") %>
                       </span>
-                      <span class="btn btn-default btn-profile"><%= pluralize(@thanks_count, "Thank You Note") %>
+                      <span class="btn btn-default btn-profile"><%= pluralize(@user.thanked.count, "Thank You Note") %>
                       </span>
                     </div>
                   </div>
@@ -107,6 +105,10 @@
                       <span class="col-lg-8"><%= @user.detail.zipcode %></span>
                     </div>
                   <% end %>
+
+                  <div class="form-group">
+                    <label class="col-lg-4"><%= pluralize(@user.thanks.count, "Thank you", "Thank you's") %> given</label>
+                  </div>
                 </div>
               </div>
             </div>

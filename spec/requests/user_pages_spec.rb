@@ -98,6 +98,10 @@ describe "User pages" do
       should_not have_content(@user.email)
       should_not have_content(@user.detail.zipcode)
     end
+
+    it "should have thank you's" do
+      should have_content("0 Thank you's given")
+    end
   end
 
   describe "vet profile page as vet" do
@@ -158,7 +162,6 @@ describe "User pages" do
       visit question_show_path({:id => @question.id})
       click_link "Agree"
       visit user_show_path({:id => @vet.id})
-
 
       should have_content "1 Thank You Note"
       should have_content "1 Doctor Agreement"
