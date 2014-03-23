@@ -1,17 +1,66 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta property="og:title" content="Welcome to VetRounds" />
+    <title>Welcome to VetRounds</title>
   </head>
-  <body>
-    <h1>Welcome to <a href="<%= root_url %>">Vetrounds</a>, <%= @user.name %></h1>
-    <p>
-      You have successfully signed up to Vetrounds,
-      your username is: <%= @user.email %>.<br/>
-    </p>
-    <p>
-      To login to the site, just follow this link: <%= login_url %>.
-    </p>
-    <p>Thanks for joining and have a great day!</p>
-  </body>
+  <body leftmargin="0" marginwidth="0" topmargin="0" marginheight="0" offset="0" style="width: 100% !important; -webkit-text-size-adjust: none; background-color: #FAFAFA; margin: 0; padding: 0;" bgcolor="#FAFAFA"><style type="text/css">
+.headerContent a:visited { color: #336699 !important; font-weight: normal !important; text-decoration: underline !important; }
+.bodyContent div a:visited { color: #336699 !important; font-weight: normal !important; text-decoration: underline !important; }
+.templateButton a:visited { color: #FFFFFF !important; font-family: Arial !important; font-size: 15px !important; font-weight: bold !important; letter-spacing: -.5px !important; line-height: 100% !important; text-align: center !important; text-decoration: none !important; }
+.footerContent div a:visited { color: #336699 !important; font-weight: normal !important; text-decoration: underline !important; }
+</style>
+    	<center>
+        	<table border="0" cellpadding="0" cellspacing="0" height="100%" width="100%" style="height: 100% !important; width: 100% !important; background-color: #FAFAFA; margin: 0; padding: 0;" bgcolor="#FAFAFA"><tr><td align="center" valign="top" style="padding-top: 20px; border-collapse: collapse;">
+                    	<table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #FFFFFF; border: 1px solid #dddddd;" bgcolor="#FFFFFF"><tr><td align="center" valign="top" style="border-collapse: collapse;">
+                                    
+                                	<table border="0" cellpadding="0" cellspacing="0" width="600" style="background-color: #FFFFFF; border-bottom-width: 0;" bgcolor="#FFFFFF"><tr><td class="headerContent" style="border-collapse: collapse; color: #202020; font-family: Arial; font-size: 34px; font-weight: bold; line-height: 100%; text-align: center; vertical-align: middle; padding: 0;" align="center" valign="middle">
+                                            </td>
+                                        </tr></table></td>
+                            </tr><tr><td align="center" valign="top" style="border-collapse: collapse;">
+                                    
+                                	<table border="0" cellpadding="0" cellspacing="0" width="600"><tr><td valign="top" style="border-collapse: collapse;">
+                                
+                                                
+                                                <table border="0" cellpadding="20" cellspacing="0" width="100%"><tr><td valign="top" class="bodyContent" style="border-collapse: collapse; background-color: #FFFFFF;" bgcolor="#FFFFFF">
+                                                            <div mc:edit="std_content00" style="color: #505050; font-family: Arial; font-size: 14px; line-height: 150%; text-align: left;" align="left">
+                                                                
+                                                                <strong>Hi there, <%= @user.name %> </strong> <p> 
+                                                                We are delighted to welcome you to VetRounds. <p>
+                                                                If you asked a question, it has been sent to our network of veterinarians. You will receive an email when your question has been answered. <p>
+                                                                
+If you have any other pet health questions, click below (BTW - your username is: <%= @user.name %>)
+                                                               
+                                                            </div>
+														</td>
+                                                    </tr><tr><td align="center" valign="top" style="padding-top: 0; border-collapse: collapse;">
+                                                        	<table border="0" cellpadding="15" cellspacing="0" class="templateButton" style="-moz-border-radius: 3px; -webkit-border-radius: 3px; border-collapse: separate !important; border-radius: 3px; color: #FFFFFF; font-family: Arial; font-size: 15px; font-weight: bold; letter-spacing: -.5px; line-height: 100%; text-align: center; text-decoration: none; background-color: #336699; border: 0;" bgcolor="#336699"><tr><td valign="middle" class="templateButtonContent" style="border-collapse: collapse;">
+                                                                    	<div mc:edit="std_content01">
+                                                                  <%= link_to "Ask a vet" login_url =></a>
+                                                                        </div>&#13;
+                                                                    </td>&#13;
+                                                                </tr></table></td>&#13;
+                                                    </tr></table></td>&#13;
+                                        </tr></table></td>&#13;
+                            </tr><tr><td align="center" valign="top" style="border-collapse: collapse;">&#13;
+                                    &#13;
+                                	<table border="0" cellpadding="10" cellspacing="0" width="600" style="background-color: #FFFFFF; border-top-width: 0;" bgcolor="#FFFFFF"><tr><td valign="top" class="footerContent" style="border-collapse: collapse;">&#13;
+                                            &#13;
+                                                &#13;
+                                                <table border="0" cellpadding="10" cellspacing="0" width="100%"><tr><td valign="top" style="border-collapse: collapse;">&#13;
+                                                            <div mc:edit="std_footer" style="color: #707070; font-family: Arial; font-size: 12px; line-height: 125%; text-align: center;" align="center">&#13;
+																&#13;
+                                                            </div>&#13;
+                                                        </td>&#13;
+                                                    </tr><tr><td valign="middle" style="border-collapse: collapse; background-color: #FFFFFF; border: 0;" bgcolor="#FFFFFF">&#13;
+                                                            <div mc:edit="std_utility" style="color: #707070; font-family: Arial; font-size: 12px; line-height: 125%; text-align: center;" align="center">&#13;
+                                                               &#13;
+                                                            </div>&#13;
+                                                        </td>&#13;
+                                                    </tr></table></td>&#13;
+                                        </tr></table></td>&#13;
+                            </tr></table><br /></td>&#13;
+                </tr></table></center>&#13;
+    </body>
 </html>
