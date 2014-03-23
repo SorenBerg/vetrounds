@@ -11,9 +11,10 @@ gem "bcrypt-ruby", "~> 3.1.5"
 gem "event_tracker", "~> 0.2.1"
 gem "sentry-raven", "~> 0.7.1"
 gem 'google-analytics-rails'
+gem "pg", "~> 0.17.1"
 
 group :production do
-  gem "pg", "~> 0.17.1"
+  
   gem "rails_12factor", "~> 0.0.2"
 end
 

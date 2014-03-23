@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140322173459) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "agreements", force: true do |t|
     t.integer  "question_id"
     t.integer  "answer_id"
@@ -85,7 +88,7 @@ ActiveRecord::Schema.define(version: 20140322173459) do
     t.datetime "password_reset_sent_at"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end
