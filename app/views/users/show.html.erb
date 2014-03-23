@@ -16,6 +16,7 @@
           <h2><%= @user.name %>'s Profile</h2>
         <% end %>
         <div class="profile-cont">
+          <%= image_tag(@user.avatar_url(:vet_photo)) if @user.avatar? %>
           <% if @user.is_vet %>
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">
@@ -58,12 +59,21 @@
                   </div>
                 </div>
 
-                <%= form_for @user, :html => {:multipart => true} do |f| %>
+                <%= form_for current_user, url: {action: "update_image"}, :html => {:multipart => true}, :method => :POST do |f| %>
                   <p>
-                    <label>My Avatar</label>
-                    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+                    <label>My Photo</label>
+                  </p>
+                  <p>
+                    <%= image_tag(@user.avatar_url(:vet_avatar)) if @user.avatar? %>
+                  </p>
+                  <p>
                     <%= f.file_field :avatar %>
-                    <%= f.hidden_field :avatar_cache %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <%= f.submit "Upload picture", class: "btn btn-primary" %>
+                      </div>
+                    </div>
                   </p>
                 <% end %>
               </div>
@@ -122,10 +132,14 @@
                     <label class="col-lg-4"><%= pluralize(@user.thanks.count, "Thank you", "Thank you's") %> given</label>
                   </div>
                 </div>
-                <%= form_for current_user, url: {controller: "users", action: "update_image"}, :html => {:multipart => true}, :method => :POST do |f| %>
+                <%= form_for current_user, url: {action: "update_image"}, :html => {:multipart => true}, :method => :POST do |f| %>
                   <p>
-                    <label>My Avatar</label>
-                    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+                    <label>My Photo</label>
+                  </p>
+                  <p>
+                    <%= image_tag(@user.avatar_url(:vet_avatar)) if @user.avatar? %>
+                  </p>
+                  <p>
                     <%= f.file_field :avatar %>
                     <%= f.hidden_field :user_id, :value => current_user.id %>
                     <div class="form-group">
@@ -133,7 +147,6 @@
                         <%= f.submit "Upload picture", class: "btn btn-primary" %>
                       </div>
                     </div>
-                    <!--<%= f.hidden_field :avatar_cache %>-->
                   </p>
                 <% end %>
               </div>

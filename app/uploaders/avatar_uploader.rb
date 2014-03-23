@@ -8,14 +8,19 @@ class AvatarUploader < CarrierWave::Uploader::Base
 
   # Choose what kind of storage to use for this uploader:
   include Cloudinary::CarrierWave
-
-  version :standard do
-    process :resize_to_fill => [100, 150, :north]
-  end
   
   version :thumbnail do
     process :resize_to_fit => [50, 50]
-  end     
+  end
+
+  version :vet_avatar do
+    cloudinary_transformation :radius => "max", :width => 60, :height => 60, :crop => :thumb, :gravity => :face
+  end
+
+  version :vet_photo do
+    process :resize_to_fit => [400, 300]
+    cloudinary_transformation :radius => 40
+  end
 
   def extension_white_list
     %w(jpg jpeg gif png)

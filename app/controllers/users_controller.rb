@@ -78,12 +78,13 @@ class UsersController < ApplicationController
 
     @user = User.find_by_id(params[:user][:user_id])
 
-    if (@user.nil?)
+    if (@user.nil? or @user != current_user)
       redirect_to root_url
       return
     end
 
     @user.update_attributes(client_params)
+    redirect_to user_show_path(:id => @user.id)
   end
 
 
