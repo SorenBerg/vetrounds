@@ -13,9 +13,10 @@ gem "sentry-raven", "~> 0.7.1"
 gem 'google-analytics-rails'
 gem 'carrierwave'
 gem 'cloudinary'
+gem "pg", "~> 0.17.1"
 
 group :production do
-  gem "pg", "~> 0.17.1"
+  
   gem "rails_12factor", "~> 0.0.2"
 end
 
