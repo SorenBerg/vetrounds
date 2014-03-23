@@ -14,11 +14,7 @@
     </p>
 
     <p>
-      <a href="<%= user_show_url(:id => @answer.user.id) %>"><%= @answer.user.name %></a> has provided the following answer:
-    </p>
-
-    <p>
-      <%= @answer.answer %>
+      <a href="<%= user_show_url(:id => @answer.user.id) %>"><%= @answer.user.name %></a> has provided an answer on vetrounds.
     </p>
 
       You can view the answer and send <%= @answer.user.name %> a thank you note by clicking <a href="<%= question_show_url(:id => @question.id) %>">here</a>
