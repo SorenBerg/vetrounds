@@ -11,6 +11,8 @@ gem "bcrypt-ruby", "~> 3.1.5"
 gem "event_tracker", "~> 0.2.1"
 gem "sentry-raven", "~> 0.7.1"
 gem 'google-analytics-rails'
+gem 'carrierwave'
+gem 'cloudinary'
 
 group :production do
   gem "pg", "~> 0.17.1"

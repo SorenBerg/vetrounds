@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
 
   validates_acceptance_of :terms #checkbox
 
+  mount_uploader :avatar, AvatarUploader
+  #attr_accessible :avatar_cache
+
   def User.new_remember_token
     SecureRandom.urlsafe_base64
   end

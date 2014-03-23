@@ -57,6 +57,15 @@
                     <span class="col-lg-8"><%= @user.detail.licence_number %> (<%= @user.detail.licence_state %>)</span>
                   </div>
                 </div>
+
+                <%= form_for @user, :html => {:multipart => true} do |f| %>
+                  <p>
+                    <label>My Avatar</label>
+                    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+                    <%= f.file_field :avatar %>
+                    <%= f.hidden_field :avatar_cache %>
+                  </p>
+                <% end %>
               </div>
 
               <div class="col-lg-6 col-md-6 col-sm-6">
@@ -113,6 +122,20 @@
                     <label class="col-lg-4"><%= pluralize(@user.thanks.count, "Thank you", "Thank you's") %> given</label>
                   </div>
                 </div>
+                <%= form_for current_user, url: {controller: "users", action: "update_image"}, :html => {:multipart => true}, :method => :POST do |f| %>
+                  <p>
+                    <label>My Avatar</label>
+                    <%= image_tag(@user.avatar_url) if @user.avatar? %>
+                    <%= f.file_field :avatar %>
+                    <%= f.hidden_field :user_id, :value => current_user.id %>
+                    <div class="form-group">
+                      <div class="col-sm-12">
+                        <%= f.submit "Upload picture", class: "btn btn-primary" %>
+                      </div>
+                    </div>
+                    <!--<%= f.hidden_field :avatar_cache %>-->
+                  </p>
+                <% end %>
               </div>
             </div>
             <div class="row">
