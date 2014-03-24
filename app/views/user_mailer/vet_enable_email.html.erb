@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Welcome to <a href="<%= root_url %>">Vetrounds</a>, <%= @user.name %></h1>
+    <p>
+      	We are pleased to report that you have been admitted to VetRounds as a licensed veterinarian. 
+    </p>
+    <p>
+	    <%= link_to("Click here to log in to VetRounds and answer questions", login_url ) %>
+    </p>
+    <p>Thanks for joining and have a great day!</p>
+  </body>
+</html>
