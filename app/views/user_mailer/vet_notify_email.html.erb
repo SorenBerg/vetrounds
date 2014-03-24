@@ -4,8 +4,8 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>A question has been asked</h1>
-  
+    <h1>A question has been asked by <%= @question.user.name %></h1>
+    <p>Here is the question: <br> <%= @question.content %> </p>
     <p> <%= link_to("Click here to answer the question", question_show_url(@question)) %>
 	</p>
     <p>
