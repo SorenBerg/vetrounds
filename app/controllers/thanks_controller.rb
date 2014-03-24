@@ -17,7 +17,7 @@ class ThanksController < ApplicationController
       return
     end
 
-    if has_thanked(@answer.id)
+    if has_thanked(@answer)
       redirect_to question_show_path(:id => @answer.question_id)
       return
     end
@@ -50,7 +50,7 @@ class ThanksController < ApplicationController
       return
     end
 
-    if !has_thanked(@answer.id)
+    if !has_thanked(@answer)
       redirect_to question_show_path(:id => @answer.question_id)
       return
     end

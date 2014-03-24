@@ -9,7 +9,7 @@ class QuestionMailer < ActionMailer::Base
 
     mail(
       to: @question.user.email,
-      subject: 'Your question has been answered on VetRounds.com'
+      subject: 'Your question has been answered at VetRounds'
     )
   end
 

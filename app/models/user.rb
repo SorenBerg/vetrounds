@@ -2,6 +2,10 @@ class User < ActiveRecord::Base
   has_one :detail
   has_many :questions
   has_many :answers
+  has_many :thanks, :foreign_key => 'from_id'
+  has_many :thanked, :class_name => "Thank", :foreign_key => 'to_id'
+  has_many :agreements, :foreign_key => 'from_id'
+  has_many :agreed, :class_name => "Agreement", :foreign_key => 'to_id'
   accepts_nested_attributes_for :detail, allow_destroy: true
 
   before_save do
@@ -19,6 +23,9 @@ class User < ActiveRecord::Base
   validates :password, length: { minimum: 6 }, :if => :validate_password?
 
   validates_acceptance_of :terms #checkbox
+
+  mount_uploader :avatar, AvatarUploader
+  #attr_accessible :avatar_cache
 
   def User.new_remember_token
     SecureRandom.urlsafe_base64

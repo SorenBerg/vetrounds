@@ -28,6 +28,7 @@ class QuestionsController < ApplicationController
       if (@question.save)
         track_event("Create Question")
         UserMailer.vet_notify_email(@question).deliver
+        flash[:notice] = "Your question has been submitted to the VetRounds network of licensed veterinarians. You will recieve an email when your question is answered."
         redirect_to question_show_path(:id => @question.id)
       else
         render 'new'
@@ -49,7 +50,7 @@ class QuestionsController < ApplicationController
           track_event("Create Question")
           mixpanel_alias(@user.id.to_s)
 
-
+          flash[:notice] = "Your question has been submitted to the VetRounds network of licensed veterinarians. You will recieve an email when your question is answered."
           redirect_to user_show_path(:id => @user.id)
           return
         else

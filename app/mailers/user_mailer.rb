@@ -14,7 +14,7 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: @user.email,
-      subject: 'Welcome to Vetrounds',
+      subject: 'Welcome to VetRounds',
       template_name: template_name
     )
   end

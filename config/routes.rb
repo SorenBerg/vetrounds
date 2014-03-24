@@ -10,6 +10,7 @@ Vetrounds::Application.routes.draw do
   post "users/create_client"
   post "users/create_vet"
   get "users/show/:id" => 'users#show', as: :user_show
+  post "users/upload_avatar" => 'users#update_image', as: :user_update_image
   get "questions/show/:id" => 'questions#show', as: :question_show
   post "questions/newpost" => 'questions#newpost', as: :home_question_post
   root "static_pages#home"

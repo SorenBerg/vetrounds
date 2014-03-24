@@ -4,7 +4,7 @@ FactoryGirl.define do
 		zipcode 12345
 
 		factory :vet_detail do
-			area_of_practise "Critters"
+			area_of_practice "Critters"
 			vetinary_school "Some guy"
 			vetinary_school_year 1945
 			degree "Cardboard plaque"

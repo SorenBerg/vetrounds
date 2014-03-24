@@ -70,12 +70,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def update_image
+    if !signed_in?
+      redirect_to root_url
+      return
+    end
+
+    @user = User.find_by_id(params[:user][:user_id])
+
+    if (@user.nil? or @user != current_user)
+      redirect_to root_url
+      return
+    end
+
+    @user.update_attributes(client_params)
+    redirect_to user_show_path(:id => @user.id)
+  end
+
+
+
   private
     def client_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, detail_attributes: [:zipcode])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, detail_attributes: [:zipcode])
     end
 
     def vet_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, detail_attributes: [:zipcode, :area_of_practise, :vetinary_school, :vetinary_school_year, :degree, :licence_number, :licence_state])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, detail_attributes: [:zipcode, :area_of_practice, :vetinary_school, :vetinary_school_year, :degree, :licence_number, :licence_state])
     end
 end

@@ -8,9 +8,9 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+/public/uploads/tmp
 
 # Ignore other unneeded files.
-database.yml
 doc/
 *.swp
 *~

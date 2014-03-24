@@ -1,13 +1,11 @@
 Hello <%= @question.user.name %>,
 
-<%= @answer.user.name %> has posted the below mentioned answer :
-
-<%= @answer.answer %>
-
-Your Question:
-==============
-
+You recently asked the following question on VetRounds:
 <%= @question.content %>
 
-You can view the question and answer by following the link :
+<%= @answer.user.name %> has answered your question. 
+
+You can view the answer by following this link:
 <%= question_show_url(:id => @question.id) %>
+
+Thanks and have a great day!
