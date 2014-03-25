@@ -29,7 +29,8 @@
                   <% if current_user == @user %>
                     <div class="form-group">
                       <label class="col-lg-4">Email</label>
-                      <span class="col-lg-8"><%= @user.email %></span>
+                      <span class="col-lg-8"><%= @user.email %></span><br>
+                      Email will not be publicly displayed. 
                     </div>
                   <% end %>
 
@@ -56,7 +57,8 @@
                   <% if current_user == @user %>
                     <div class="form-group">
                     <label class="col-lg-4">License Number</label>
-                    <span class="col-lg-8"><%= @user.detail.licence_number %> (<%= @user.detail.licence_state %>)</span>
+                    <span class="col-lg-8"><%= @user.detail.licence_number %> (<%= @user.detail.licence_state %>)</span><br>
+                    License number will not be publicly displayed. 
                   </div>
                   <% end %>
                 </div>
