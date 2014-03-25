@@ -210,6 +210,7 @@ class AdminController < ApplicationController
 
     @user.enabled = true
     @user.save
+    UserMailer.vet_enable_email(@user).deliver
 
     redirect_to admin_path
     return

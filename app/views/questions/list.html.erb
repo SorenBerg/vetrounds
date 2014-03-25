@@ -53,7 +53,7 @@
                   <tr>
                     <td><%= question.user.name %></td>
                     <td><%= question.content.truncate(250) %></td>
-                    <td><%= question.created_at %>
+                    <td><%= time_ago_in_words(question.created_at) %> ago
                     <td>
                       <a class="btn btn-xs btn-success" href="<%= question_show_path(:id => question.id) %>">Answer</a>
                     </td>
@@ -93,7 +93,7 @@
                   <tr>
                     <td><%= question.user.name %></td>
                     <td><%= question.content.truncate(250) %></td>
-                    <td><%= question.created_at %>
+                    <td><%= time_ago_in_words(question.created_at) %> ago
                     <td>
                       <a class="btn btn-xs btn-success" href="<%= question_show_path(:id => question.id) %>">Answer</a>
                     </td>

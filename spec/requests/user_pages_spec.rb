@@ -98,10 +98,11 @@ describe "User pages" do
       should_not have_content(@user.email)
       should_not have_content(@user.detail.zipcode)
     end
-
+/!
     it "should have thank you's" do
       should have_content("0 Thank you's given")
     end
+-!/
   end
 
   describe "vet profile page as vet" do
@@ -143,11 +144,12 @@ describe "User pages" do
       should have_content(@vet.name)
       should_not have_content(@vet.email)
     end
-
+/!
     it "has thanks" do
       should have_content "0 Thank You Notes"
       should have_content "0 Doctor Agreements"
     end
+-!/  
   end
 
   describe "vet profile page with feedback" do

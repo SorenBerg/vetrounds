@@ -44,4 +44,18 @@ class UserMailer < ActionMailer::Base
       template_name: template_name
     )
   end
+  
+  def vet_enable_email(user)
+    @user = user
+
+    template_name = 'vet_enable_email'
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
+    mail(
+      to: user.email,
+      subject: 'Your account on VetRounds has been enabled',
+      template_name: template_name
+    )
+  end
 end
