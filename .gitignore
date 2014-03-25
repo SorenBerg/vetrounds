@@ -11,6 +11,7 @@
 /public/uploads/tmp
 
 # Ignore other unneeded files.
+.env
 doc/
 *.swp
 *~
