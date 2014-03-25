@@ -4,6 +4,9 @@
   <div class="row login-bg">
     <div class="col-lg-12">
       <div class="login-container">
+	   	<% if flash[:notice] %>
+		  <div class="error"><%= flash[:notice] %></div>
+		<% end %>
         <div class="login-header text-center"><span class="vet">Vet</span><span class="rounds">rounds</span></div>
         <%= form_for :session, url: loginpost_path, html: {class: "login-form"} do |f| %>
           <div class="form-group">

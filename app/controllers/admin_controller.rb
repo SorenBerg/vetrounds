@@ -18,7 +18,7 @@ class AdminController < ApplicationController
       redirect_to admin_path
       return
     else
-      flash.now[:error] = 'Invalid email/password combination'
+      flash[:notice] = 'Invalid email/password combination'
       render 'login'
     end
   end

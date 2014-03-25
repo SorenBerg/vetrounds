@@ -4,17 +4,22 @@ class SessionsController < ApplicationController
       redirect_to root_url
     end
   end
-
+  
   def create
     user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password]) && user.enabled && !user.is_admin
-      track_event("Log In")
-      sign_in user
-      redirect_to user_show_path(:id => user.id)
-      return
+    if user && user.authenticate(params[:session][:password]) && !user.is_admin
+      if user.enabled
+        track_event("Log In")
+        sign_in user
+        redirect_to user_show_path(:id => user.id)
+        return
+      else
+        flash[:notice] = 'Your doctor account is being reviewed. You will receive an email when it is approved.'
+        render 'new'
+      end
     else
-      flash.now[:error] = 'Invalid email/password combination'
-      render 'new'
+      flash[:notice] = 'The username or password you entered is incorrect.'
+      render 'new'  
     end
   end
 
