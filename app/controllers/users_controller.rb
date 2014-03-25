@@ -50,6 +50,7 @@ class UsersController < ApplicationController
       track_event("Vet Sign Up", signup_type: "seperate")
       mixpanel_alias(@user.id.to_s)
 
+      flash[:notice] = "Your request to join the VetRounds network has been received and we will review your medical credentials. You will recieve an email when your account is approved."
       redirect_to root_url
     else
       render 'new'

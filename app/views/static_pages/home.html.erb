@@ -1,8 +1,11 @@
 <% provide(:title, "Home") %>
-
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div> 
+<% end %>
 
 <%= render "layouts/nav" %>
     
+
 
 <div id="carousel-example-generic" class="carousel slide slider-vet" data-ride="carousel">
         <!-- Indicators -->
