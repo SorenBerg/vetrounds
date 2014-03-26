@@ -5,11 +5,11 @@ FactoryGirl.define do
 
 		factory :vet_detail do
 			area_of_practice "Critters"
-			vetinary_school "Some guy"
-			vetinary_school_year 1945
+			veterinary_school "Some guy"
+			veterinary_school_year 1945
 			degree "Cardboard plaque"
-			licence_number 5
-			licence_state "TX"
+			license_number 5
+			license_state "TX"
 		end
 	end
 end
