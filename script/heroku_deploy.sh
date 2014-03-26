@@ -26,5 +26,4 @@ if test $MIGRATION_CHANGES -gt 0; then
   heroku restart --app $APP_NAME
 fi
  
-heroku run rake cache:flush --app $APP_NAME
 heroku maintenance:off --app $APP_NAME
