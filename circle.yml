@@ -2,8 +2,10 @@ deployment:
   staging:
     branch: master
     commands:
-      - heroku maintenance:on --app vetrounds-staging
-      - git push git@heroku.com:vetrounds-staging.git $CIRCLE_SHA1:refs/heads/master
-      - heroku run rake db:migrate --app vetrounds-staging
-      - heroku restart --app vetrounds-staging
-      - heroku maintenance:off --app vetrounds-staging
+      - ./heroku_deploy.sh vetrounds-staging:
+          timeout: 300
+  production:
+    branch: production
+    commands:
+      - ./heroku_deploy.sh vetrounds:
+          timeout: 300
