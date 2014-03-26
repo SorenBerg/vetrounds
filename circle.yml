@@ -2,10 +2,10 @@ deployment:
   staging:
     branch: master
     commands:
-      - ./heroku_deploy.sh vetrounds-staging:
+      - ./script/heroku_deploy.sh vetrounds-staging:
           timeout: 300
   production:
     branch: production
     commands:
-      - ./heroku_deploy.sh vetrounds:
+      - ./script/heroku_deploy.sh vetrounds:
           timeout: 300
