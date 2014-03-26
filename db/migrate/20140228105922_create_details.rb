@@ -3,7 +3,7 @@ class CreateDetails < ActiveRecord::Migration
     create_table :details do |t|
       t.integer :user_id
       t.string :zipcode
-      t.string :area_of_practice
+      t.string :area_of_practise
       t.string :vetinary_school
       t.string :vetinary_school_year
       t.string :degree
