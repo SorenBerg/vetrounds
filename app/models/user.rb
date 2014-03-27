@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
 
   validates :password, length: { minimum: 6 }, :if => :validate_password?
 
-  validates_acceptance_of :terms #checkbox
+  validates_acceptance_of :terms #terms of service checkbox
 
   mount_uploader :avatar, AvatarUploader
   #attr_accessible :avatar_cache

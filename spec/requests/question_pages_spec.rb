@@ -35,10 +35,10 @@ describe "Question pages" do
         expect { click_button submit }.not_to change(Question, :count)
       end
 
-      # it "should not accept without checkbox" do
-      #   uncheck "user_terms"
-      #   expect { click_button submit }.not_to change(Question, :count)
-      # end
+      it "should not accept without checkbox" do
+        uncheck "user_terms"
+        expect { click_button submit }.not_to change(Question, :count)
+      end
     end
 
     describe "with valid information as non-logged in" do

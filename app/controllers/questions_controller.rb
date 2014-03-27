@@ -96,7 +96,7 @@ class QuestionsController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, detail_attributes: [:zipcode])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :terms, detail_attributes: [:zipcode])
     end
   
     def notify_vet

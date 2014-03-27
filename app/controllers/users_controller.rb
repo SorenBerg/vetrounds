@@ -92,10 +92,10 @@ class UsersController < ApplicationController
 
   private
     def client_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, detail_attributes: [:zipcode])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :terms, detail_attributes: [:zipcode])
     end
 
     def vet_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, detail_attributes: [:zipcode, :area_of_practice, :veterinary_school, :veterinary_school_year, :degree, :license_number, :license_state])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, :terms, detail_attributes: [:zipcode, :area_of_practice, :veterinary_school, :veterinary_school_year, :degree, :license_number, :license_state])
     end
 end
