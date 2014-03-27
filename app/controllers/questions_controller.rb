@@ -28,9 +28,7 @@ class QuestionsController < ApplicationController
       if (@question.save)
         track_event("Create Question")
 
-        User.where(is_vet: true, enabled: true).find_each(batch_size: 500) do |vet|
-          QuestionMailer.question_asked(@question, vet).deliver
-        end
+        notify_vet
 
         flash[:notice] = "Your question has been submitted to the VetRounds network of licensed veterinarians. You will recieve an email when your question is answered."
         redirect_to question_show_path(:id => @question.id)
@@ -46,7 +44,7 @@ class QuestionsController < ApplicationController
 
         if (@question.save)
           UserMailer.welcome_email(@user).deliver
-          UserMailer.vet_notify_email(@question).deliver
+          notify_vet
           sign_in @user
 
           register_properties(created_at: @user.created_at, email: @user.email, user_type: "client")
@@ -99,5 +97,11 @@ class QuestionsController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, detail_attributes: [:zipcode])
+    end
+  
+    def notify_vet
+      User.where(is_vet: true, enabled: true).find_each(batch_size: 500) do |vet|
+        QuestionMailer.question_asked(@question, vet).deliver
+      end
     end
 end
