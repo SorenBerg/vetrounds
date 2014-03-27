@@ -8,8 +8,8 @@ FactoryGirl.define do
 			veterinary_school "Some guy"
 			veterinary_school_year 1945
 			degree "Cardboard plaque"
-			license_number 5
-			license_state "TX"
+      licence_number "4355345345asfsd"
+			licence_state "TX"
 		end
 	end
 end

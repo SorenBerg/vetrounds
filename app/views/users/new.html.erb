@@ -86,8 +86,8 @@
                   <div class="col-sm-4"></div>
                 </div>
                 <div class="form-group">
-                  <div class="col-sm-8">
-                    <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+                  <div class="col-sm-8"> 
+                    <%= f.text_field :email, :class => "form-control", :placeholder => "Email" %> 
                   </div>
                   <div class="col-sm-4"></div>
                 </div>
@@ -206,7 +206,7 @@
 
                   <div class="form-group">
                     <div class="col-sm-8">
-                      <%= detail_f.text_field :license_number, :class => "form-control", :placeholder => "Professional License Number" %>
+                      <%= detail_f.text_field :licence_number, :class => "form-control", :placeholder => "Professional License Number" %> 
                     </div>
                     <div class="col-sm-4">
                       <%= detail_f.text_field :license_state, :class => "form-control", :placeholder => "State" %>
@@ -220,15 +220,18 @@
                   </div>
                 </div>
                 <%= link_to "Already have an account?", login_path %>
-                <p><small>Note - Your email and license number will not be publicly visible</small></p>
+                <p><small>Note - Your email and license number are confidential and will not be publicly visible</small></p>
               <% end %>
             <% end %>
-          </div>
+          </div>          
         </div>
       </div>
     </div>
-   <!--  <div class="col-lg-6 col-md-6 col-sm-6">
-      <div class="div-benefits">
+    
+<!--    
+    <div class="tab-content">
+     <div class="col-lg-6 col-md-6 col-sm-6">
+      <div class="tab-pane active" id="doctor-signup">
         <h2>Benefits For You</h2>
         <div class="benefit-cont">
           <p>Gain new clients</p>
@@ -245,7 +248,9 @@
           <p></p>
         </div>
       </div>
-    </div> -->
+    </div>
+    </div> 
+-->
   </div>
 </div>
 
