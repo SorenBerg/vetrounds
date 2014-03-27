@@ -1,5 +1,11 @@
 deployment:
   staging:
     branch: master
-    heroku:
-      appname: vetrounds-staging
+    commands:
+      - ./script/heroku_deploy.sh vetrounds-staging:
+          timeout: 300
+  production:
+    branch: production
+    commands:
+      - ./script/heroku_deploy.sh vetrounds:
+          timeout: 300

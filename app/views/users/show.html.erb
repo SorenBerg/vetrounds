@@ -46,7 +46,7 @@
 
                   <div class="form-group">
                     <label class="col-lg-4">Veterinary School</label>
-                    <span class="col-lg-8"><%= @user.detail.vetinary_school %> (<%= @user.detail.vetinary_school_year %>)</span>
+                    <span class="col-lg-8"><%= @user.detail.veterinary_school %> (<%= @user.detail.veterinary_school_year %>)</span>
                   </div>
 
                   <div class="form-group">
@@ -57,7 +57,7 @@
                   <% if current_user == @user %>
                     <div class="form-group">
                     <label class="col-lg-4">License Number</label>
-                    <span class="col-lg-8"><%= @user.detail.licence_number %> (<%= @user.detail.licence_state %>)</span>
+                    <span class="col-lg-8"><%= @user.detail.license_number %> (<%= @user.detail.license_state %>)</span>
                     <small> (not publicly displayed) </small>
                   </div>
                   <% end %>

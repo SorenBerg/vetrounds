@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140322214413) do
+ActiveRecord::Schema.define(version: 20140326184509) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "agreements", force: true do |t|
     t.integer  "question_id"
@@ -34,11 +37,11 @@ ActiveRecord::Schema.define(version: 20140322214413) do
     t.integer  "user_id"
     t.string   "zipcode"
     t.string   "area_of_practice"
-    t.string   "vetinary_school"
-    t.string   "vetinary_school_year"
+    t.string   "veterinary_school"
+    t.string   "veterinary_school_year"
     t.string   "degree"
-    t.string   "licence_number"
-    t.string   "licence_state"
+    t.string   "license_number"
+    t.string   "license_state"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -86,7 +89,7 @@ ActiveRecord::Schema.define(version: 20140322214413) do
     t.string   "avatar"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["remember_token"], name: "index_users_on_remember_token"
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["remember_token"], name: "index_users_on_remember_token", using: :btree
 
 end

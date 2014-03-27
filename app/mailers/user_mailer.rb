@@ -30,21 +30,6 @@ class UserMailer < ActionMailer::Base
     )
   end
   
-  def vet_notify_email(question)
-    @question = question
-
-    template_name = 'vet_notify_email'
-
-    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
-
-    mail(
-      to: "brian@vetrounds.com",
-      cc: "joe@vetrounds.com",
-      subject: 'Question has been asked',
-      template_name: template_name
-    )
-  end
-  
   def vet_enable_email(user)
     @user = user
 

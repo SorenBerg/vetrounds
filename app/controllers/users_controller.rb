@@ -96,6 +96,6 @@ class UsersController < ApplicationController
     end
 
     def vet_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, detail_attributes: [:zipcode, :area_of_practice, :vetinary_school, :vetinary_school_year, :degree, :licence_number, :licence_state])
+      params.require(:user).permit(:name, :email, :password, :password_confirmation, :avatar, detail_attributes: [:zipcode, :area_of_practice, :veterinary_school, :veterinary_school_year, :degree, :license_number, :license_state])
     end
 end

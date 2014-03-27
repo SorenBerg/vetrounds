@@ -25,4 +25,15 @@ class QuestionMailer < ActionMailer::Base
       subject: 'Vetrounds: ' + current_user.name + ' shared an answer with you'
     )
   end
+  
+  def question_asked(question, vet)
+    @question = question
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
+    mail(
+      to: vet.email,
+      subject: 'New question on Vetrounds'
+    )
+  end
 end

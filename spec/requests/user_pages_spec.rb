@@ -119,11 +119,11 @@ describe "User pages" do
       should have_content(@vet.email)
       should have_content(@vet.detail.zipcode)
       should have_content(@vet.detail.area_of_practice)
-      should have_content(@vet.detail.vetinary_school)
-      should have_content(@vet.detail.vetinary_school_year)
+      should have_content(@vet.detail.veterinary_school)
+      should have_content(@vet.detail.veterinary_school_year)
       should have_content(@vet.detail.degree)
-      should have_content(@vet.detail.licence_number)
-      should have_content(@vet.detail.licence_state)
+      should have_content(@vet.detail.license_number)
+      should have_content(@vet.detail.license_state)
     end
 
     it "contains answered question" do
