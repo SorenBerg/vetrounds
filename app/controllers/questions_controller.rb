@@ -27,11 +27,11 @@ class QuestionsController < ApplicationController
 
       if (@question.save)
         track_event("Create Question")
-        
+
         User.where(is_vet: true, enabled: true).find_each(batch_size: 500) do |vet|
           QuestionMailer.question_asked(@question, vet).deliver
         end
-        
+
         flash[:notice] = "Your question has been submitted to the VetRounds network of licensed veterinarians. You will recieve an email when your question is answered."
         redirect_to question_show_path(:id => @question.id)
       else

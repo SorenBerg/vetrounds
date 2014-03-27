@@ -25,7 +25,7 @@ class QuestionMailer < ActionMailer::Base
       subject: 'Vetrounds: ' + current_user.name + ' shared an answer with you'
     )
   end
-  
+
   def question_asked(question, vet)
     @question = question
 
