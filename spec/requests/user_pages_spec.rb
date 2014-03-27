@@ -143,7 +143,7 @@ describe "User pages" do
     it "does not have vet email" do
       should have_content(@vet.name)
       should_not have_content(@vet.email)
-      should_not have_content(@vet.detail.licence_number)
+      should_not have_content(@vet.detail.license_number)
     end
 
   it "does not have have thanks" do
