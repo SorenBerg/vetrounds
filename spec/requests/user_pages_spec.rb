@@ -62,10 +62,8 @@ describe "User pages" do
   describe "user profile page as user" do
 
     before do
-      @question = create(:question)
-      @user = @question.user
+      @user = create(:client)
       log_in_as(@user)
-
       visit user_show_path({:id => @user.id})
     end
 
@@ -75,9 +73,28 @@ describe "User pages" do
       should have_content(@user.email)
       should have_content(@user.detail.zipcode)
     end
+  end
+
+  describe "user profile page as user with question" do
+
+    before do
+      @question = create(:answered_and_thanked_question)
+      @user = @question.user
+      log_in_as(@user)
+
+      visit user_show_path({:id => @user.id})
+    end
+
+    it "contains question heading" do
+      should have_selector("h3", :text => "1 Question:")
+    end
 
     it "contains questions" do
       should have_link(@user.questions[0].content, question_show_path(:id => @question.id))
+    end
+
+    it "shows thank you" do
+      should have_content("1 Thank you given")
     end
   end
 
@@ -97,11 +114,14 @@ describe "User pages" do
       should_not have_content(@user.email)
       should_not have_content(@user.detail.zipcode)
     end
-/!
-    it "should have thank you's" do
+
+    it "shows 0 thank you's" do
       should have_content("0 Thank you's given")
     end
--!/
+
+    it "should not show heading with no questions" do
+      should_not have_content("Question")
+    end
   end
 
   describe "vet profile page as vet" do
@@ -125,6 +145,10 @@ describe "User pages" do
       should have_content(@vet.detail.license_state)
     end
 
+    it "contains picture upload button" do
+      should have_button("Upload Photo")
+    end
+
     it "contains answered question" do
       should have_link(@question.content, question_show_path(:id => @question.id))
     end
@@ -145,15 +169,23 @@ describe "User pages" do
       should_not have_content(@vet.detail.license_number)
     end
 
-  it "does not have have thanks" do
+    it "does not have have feedback if zero" do
       should_not have_content "Thank You Note"
       should_not have_content "Doctor Agreement"
+    end
+
+    it "does not have picture upload button" do
+      should_not have_button("Upload")
+    end
+
+    it "should not show heading with no answers" do
+      should_not have_content("Answered Question")
     end
   
   end
 
   describe "vet profile page with feedback" do
-    it "has thank you and doctor agreement numbers" do
+    it "has thank you and doctor agreement numbers and answers" do
       @question = create(:answered_question)
       @vet = @question.answers[0].user
       log_in_as(@question.user)
@@ -167,6 +199,7 @@ describe "User pages" do
 
       should have_content "1 Thank You Note"
       should have_content "1 Doctor Agreement"
+      should have_selector("h3", :text => "1 Answered Question:")
     end
   end
 end

@@ -62,23 +62,24 @@
                   </div>
                   <% end %>
                 </div>
-
-                <%= form_for current_user, url: {action: "update_image"}, :html => {:multipart => true}, :method => :POST do |f| %>
-                  <p>
-                    <label>My Photo</label>
-                  </p>
-                  <p>
-                    <%= image_tag(@user.avatar_url(:vet_avatar)) if @user.avatar? %>
-                  </p>
-                  <p>
-                    <%= f.file_field :avatar %>
-                    <%= f.hidden_field :user_id, :value => current_user.id %>
-                    <div class="form-group">
-                      <div class="col-sm-12">
-                        <%= f.submit "Upload picture", class: "btn btn-primary" %>
+                <% if current_user == @user %>
+                  <%= form_for current_user, url: {action: "update_image"}, :html => {:multipart => true}, :method => :POST do |f| %>
+                    <p>
+                      <label>My Photo</label>
+                    </p>
+                    <p>
+                      <%= image_tag(@user.avatar_url(:vet_avatar)) if @user.avatar? %>
+                    </p>
+                    <p>
+                      <%= f.file_field :avatar %>
+                      <%= f.hidden_field :user_id, :value => current_user.id %>
+                      <div class="form-group">
+                        <div class="col-sm-12">
+                          <%= f.submit "Upload Photo", class: "btn btn-primary" %>
+                        </div>
                       </div>
-                    </div>
-                  </p>
+                    </p>
+                  <% end %>
                 <% end %>
               </div>
 
@@ -101,18 +102,16 @@
             </div>
             <div class="row">
               <div class="col-lg-12 col-md-12 col-sm-12">
-                <% if current_user == @user %>
-                  <h3>Your Answered Question</h3>
-                <% else %>
-                  <h3><%= @user.name %>'s Answered Question</h3>
+                <% if @user.answers.count > 0 %>
+                  <h3><%= pluralize(@user.answers.count, "Answered Question") %>:</h3>
+                  <ol>
+                    <% @user.answers.each do |answer| %>
+                      <li>
+                        <a href="<%= question_show_path(:id => answer.question.id) %>"><%= answer.question.content.truncate(250) %></a>
+                      </li>
+                    <% end %>
+                  </ol>
                 <% end %>
-                <ol>
-                  <% @user.answers.each do |answer| %>
-                    <li>
-                      <a href="<%= question_show_path(:id => answer.question.id) %>"><%= answer.question.content.truncate(250) %></a>
-                    </li>
-                  <% end %>
-                </ol>
               </div>
             </div>
           <% else %>
@@ -140,41 +139,20 @@
                     <label class="col-lg-4"><%= pluralize(@user.thanks.count, "Thank you", "Thank you's") %> given</label>
                   </div>
                 </div>
-                <!--
-                <%= form_for current_user, url: {action: "update_image"}, :html => {:multipart => true}, :method => :POST do |f| %>
-                  <p>
-                    <label>My Photo</label>
-                  </p>
-                  <p>
-                    <%= image_tag(@user.avatar_url(:vet_avatar)) if @user.avatar? %>
-                  </p>
-                  <p>
-                    <%= f.file_field :avatar %>
-                    <%= f.hidden_field :user_id, :value => current_user.id %>
-                    <div class="form-group">
-                      <div class="col-sm-12">
-                        <%= f.submit "Upload picture", class: "btn btn-primary" %>
-                      </div>
-                    </div>
-                  </p>
-                <% end %>
-                -->
               </div>
             </div>
             <div class="row">
               <div class="col-lg-12 col-md-12 col-sm-12">
-                <% if current_user == @user %>
-                  <h3>Your Questions</h3>
-                <% else %>
-                  <h3><%= @user.name %>'s Questions</h3>
+                <% if @user.questions.count > 0 %>
+                  <h3><%= pluralize(@user.questions.count, "Question") %>:</h3>
+                  <ol>
+                    <% @user.questions.each do |question| %>
+                      <li>
+                        <a href="<%= question_show_path(:id => question.id)%>"><%= question.content.truncate(250) %></a>
+                      </li>
+                    <% end %>
+                  </ol>
                 <% end %>
-                <ol>
-                  <% @user.questions.each do |question| %>
-                    <li>
-                      <a href="<%= question_show_path(:id => question.id)%>"><%= question.content.truncate(250) %></a>
-                    </li>
-                  <% end %>
-                </ol>
               </div>
             </div>
           <% end %>
