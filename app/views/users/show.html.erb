@@ -63,7 +63,8 @@
                   <% end %>
                 </div>
                 <% if current_user == @user %>
-                  <%= form_for current_user, url: {action: "update_image"}, :html => {:multipart => true}, :method => :POST do |f| %>
+                  <%= form_for current_user, url: {action: "update_user"}, :html => {:multipart => true}, :method => :POST do |f| %>
+                    <%= render "shared/user_error_messages" %>
                     <p>
                       <label>My Photo</label>
                     </p>
@@ -72,7 +73,7 @@
                     </p>
                     <p>
                       <%= f.file_field :avatar %>
-                      <%= f.hidden_field :user_id, :value => current_user.id %>
+                      <%= f.hidden_field :id, :value => current_user.id %>
                       <div class="form-group">
                         <div class="col-sm-12">
                           <%= f.submit "Upload Photo", class: "btn btn-primary" %>
@@ -80,6 +81,23 @@
                       </div>
                     </p>
                   <% end %>
+
+                  <%= form_for current_user, url: {action: "update_user"}, :method => :POST do |f| %>
+                    <%= render "shared/user_error_messages" %>
+                    <div class="form-group">
+                      <label class="col-lg-4">Notification settings</label>
+                      <div class="col-sm-8">
+                        <%= f.hidden_field :id, :value => current_user.id %>
+                        <%= f.label :question_notification do %>
+                          Notify me when a new question is asked:
+                          <%= f.select :question_notification, options_for_select([["Never", "none"], ["Always", "all"], ["Only in my area", "nearby"]], :selected => current_user.question_notification) %>
+                          <%= f.submit "Save", class: "btn btn-primary" %>
+                        <% end %>
+                      </div>
+                      <div class="col-sm-4"></div>
+                    </div>
+                  <% end %>
+
                 <% end %>
               </div>
 

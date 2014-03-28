@@ -13,9 +13,11 @@ FactoryGirl.define do
 		factory :vet do
 			name "Steth O Scope"
 			email "vet@someplace.com"
+			question_notification "nearby"
 			is_vet true
 			enabled true
 			association :detail, factory: :vet_detail
+
 		end
 	end
 end

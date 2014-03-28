@@ -149,8 +149,25 @@ describe "User pages" do
       should have_button("Upload Photo")
     end
 
+    it "contains picture upload button" do
+      should have_button("Upload Photo")
+    end
+
     it "contains answered question" do
       should have_link(@question.content, question_show_path(:id => @question.id))
+    end
+
+    it "has notification settings" do
+      should have_selector("label", :text => "Notification settings")
+      should have_content("Notify me when a new question is asked:")
+    end
+
+    it "can update notification preferences" do
+      find("option[value='all']").select_option
+      click_button "Save"
+      @vet.reload
+      @vet.question_notification.should eq("all")
+      
     end
   end
 
@@ -163,7 +180,7 @@ describe "User pages" do
       visit user_show_path({:id => @vet.id})
     end
 
-    it "does not have vet email" do
+    it "does not have vet personal info" do
       should have_content(@vet.name)
       should_not have_content(@vet.email)
       should_not have_content(@vet.detail.license_number)
@@ -176,6 +193,10 @@ describe "User pages" do
 
     it "does not have picture upload button" do
       should_not have_button("Upload")
+    end
+
+    it "does not have notification settings" do
+      should_not have_content("Notification")
     end
 
     it "should not show heading with no answers" do
