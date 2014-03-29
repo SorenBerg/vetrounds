@@ -17,7 +17,6 @@ FactoryGirl.define do
 			is_vet true
 			enabled true
 			association :detail, factory: :vet_detail
-
 		end
 	end
 end

@@ -100,8 +100,10 @@ class QuestionsController < ApplicationController
     end
   
     def notify_vet
-      User.where(is_vet: true, enabled: true).find_each(batch_size: 500) do |vet|
-        QuestionMailer.question_asked(@question, vet).deliver
+      User.where(is_vet: true, enabled: true).where.not(question_notification: "none").find_each(batch_size: 500) do |vet|
+        if vet.question_notification == "all" or (vet.question_notification == "nearby" and vet.detail.zipcode == @question.user.detail.zipcode)
+          QuestionMailer.question_asked(@question, vet).deliver
+        end
       end
     end
 end
