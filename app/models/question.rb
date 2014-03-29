@@ -6,6 +6,8 @@ class Question < ActiveRecord::Base
 
   validates :content, presence: true
 
+  validates :gender, inclusion: { in: [0,1,2], message: "%{value} is not a valid gender" }
+
   def self.search(search)
     if search && !search.blank?
       joins(:answers)

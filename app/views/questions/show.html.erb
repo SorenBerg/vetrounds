@@ -103,7 +103,16 @@
                       Not Sure
                     <% end %>
                   </td>
-                  <td></td>
+                  <td>
+                    Gender -
+                    <% if (@question.gender == 1) %>
+                      Male
+                    <% elsif (@question.gender == 2) %>
+                      Female
+                    <% else %>
+                      Not Sure
+                    <% end %>
+                  </td>
                 </tr>
               </tbody>
             </table>

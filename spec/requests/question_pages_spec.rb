@@ -12,19 +12,24 @@ describe "Question pages" do
     it { should have_content("Accept Terms of Service") }
 
     let(:submit) { "Post Question" }
+    let(:question_content) { "Example Question" }
 
     it "should have a link to the ToS" do
       should have_link('Terms of Service', href: terms_path)
     end
 
     before do
-      fill_in "Question",         with: "Example Question"
+      fill_in "Question",         with: :question_content
       fill_in "Name",             with: "Example User"
       fill_in "Email",            with: "user@example.com"
       fill_in "Password",         with: "foobar"
       fill_in "Confirm Password", with: "foobar"
       fill_in "Zipcode",          with: "12345"
-      check "user_terms"
+      check   "user_terms"
+      #question fields
+      select  "Dog",              :from => "question_animal_type"
+      select  "Female",           :from => "question_gender"
+      #find_by_id('question_gender').find("option[value='female']").select_option
     end
 
     describe "with invalid information as non-logged in" do
@@ -46,6 +51,18 @@ describe "Question pages" do
 
       it "should create a question" do
         expect { click_button submit }.to change(Question, :count).by(1)
+      end
+
+      it "should create a user" do
+        expect { click_button submit }.to change(User, :count).by(1)
+      end
+
+      it "has all correct info for question" do
+        click_button submit
+        # navigate to question show page
+        click_link :question_content
+        should have_content "Dog"
+        should have_content "Female"
       end
     end
   end

@@ -16,6 +16,11 @@ describe Question do
     it { should_not be_valid }
   end
 
+  describe "when gender is invalid" do
+    before { @question.gender = 10 }
+    it { should_not be_valid }
+  end
+
   describe "search" do
     before do
       @question = create(:answered_question)
