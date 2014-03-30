@@ -89,7 +89,7 @@
             <div class="form-group">
               <div class="col-sm-8">
                 <%= question_f.label :gender, "What gender is your animal?" %>
-                <%= question_f.select(:gender, [['Not sure', 0], ['Male', 1], ['Female', 2]], {}, :class => "form-control") %>
+                <%= question_f.select(:gender, Question::GENDER, {}, :class => "form-control") %>
               </div>
               <div class="col-sm-4"></div>
             </div>

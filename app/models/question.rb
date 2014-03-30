@@ -4,9 +4,16 @@ class Question < ActiveRecord::Base
   has_many :thanks
   has_many :agreements
 
-  validates :content, presence: true
+  GENDER = { "Not sure" => 0, "Male" => 1, "Female" => 2 }
 
-  validates :gender, inclusion: { in: [0,1,2], message: "%{value} is not a valid gender" }
+  validates :content, presence: true
+  validates :gender, inclusion: { in: GENDER.values }
+
+  
+ 
+  def get_gender
+    GENDER.key(read_attribute(:gender))
+  end
 
   def self.search(search)
     if search && !search.blank?

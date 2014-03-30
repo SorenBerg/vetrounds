@@ -105,13 +105,7 @@
                   </td>
                   <td>
                     Gender -
-                    <% if (@question.gender == 1) %>
-                      Male
-                    <% elsif (@question.gender == 2) %>
-                      Female
-                    <% else %>
-                      Not Sure
-                    <% end %>
+                    <%= @question.get_gender %>
                   </td>
                 </tr>
               </tbody>
