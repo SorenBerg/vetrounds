@@ -2,17 +2,16 @@ require 'spec_helper'
 
 describe "Question pages" do
   subject { page }
+  let(:submit) { "Post Question" }
+  let(:question_content) { "Example Question" }
 
-  describe "new question page" do
+  describe "new question page not logged in" do
     before do
       visit questions_new_path
     end
 
     it { should have_title(full_title("New Question")) }
     it { should have_content("Accept Terms of Service") }
-
-    let(:submit) { "Post Question" }
-    let(:question_content) { "Example Question" }
 
     it "should have a link to the ToS" do
       should have_link('Terms of Service', href: terms_path)
@@ -26,13 +25,9 @@ describe "Question pages" do
       fill_in "Confirm Password", with: "foobar"
       fill_in "Zipcode",          with: "12345"
       check   "user_terms"
-      #question fields
-      select  "Dog",              :from => "question_animal_type"
-      select  "Female",           :from => "question_gender"
-      #find_by_id('question_gender').find("option[value='female']").select_option
     end
 
-    describe "with invalid information as non-logged in" do
+    describe "with invalid information" do
       
 
       it "should not create a question without question" do
@@ -46,7 +41,7 @@ describe "Question pages" do
       end
     end
 
-    describe "with valid information as non-logged in" do
+    describe "with valid information" do
       
 
       it "should create a question" do
@@ -57,12 +52,55 @@ describe "Question pages" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
 
+      context "filling out all fields" do
+        before do
+          #question fields
+          select  "Dog",              :from => "question_animal_type"
+          select  "Female",           :from => "question_gender"
+          select  "Intact",           :from => "question_signalment"
+          select  "Specify breed",    :from => "question_breed"
+          fill_in "question_breed_detail",       :with => "Great Dane" 
+        end
+
+        it "has all correct info for question" do
+          click_button submit
+          # navigate to question show page
+          click_link :question_content
+          should have_content "Dog"
+          should have_content "Female"
+          should have_content "Intact"
+          should have_content "Great Dane"
+        end
+      end
+    end
+  end
+
+  describe "new question page logged in via POST" do
+    before do
+      @user = create(:client)
+      log_in_as(@user)
+      #get to the new question page via POST
+      visit root_url
+      fill_in "question", with: :question_content, match: :first
+      click_button "Ask Question", match: :first
+    end
+
+    context "filling out all fields" do
+      before do
+        select  "Dog",              :from => "question_animal_type"
+        select  "Female",           :from => "question_gender"
+        select  "Intact",           :from => "question_signalment"
+        select  "Specify breed",    :from => "question_breed"
+        fill_in "question_breed_detail",       :with => "Great Dane" 
+      end
+
       it "has all correct info for question" do
         click_button submit
-        # navigate to question show page
-        click_link :question_content
+        # loged in users go straight to question page
         should have_content "Dog"
         should have_content "Female"
+        should have_content "Intact"
+        should have_content "Great Dane"
       end
     end
   end

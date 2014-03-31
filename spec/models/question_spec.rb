@@ -17,8 +17,52 @@ describe Question do
   end
 
   describe "when gender is invalid" do
-    before { @question.gender = 10 }
+    before { @question.gender = Question::GENDER["Whazat"]  }
     it { should_not be_valid }
+  end
+
+  describe "when gender is valid" do
+    before { @question.gender = Question::GENDER["Male"] }
+    it { should be_valid }
+  end
+
+  describe "when signalment is invalid" do
+    before { @question.signalment = Question::SIGNALMENT["Whazat"] }
+    it { should_not be_valid }
+  end
+
+  describe "when signalment is valid" do
+    before { @question.signalment = Question::SIGNALMENT["Intact"] }
+    it { should be_valid }
+  end
+
+  describe "when breed is invalid" do
+    before { @question.breed = Question::BREED["Whazat"] }
+    it { should_not be_valid }
+  end
+
+  describe "when breed is selected but detail is invalid" do
+    before do
+      @question.breed = Question::BREED["Specify breed"]
+      @question.breed_detail = ""
+    end
+    it { should_not be_valid }
+  end
+
+  describe "when breed and breed_detail are valid" do
+    before do
+      @question.breed = Question::BREED["Specify breed"]
+      @question.breed_detail = "Some kind of thing"
+    end
+    it { should be_valid }
+  end
+
+  describe "when breed is unknown" do
+    before do
+      @question.breed = Question::BREED["Not sure"]
+      @question.breed_detail = ""
+    end
+    it { should be_valid }
   end
 
   describe "search" do

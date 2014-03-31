@@ -92,7 +92,7 @@ class QuestionsController < ApplicationController
 
   private
     def question_params
-      params.require(:question).permit(:content, :animal_type, :animal_age, :gender, :medication, :medication_detail, :flea_preventives_detail, :current_medical_conditions, :current_medical_conditions_detail, :previous_medical_conditions, :previous_medical_conditions_detail, :feed_pet_detail)
+      params.require(:question).permit(:content, :animal_type, :animal_age, :gender, :signalment, :breed, :breed_detail, :medication, :medication_detail, :flea_preventives_detail, :current_medical_conditions, :current_medical_conditions_detail, :previous_medical_conditions, :previous_medical_conditions_detail, :feed_pet_detail)
     end
 
     def user_params

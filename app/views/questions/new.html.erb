@@ -96,6 +96,40 @@
 
             <div class="form-group">
               <div class="col-sm-8">
+                <%= question_f.label :signalment, "Is your animal spayed or neutered?" %>
+                <%= question_f.select(:signalment, Question::SIGNALMENT, {}, :class => "form-control") %>
+              </div>
+              <div class="col-sm-4"></div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-8">
+                <%= question_f.label :breed, "Do you know your animal's breed?" %>
+                <%=
+                  question_f.select(
+                    :breed, Question::BREED, {},
+                    {
+                      :class => "form-control select_unsure",
+                      :"data-text-id" => "question_breed_detail"
+                    }
+                  )
+                %>
+                <%=
+                  question_f.text_area(
+                    :breed_detail,
+                    {
+                      :id => "question_breed_detail",
+                      :class => "form-control hidden",
+                      :placeholder => "Please specify the breed."
+                    }
+                  )
+                %>
+              </div>
+              <div class="col-sm-4"></div>
+            </div>
+
+            <div class="form-group">
+              <div class="col-sm-8">
                 <%= question_f.label :medication, "Is your pet currently taking any medication?" %>
                 <%=
                   question_f.select(
