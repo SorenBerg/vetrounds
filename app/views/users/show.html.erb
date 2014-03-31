@@ -122,13 +122,22 @@
               <div class="col-lg-12 col-md-12 col-sm-12">
                 <% if @user.answers.count > 0 %>
                   <h3><%= pluralize(@user.answers.count, "Answered Question") %>:</h3>
-                  <ol>
+                  <table id="answers">
+                    <tr>
+                      <th>Thanks</th>
+                      <th>Question</th>
+                    </tr>
                     <% @user.answers.each do |answer| %>
-                      <li>
-                        <a href="<%= question_show_path(:id => answer.question.id) %>"><%= answer.question.content.truncate(250) %></a>
-                      </li>
+                      <tr>
+                        <td> 
+                          <%= answer.thanks.count %>
+                        </td>
+                        <td>
+                          <a href="<%= question_show_path(:id => answer.question.id) %>"><%= answer.question.content.truncate(250) %></a>
+                        </td>
+                      </tr>
                     <% end %>
-                  </ol>
+                  </table>
                 <% end %>
               </div>
             </div>

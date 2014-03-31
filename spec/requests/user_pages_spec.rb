@@ -127,7 +127,7 @@ describe "User pages" do
   describe "vet profile page as vet" do
 
     before do
-      @question = create(:answered_question)
+      @question = create(:answered_and_thanked_question)
       @vet = @question.answers[0].user
       log_in_as(@vet)
       visit user_show_path({:id => @vet.id})
@@ -149,12 +149,16 @@ describe "User pages" do
       should have_button("Upload Photo")
     end
 
-    it "contains picture upload button" do
-      should have_button("Upload Photo")
-    end
-
     it "contains answered question" do
       should have_link(@question.content, question_show_path(:id => @question.id))
+    end
+
+    it "shows thank you's per question" do
+      #counting header
+      page.all('table#answers tr').count.should == 2
+      questions_row = page.all('table#answers tr')[1].all('td')
+      questions_row[0].text.should eq("1")
+      questions_row[1].text.should eq(@question.content)
     end
 
     it "has notification settings" do
