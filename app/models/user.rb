@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  require 'activity_aggregator'
   has_one :detail
   has_many :questions
   has_many :answers
@@ -42,6 +43,16 @@ class User < ActiveRecord::Base
     save!
     UserMailer.password_reset(self).deliver
   end
+
+  def activity_stream
+    # agree_stream = agreed.to_enum :find_each
+    # thank_stream = thanked.to_enum :find_each
+    # answer_stream = answers.to_enum :find_each
+    # streams = [agree_stream, thank_stream, answer_stream]
+    # ActivityAggregator.new(streams).next_activities(30)
+    [answers, thanked, agreed].flatten.sort_by(&:created_at).reverse.first(30)
+  end
+
 
   private
     def create_remember_token

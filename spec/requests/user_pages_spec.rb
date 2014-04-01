@@ -206,25 +206,43 @@ describe "User pages" do
     it "should not show heading with no answers" do
       should_not have_content("Answered Question")
     end
-  
   end
 
   describe "vet profile page with feedback" do
-    it "has thank you and doctor agreement numbers and answers" do
-      @question = create(:answered_question)
-      @vet = @question.answers[0].user
-      log_in_as(@question.user)
-      visit question_show_path({:id => @question.id})
-      click_link "Thank"
-      @newvet = create(:vet, :email => "NewVet@example.com", :name => "NewVet")
-      log_in_as(@newvet)
-      visit question_show_path({:id => @question.id})
-      click_link "Agree"
+    before do
+      @question = create(:answered_and_thanked_and_agreed_question)
+      @answer = @question.answers[0]
+      @vet = @answer.user
+      @agreeingVet = @answer.agreements[0].from
+      @secondClient = create(:user, :name => "Second User", :email => "secondUser@example.com")
+      create(:thank, :from => @secondClient, :to => @vet, :question => @question, :feedback => "great")
+      log_in_as(@vet)
       visit user_show_path({:id => @vet.id})
+    end
 
-      should have_content "1 Thank You Note"
+    it "has thank you and doctor agreement numbers and answers" do
+      should have_content "2 Thank You Notes"
       should have_content "1 Doctor Agreement"
       should have_selector("h3", :text => "1 Answered Question:")
+    end
+
+    it "should have activity" do
+      should have_css('h3', :text => 'Activity stream:')
+      within "ul#activity_stream" do
+        should have_selector("li:nth-child(1)", text: "Thank you from #{@secondClient.name}: '#{@answer.thanks[1].feedback}'")
+        should have_selector("li:nth-child(2)", text: "Agreement from Dr. #{@agreeingVet.name}")
+        should have_selector("li:nth-child(3)", text: "Thank you from #{@question.user.name}: '#{@answer.thanks[0].feedback}'")
+        should have_selector("li:nth-child(4)", text: "Answered '#{@question.content}'")
+      end
+    end
+
+    it "should have links" do
+      within "ul#activity_stream" do
+        should have_link(@secondClient.name, href: user_show_path(@secondClient.id))
+        should have_link(@question.user.name, href: user_show_path(@question.user.id))
+        should have_link(@question.content, href: question_show_path(@question.id))
+        should have_link(@agreeingVet.name, href: user_show_path(@agreeingVet.id))
+      end
     end
   end
 end

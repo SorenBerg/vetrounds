@@ -141,6 +141,24 @@
                 <% end %>
               </div>
             </div>
+            <div class="row">
+              <div class="col-lg-12 col-md-12 col-sm-12">
+                <h3>Activity stream:</h3>
+                <ul id="activity_stream">
+                  <% @user.activity_stream.each do |item| %>
+                    <li>
+                      <% if item.is_a? Answer %>
+                        <b>Answered</b> '<%= link_to(item.question.content, question_show_path(item.question.id)) %>'
+                      <% elsif item.is_a? Thank %>
+                        <b>Thank you</b> from <%= link_to(item.from.name, user_show_path(item.from.id)) %>: '<%= item.feedback %>'
+                      <% elsif item.is_a? Agreement %>
+                        <b>Agreement</b> from <%= link_to("Dr. #{item.from.name}", user_show_path(item.from.id)) %>
+                      <% end %>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
           <% else %>
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">
