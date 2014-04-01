@@ -1,10 +1,13 @@
 module ThanksHelper
   def has_thanked (answer)
+    get_thank_from_current_user(answer) != nil
+  end
+
+  def get_thank_from_current_user (answer)
     if answer.nil?
-      return false
+      return nil
     end
 
-    int = answer.thanks & current_user.thanks
-    return int.length > 0
+    current_user.thanks.where(answer: answer).first
   end
 end

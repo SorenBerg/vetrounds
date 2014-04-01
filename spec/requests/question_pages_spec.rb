@@ -134,11 +134,25 @@ describe "Question pages" do
       should have_link(answer.user.name, href: user_show_path(:id => answer.user.id))
     end
 
-    it "allows user to thank vet" do
+    it "allows user to thank and unthank vet" do
       expect { click_link "Thank" }.to change(Thank, :count).by(1)
       should have_link "Thanked"
       expect { click_link "Thanked" }.to change(Thank, :count).by(-1)
       should have_link "Thank"
+    end
+
+    it "allows user to send thank you note" do
+      click_link "Thank"
+      fill_in "Include a thank you note", :with => "Thank you so much!"
+      click_button "Send"
+      should have_content "#{@question.user.name}: Thank you so much!"
+      should have_link "Thanked"
+      should_not have_button "Send"
+    end
+
+    it "shows generic thanks message" do
+      click_link "Thank"
+      should have_content "#{@question.user.name}: Thanks"
     end
 
     it "should have headings" do

@@ -1,14 +1,6 @@
 class ThanksController < ApplicationController
   def new
-    if !signed_in?
-      redirect_to root_path
-      return
-    end
-
-    if current_user.is_vet
-      redirect_to root_path
-      return
-    end
+    return unless check_current_user
 
     @answer = Answer.find_by_id(params[:answer_id])
 
@@ -33,31 +25,41 @@ class ThanksController < ApplicationController
   end
 
   def destroy
-    if !signed_in?
-      redirect_to root_path
-      return
-    end
-
-    if current_user.is_vet
-      redirect_to root_path
-      return
-    end
+    return unless check_current_user
 
     @answer = Answer.find_by_id(params[:answer_id])
-
-    if (@answer.nil?)
-      redirect_to root_path
-      return
+    thank = get_thank_from_current_user(@answer)
+    if thank
+      thank.destroy
     end
-
-    if !has_thanked(@answer)
-      redirect_to question_show_path(:id => @answer.question_id)
-      return
-    end
-
-    Thank.destroy_all(:question_id => @answer.question_id, :answer_id => @answer.id, :from_id => current_user.id)
 
     redirect_to question_show_path(:id => @answer.question_id)
     return
   end
+
+  def update
+    return unless check_current_user
+
+    params.require(:thank).permit(:id, :feedback)
+
+    thank = Thank.find_by_id(params[:thank][:id])
+    thank.update_attributes(:feedback => params[:thank][:feedback])    
+
+    redirect_to question_show_path(:id => thank.answer.question_id)
+    return
+  end
+
+  private
+    def check_current_user
+      if !signed_in?
+        redirect_to root_path
+        return false
+      end
+
+      if current_user.is_vet
+        redirect_to root_path
+        return false
+      end
+      return true
+    end
 end

@@ -50,7 +50,7 @@ class User < ActiveRecord::Base
     # answer_stream = answers.to_enum :find_each
     # streams = [agree_stream, thank_stream, answer_stream]
     # ActivityAggregator.new(streams).next_activities(30)
-    [answers, thanked, agreed].flatten.sort_by(&:created_at).reverse.first(30)
+    [answers, thanked, agreed].flatten.sort_by(&:updated_at).reverse.first(40)
   end
 
 

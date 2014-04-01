@@ -1,8 +1,9 @@
 Vetrounds::Application.routes.draw do
-  get "agree/:answer_id" => "agreements#new", as: "agree"
-  get "agree_remove/:answer_id" => "agreements#destroy", as: "agree_remove"
-  get "thank/:answer_id" => "thanks#new", as: "thanks"
-  get "thanks_remove/:answer_id" => "thanks#destroy", as: "thanks_remove"
+  get "agree/:answer_id" => "agreements#new", as: :agree
+  get "agree_remove/:answer_id" => "agreements#destroy", as: :agree_remove
+  get "thank/:answer_id" => "thanks#new", as: :thanks
+  get "thanks_remove/:answer_id" => "thanks#destroy", as: :thanks_remove
+  post "thanks_update" => 'thanks#update', as: :thanks_update
   post "answers/create"
   get "questions/new"
   post "questions/create"

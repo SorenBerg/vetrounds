@@ -179,7 +179,19 @@
               
             </div>
 
-           
+            <div class="col-lg-8 col-md-6 col-sm-6">
+              <ul>
+                <% answer.thanks.each do |thank| %>
+                  <li>
+                    <% if thank.feedback %>
+                      <b><%= thank.from.name %></b>: <%= thank.feedback %>
+                    <% else %>
+                      <b><%= thank.from.name %></b>: Thanks
+                    <% end %>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
 
             <% if (current_user.is_vet && current_user != answer.user) %>
               <div class="col-lg-2 col-md-3 col-sm-3">
@@ -200,13 +212,14 @@
               </div>
             <% elsif !current_user.is_vet %>
               <div class="col-lg-2 col-md-3 col-sm-3">
+                <% thank = get_thank_from_current_user(answer) %>
                 <div class="form-horizontal">
                   <div class="form-group">
                     <div class="col-sm-6 col-xs-6 text-left">
-                      <% if has_thanked(answer) %>
-                        <a class="btn btn-sm btn-default" href="<%= thanks_remove_path(:answer_id => answer.id) %>">Thanked</a>
-                      <% else %>
+                      <% if not thank %>
                         <a class="btn btn-sm btn-default" href="<%= thanks_path(:answer_id => answer.id) %>">Thank</a>
+                      <% else %>
+                        <a class="btn btn-sm btn-default" href="<%= thanks_remove_path(:answer_id => answer.id) %>">Thanked</a>
                       <% end %>
                     </div>
                     <div class="col-sm-6 col-xs-6 text-right">
@@ -214,6 +227,15 @@
                     </div>
                   </div>
                 </div>
+                <% if thank and not thank.feedback %>
+                  <%= form_for thank, url: thanks_update_path, :method => :POST do |f| %>
+                    <div class="form-group">
+                        <%= f.hidden_field :id, :value => thank.id %>
+                        <%= f.text_area :feedback, :class => "form-control", :placeholder => "Include a thank you note" %>
+                        <%= f.submit "Send", class: "btn btn-primary" %>
+                    </div>
+                  <% end %>
+                <% end %>
               </div>
             <% end %>
           </div>
