@@ -1,6 +1,10 @@
 class UserMailer < ActionMailer::Base
   default from: "no-reply@vetrounds.com"
 
+  def sendgrid_unsub_header
+    '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+  end
+
   def welcome_email(user)
     @user = user
 
@@ -10,7 +14,7 @@ class UserMailer < ActionMailer::Base
       template_name = 'welcome_client_email'
     end
 
-    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+    headers['X-SMTPAPI'] = sendgrid_unsub_header
 
     mail(
       to: @user.email,
@@ -22,7 +26,7 @@ class UserMailer < ActionMailer::Base
   def password_reset(user)
     @user = user
 
-    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+    headers['X-SMTPAPI'] = sendgrid_unsub_header
 
     mail(
       to: user.email,
@@ -33,14 +37,25 @@ class UserMailer < ActionMailer::Base
   def vet_enable_email(user)
     @user = user
 
-    template_name = 'vet_enable_email'
-
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
 
     mail(
       to: user.email,
       subject: 'Your account on VetRounds has been enabled',
-      template_name: template_name
+    )
+  end
+
+  def appointment_request_email(from, to, request, answer)
+    @from = from
+    @to = to
+    @request = request
+    @answer = answer
+
+    headers['X-SMTPAPI'] = sendgrid_unsub_header
+
+    mail(
+      to: to.email,
+      subject: "#{from.name} requests an appointment",
     )
   end
 end

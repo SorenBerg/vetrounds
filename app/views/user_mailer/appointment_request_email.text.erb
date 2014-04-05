@@ -1,0 +1,7 @@
+Hello <%= @to.name %>, make an appointment
+<%= @from.name %>, wants to schedule an interview
+Email them at <%= @from.email %>
+Message from client:  <%= @request %>
+<% if not @answer.nil? %>
+  Based off answer:  <%= @answer.answer %>
+<% end %>

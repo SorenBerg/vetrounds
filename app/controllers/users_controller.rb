@@ -88,6 +88,28 @@ class UsersController < ApplicationController
     redirect_to user_show_path(:id => @user.id)
   end
 
+  def request_appointment
+    if !signed_in?
+      flash[:notice] = "You must create an account to request an appointment"
+      redirect_to root_url
+      return
+    end
+    user = User.find_by_id(params[:from_id])
+    vet = User.find_by_id(params[:to_id])
+    request = params[:request]
+    answer = Answer.find_by_id(params[:answer_id])
+
+    if (user.nil? or vet.nil? or user != current_user)
+      redirect_to root_url
+      return
+    end
+
+    UserMailer.appointment_request_email(user, vet, request, answer).deliver
+    flash[:notice] = "Request sent, the vet may respond by email"
+    
+    redirect_to user_show_path(:id => user.id)
+  end
+
 
 
   private

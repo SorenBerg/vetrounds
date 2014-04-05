@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <p>Hello <%= @to.name %>, make an appointment</p>
+    <p><%= @from.name %>, wants to schedule an interview</p>
+    <p>Email them at <%= @from.email %></p>
+    <p>Message from client:  <%= @request %></p>
+    <% if not @answer.nil? %>
+      <p>Based off answer:  <%= @answer.answer %></p>
+    <% end %>
+  </body>
+</html>

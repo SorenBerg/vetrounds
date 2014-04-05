@@ -22,12 +22,18 @@ describe QuestionsController do
         }.to change(Question,:count).by(1)
       end
 
-      context "sends email", type: :mailer do
+      context "sends notification email", type: :mailer do
         it "to user" do
           user = build(:client)
           post_create
 
           ActionMailer::Base.deliveries.last.to.should eq [user.email]
+        end
+
+        it "with sendgrid header" do
+          post_create
+          sg = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+          puts ActionMailer::Base.deliveries.last.header['X-SMTPAPI'].to_s.should eq(sg)
         end
 
         it "to vet with all notifications" do
