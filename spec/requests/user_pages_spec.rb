@@ -206,6 +206,18 @@ describe "User pages" do
     it "should not show heading with no answers" do
       should_not have_content("Answered Question")
     end
+
+    it "allows user to request appointment" do
+      click_button "Request Appointment"
+      find(:css, "#request").set("Example Request")
+      click_button "Send Request"
+      should have_content "Request sent"
+      # if this test goes flaky add sleep for quick fix or mock
+      email = ActionMailer::Base.deliveries.last
+      email.to.should eq [@vet.email]
+      email.to_s.include?(@user.name).should be true
+      email.to_s.include?("Example Request").should be true
+    end
   end
 
   describe "vet profile page with feedback" do

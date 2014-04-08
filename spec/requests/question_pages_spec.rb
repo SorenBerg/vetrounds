@@ -144,15 +144,27 @@ describe "Question pages" do
     it "allows user to send thank you note" do
       click_link "Thank"
       fill_in "Include a thank you note", :with => "Thank you so much!"
-      click_button "Send"
+      click_button "Send", :exact => true
       should have_content "#{@question.user.name}: Thank you so much!"
       should have_link "Thanked"
-      should_not have_button "Send"
+      should_not have_button "Send", :exact => true
     end
 
     it "shows generic thanks message" do
       click_link "Thank"
       should have_content "#{@question.user.name}: Thanks"
+    end
+
+    it "allows user to request appointment" do
+      click_button "Request Appointment"
+      find(:css, "#request").set("Example Request")
+      click_button "Send Request"
+      should have_content "Request sent"
+      # if this test goes flaky add sleep for quick fix or mock
+      email = ActionMailer::Base.deliveries.last
+      email.to.should eq [answer.user.email]
+      email.to_s.include?(client.name).should be true
+      email.to_s.include?("Example Request").should be true
     end
 
     it "should have headings" do

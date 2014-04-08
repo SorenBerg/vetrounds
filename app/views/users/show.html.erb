@@ -102,18 +102,9 @@
               </div>
 
               <% if not current_user.is_vet %>
-                <%= form_for @user, url: {controller: "user_controller", action: "update_user"}, :method => :POST do |f| %>
-                  <%= render "shared/user_error_messages" %>
-                  <div class="form-group">
-                    <label class="col-lg-4">Notification settings</label>
-                    <div class="col-sm-8">
-                      <%= f.hidden_field :from_id, :value => current_user.id %>
-                      <%= f.hidden_field :to_id, :value => @user.id %>
-                      <%= f.submit "Send request", class: "btn btn-primary" %>
-                    </div>
-                    <div class="col-sm-4"></div>
-                  </div>
-                <% end %>
+                <div class="col-sm-8">
+                  <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#appt-request-modal">Request Appointment</button>
+                </div>
               <% end %>
 
               <div class="col-lg-6 col-md-6 col-sm-6">
@@ -216,6 +207,7 @@
               </div>
             </div>
           <% end %>
+          <%= render partial: "shared/request_appointment_modal", :locals => { :answer_id => "", :vet_id => @user.id } %>
        </div>
     </div>
   </div>

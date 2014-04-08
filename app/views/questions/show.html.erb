@@ -223,7 +223,7 @@
                       <% end %>
                     </div>
                     <div class="col-sm-6 col-xs-6 text-right">
-                      <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#share-modal-<% answer.id %>">Share</a>
+                      <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#share-modal-<% answer.id %>">Share</button>
                     </div>
                   </div>
                 </div>
@@ -236,12 +236,16 @@
                     </div>
                   <% end %>
                 <% end %>
+                <div class="col-sm-8">
+                  <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#appt-request-modal-<%= answer.id %>">Request Appointment</button>
+                </div>
               </div>
             <% end %>
           </div>
         <% end %>
 
         <% @question.answers.each do |answer| %>
+          <%= render partial: "shared/request_appointment_modal", :locals => { :answer_id => answer.id, :vet_id => answer.user.id } %>
           <div class="modal fade" id="share-modal-<% answer.id %>" tabindex="-1" role="dialog" aria-labelledby="appointment-modal-label-<% answer.id %>" aria-hidden="true">
               <div class="modal-dialog">
                 <%= form_tag share_answer_path(:id => answer.id), :method => :post do %>
