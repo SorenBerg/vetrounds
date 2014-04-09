@@ -1,8 +1,10 @@
 class ThanksController < ApplicationController
-  def new
+  def create
     return unless check_current_user
 
-    @answer = Answer.find_by_id(params[:answer_id])
+    params.require(:thank).permit(:answer_id, :feedback)
+
+    @answer = Answer.find_by_id(params[:thank][:answer_id])
 
     if (@answer.nil?)
       redirect_to root_path
@@ -14,11 +16,13 @@ class ThanksController < ApplicationController
       return
     end
 
-    @thank = Thank.new(question_id: @answer.question_id, answer_id: @answer.id, from_id: current_user.id, to_id: @answer.user.id)
+    feedback = params[:thank][:feedback].blank? ? "Thank You!" : params[:thank][:feedback]
 
-    @thank.save
+    @thank = Thank.new(question_id: @answer.question_id, answer_id: @answer.id, from_id: current_user.id, to_id: @answer.user.id, feedback: feedback)
 
-    track_event("Thank")
+    if (@thank.save)
+      track_event("Thank")
+    end
 
     redirect_to question_show_path(:id => @answer.question_id)
     return
@@ -34,18 +38,6 @@ class ThanksController < ApplicationController
     end
 
     redirect_to question_show_path(:id => @answer.question_id)
-    return
-  end
-
-  def update
-    return unless check_current_user
-
-    params.require(:thank).permit(:id, :feedback)
-
-    thank = Thank.find_by_id(params[:thank][:id])
-    thank.update_attributes(:feedback => params[:thank][:feedback])    
-
-    redirect_to question_show_path(:id => thank.answer.question_id)
     return
   end
 

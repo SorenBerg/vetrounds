@@ -135,29 +135,30 @@ describe "Question pages" do
     end
 
     it "allows user to thank and unthank vet" do
-      expect { click_link "Thank" }.to change(Thank, :count).by(1)
+      click_button "Thank"
+      expect { click_button "Done", :exact => true }.to change(Thank, :count).by(1)
       should have_link "Thanked"
       expect { click_link "Thanked" }.to change(Thank, :count).by(-1)
-      should have_link "Thank"
+      should have_button "Thank"
     end
 
     it "allows user to send thank you note" do
-      click_link "Thank"
-      fill_in "Include a thank you note", :with => "Thank you so much!"
-      click_button "Send", :exact => true
+      click_button "Thank"
+      find(:css, "#thank_feedback", visible: true).set("Thank you so much!")
+      click_button "Done", :exact => true
       should have_content "#{@question.user.name}: Thank you so much!"
       should have_link "Thanked"
-      should_not have_button "Send", :exact => true
     end
 
-    it "shows generic thanks message" do
-      click_link "Thank"
-      should have_content "#{@question.user.name}: Thanks"
+    it "thank with generic message" do
+      click_button "Thank"
+      click_button "Done"
+      should have_content "#{@question.user.name}: Thank You!"
     end
 
     it "allows user to request appointment" do
       click_button "Request Appointment"
-      find(:css, "#request").set("Example Request")
+      find(:css, "#request", visible: true).set("Example Request")
       click_button "Send Request"
       should have_content "Request sent"
       # if this test goes flaky add sleep for quick fix or mock
@@ -165,6 +166,17 @@ describe "Question pages" do
       email.to.should eq [answer.user.email]
       email.to_s.include?(client.name).should be true
       email.to_s.include?("Example Request").should be true
+    end
+
+    it "allows user to share answer" do
+      click_button "Share"
+      fill_in "Name",  :with => "Test Name"
+      fill_in "Email", :with => "test@example.com"
+      click_button "Share Answer"
+      # if this test goes flaky add sleep for quick fix or mock
+      email = ActionMailer::Base.deliveries.last
+      email.to.should eq ["test@example.com"]
+      email.to_s.include?("Test Name").should be true
     end
 
     it "should have headings" do

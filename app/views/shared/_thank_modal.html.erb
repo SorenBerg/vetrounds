@@ -1,0 +1,20 @@
+<div class="modal fade" id="thank-modal-<%= answer_id %>" tabindex="-1" role="dialog" aria-labelledby="thank-modal-label-<%= answer_id %>" aria-hidden="true">
+  <div class="modal-dialog">
+    <%= form_for :thank, url: thanks_create_path, :method => :POST do |f| %>
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" id="thank-modal-label-<%= answer_id %>">Include a thank you note?</h4>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+          <%= f.text_area :feedback, :class => "form-control", :placeholder => "Thank You!" %>
+          </div>
+        </div>
+        <%= f.hidden_field :answer_id, :value => answer_id %>
+        <div class="modal-footer">
+          <%= f.submit "Done", class: "btn btn-primary" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

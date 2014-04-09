@@ -212,32 +212,22 @@
               </div>
             <% elsif !current_user.is_vet %>
               <div class="col-lg-2 col-md-3 col-sm-3">
-                <% thank = get_thank_from_current_user(answer) %>
                 <div class="form-horizontal">
                   <div class="form-group">
                     <div class="col-sm-6 col-xs-6 text-left">
-                      <% if not thank %>
-                        <a class="btn btn-sm btn-default" href="<%= thanks_path(:answer_id => answer.id) %>">Thank</a>
+                      <% if not has_thanked(answer) %>
+                        <button id="thank-button-<%= answer.id %>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#thank-modal-<%= answer.id %>">Thank</button>
                       <% else %>
                         <a class="btn btn-sm btn-default" href="<%= thanks_remove_path(:answer_id => answer.id) %>">Thanked</a>
                       <% end %>
                     </div>
                     <div class="col-sm-6 col-xs-6 text-right">
-                      <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#share-modal-<% answer.id %>">Share</button>
+                      <button id="share-button-<% answer.id %>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#share-modal-<% answer.id %>">Share</button>
                     </div>
                   </div>
                 </div>
-                <% if thank and not thank.feedback %>
-                  <%= form_for thank, url: thanks_update_path, :method => :POST do |f| %>
-                    <div class="form-group">
-                        <%= f.hidden_field :id, :value => thank.id %>
-                        <%= f.text_area :feedback, :class => "form-control", :placeholder => "Include a thank you note" %>
-                        <%= f.submit "Send", class: "btn btn-primary" %>
-                    </div>
-                  <% end %>
-                <% end %>
                 <div class="col-sm-8">
-                  <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#appt-request-modal-<%= answer.id %>">Request Appointment</button>
+                  <button id="appt-request-button-<%= answer.id %>" class="btn btn-sm btn-default" data-toggle="modal" data-target="#appt-request-modal-<%= answer.id %>">Request Appointment</button>
                 </div>
               </div>
             <% end %>
@@ -246,13 +236,14 @@
 
         <% @question.answers.each do |answer| %>
           <%= render partial: "shared/request_appointment_modal", :locals => { :answer_id => answer.id, :vet_id => answer.user.id } %>
-          <div class="modal fade" id="share-modal-<% answer.id %>" tabindex="-1" role="dialog" aria-labelledby="appointment-modal-label-<% answer.id %>" aria-hidden="true">
+          <%= render partial: "shared/thank_modal", :locals => { :answer_id => answer.id } %>
+          <div class="modal fade" id="share-modal-<% answer.id %>" tabindex="-1" role="dialog" aria-labelledby="share-modal-label-<% answer.id %>" aria-hidden="true">
               <div class="modal-dialog">
                 <%= form_tag share_answer_path(:id => answer.id), :method => :post do %>
                   <div class="modal-content">
                     <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                      <h4 class="modal-title" id="appointment-modal-label-<% answer.id %>">Share this answer</h4>
+                      <h4 class="modal-title" id="share-modal-label-<% answer.id %>">Share this answer</h4>
                     </div>
                     <div class="modal-body">
                       <div class="form-group">
@@ -261,7 +252,7 @@
                       <div class="form-group">
                         <input type="email" name="to_email" placeholder="Email" class="form-control" required>
                       </div>
-                      <input type="hidden" name="id" value="<%= answer.id %>">
+                      <%= hidden_field_tag :id, answer.id %>
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
@@ -294,3 +285,14 @@
 </div>
 
 <%= render "layouts/footer" %>
+
+<script type="text/javascript">
+  <% @question.answers.each do |answer| %>
+    $( "#appt-request-button-<%= answer.id %>" ).click(function() {
+      mixpanel.track("Clicked Appt");
+    });
+    $( "#share-button-<%= answer.id %>" ).click(function() {
+      mixpanel.track("Clicked Share");
+    });
+  <% end %>
+</script>
