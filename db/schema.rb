@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140331210904) do
+ActiveRecord::Schema.define(version: 20140410192152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20140331210904) do
     t.integer  "signalment",                         default: 0
     t.integer  "breed",                              default: 0
     t.string   "breed_detail"
+    t.boolean  "is_consult",                         default: false
   end
 
   create_table "thanks", force: true do |t|

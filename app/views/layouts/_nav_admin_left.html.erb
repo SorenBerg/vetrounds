@@ -11,7 +11,8 @@
       <li><a href="<%= user_show_path(:id => current_user.id) %>"><i class="fa fa-user"></i>My Profile</a></li>
 
       <% if @current_user.is_vet %>
-        <li><a href="<%= listquestions_path %>"><i class="fa fa-envelope"></i>Questions</a></li>
+        <li><a href="<%= list_questions_path %>"><i class="fa fa-envelope"></i>Questions</a></li>
+        <li><a href="<%= list_consults_path %>"><i class="fa fa-envelope"></i>Consults</a></li>
       <% end %>
     </ul>
   </div>

@@ -18,7 +18,7 @@ describe "Question pages" do
     end
 
     before do
-      fill_in "Question",         with: :question_content
+      fill_in "Question",         with: question_content
       fill_in "Name",             with: "Example User"
       fill_in "Email",            with: "user@example.com"
       fill_in "Password",         with: "foobar"
@@ -65,7 +65,7 @@ describe "Question pages" do
         it "has all correct info for question" do
           click_button submit
           # navigate to question show page
-          click_link :question_content
+          click_link question_content
           should have_content "Dog"
           should have_content "Female"
           should have_content "Intact"
@@ -81,7 +81,7 @@ describe "Question pages" do
       log_in_as(@user)
       #get to the new question page via POST
       visit root_url
-      fill_in "question", with: :question_content, match: :first
+      fill_in "question", with: question_content, match: :first
       click_button "Ask Question", match: :first
     end
 
@@ -102,6 +102,23 @@ describe "Question pages" do
         should have_content "Intact"
         should have_content "Great Dane"
       end
+    end
+  end
+
+  describe "new question page logged in as vet" do
+    before do
+      @user = create(:vet)
+      log_in_as(@user)
+      #get to the new question page via POST
+      visit root_url
+      fill_in "question", with: question_content, match: :first
+      click_button "Ask Question", match: :first
+    end
+
+    it "creates a consult" do
+      click_button submit
+      visit list_consults_path
+      should have_content question_content
     end
   end
 
@@ -224,6 +241,43 @@ describe "Question pages" do
     it "should not have answer heading" do
       should_not have_selector("h2", :text => "Answers")
       should_not have_selector("h2", :text => "Answer")
+    end
+  end
+
+  describe "question list" do
+    before do
+      @consult = create(:consult)
+      @vet = @consult.user
+      log_in_as(@vet)
+      @question = create(:question, :content => "Why is dog?")
+      @answered_question = create(:answered_question, :user => create(:user, :email => "second@example.com"))
+      visit list_questions_path
+    end
+
+    let(:answered) {find(:css, "#ans-q")}
+    let(:unanswered) {find(:css, "#uans-q")}
+
+    it "show unanswered questions by default" do
+      unanswered.should have_content "Why is dog?"
+      # answered
+      unanswered.should_not have_content "Why is cat?"
+      # consult
+      unanswered.should_not have_content "Why is horse?"
+    end
+
+    it "show answered questions" do
+      click_link "Answered Questions"
+      answered.should have_content "Why is cat?"
+      # unanswered
+      answered.should_not have_content "Why is dog?"
+      
+    end
+
+    it "show unanswered consults" do
+      click_link "Consults"
+      unanswered.should have_content "Why is horse?"
+      # not consult
+      unanswered.should_not have_content "Why is dog?"
     end
   end
 end

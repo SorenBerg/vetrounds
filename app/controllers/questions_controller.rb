@@ -25,6 +25,10 @@ class QuestionsController < ApplicationController
       @question = Question.new(question_params)
       @question.user_id = current_user.id
 
+      if current_user.is_vet
+        @question.is_consult = true
+      end
+
       if (@question.save)
         track_event("Create Question")
 
@@ -65,12 +69,24 @@ class QuestionsController < ApplicationController
   end
 
   def list
-    if !signed_in?
+    if !signed_in? or not current_user.is_vet
       redirect_to root_url
     end
+    @answered_label = "Answered Questions"
+    @unanswered_label = "Unanswered Questions"
+    @open_questions = Question.where("answered = 'f'").where("is_consult = 'f'")
+    @close_questions = Question.where("answered = 't'").where("is_consult = 'f'")
+  end
 
-    @open_questions = Question.where("answered = 'f'")
-    @close_questions = Question.where("answered = 't'")
+  def list_consults
+    if !signed_in? or not current_user.is_vet
+      redirect_to root_url
+    end
+    @answered_label = "Answered Consults"
+    @unanswered_label = "Unanswered Consults"
+    @open_questions = Question.where("answered = 'f'").where("is_consult = 't'")
+    @close_questions = Question.where("answered = 't'").where("is_consult = 't'")
+    render 'list'
   end
 
   def show

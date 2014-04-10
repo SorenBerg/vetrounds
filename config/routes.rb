@@ -21,7 +21,8 @@ Vetrounds::Application.routes.draw do
   get "login" => "sessions#new", as: :login
   post "login" => "sessions#create", as: :loginpost
   get "logout" => "sessions#destroy", as: :logout
-  get "questions" => "questions#list", as: :listquestions
+  get "questions" => "questions#list", as: :list_questions
+  get "consults" => "questions#list_consults", as: :list_consults
 
   get "admin" => "admin#listvet", as: :admin
   get "admin/login" => "admin#login", as: :admin_login

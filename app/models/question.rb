@@ -13,7 +13,9 @@ class Question < ActiveRecord::Base
   validates :signalment, inclusion: { in: SIGNALMENT.values }
   validates :breed, inclusion: { in: BREED.values }
   validates_presence_of :breed_detail, :unless => lambda { self.breed == BREED["Not sure"] }
- 
+  validates :is_consult, :inclusion => {:in => [true, false]}
+  validates :answered, :inclusion => {:in => [true, false]}
+
   def get_gender
     GENDER.key(read_attribute(:gender))
   end
