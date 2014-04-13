@@ -72,6 +72,7 @@ class QuestionsController < ApplicationController
     if !signed_in? or not current_user.is_vet
       redirect_to root_url
     end
+    @question = Question.new
     @answered_label = "Answered Questions"
     @unanswered_label = "Unanswered Questions"
     @open_questions = Question.where("answered = 'f'").where("is_consult = 'f'")
@@ -82,6 +83,7 @@ class QuestionsController < ApplicationController
     if !signed_in? or not current_user.is_vet
       redirect_to root_url
     end
+    @question = Question.new
     @answered_label = "Answered Consults"
     @unanswered_label = "Unanswered Consults"
     @open_questions = Question.where("answered = 'f'").where("is_consult = 't'")

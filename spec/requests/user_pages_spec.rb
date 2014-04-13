@@ -47,10 +47,13 @@ describe "User pages" do
     describe "with valid information for doctor" do
       before do
         find(:css, "#vet_new_user #user_name").set("Example User")
-        find(:css, "#vet_new_user #user_email").set("user@example.com")
+        find(:css, "#vet_new_user #user_email").set("vet@example.com")
         find(:css, "#vet_new_user #user_password").set("foobar")
         find(:css, "#vet_new_user #user_password_confirmation").set("foobar")
         find(:css, "#vet_new_user #user_detail_attributes_zipcode").set("12345")
+        find(:css, "#vet_new_user #user_detail_attributes_veterinary_school").set("blah")
+        find(:css, "#vet_new_user #user_detail_attributes_license_number").set("12345")
+        find(:css, "#vet_new_user #user_terms").set("1")
       end
 
       it "should create a client" do

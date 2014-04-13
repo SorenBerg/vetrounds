@@ -1,0 +1,156 @@
+<% for_vet ||= false %>
+<%= fields_for @user do |user_f| %>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= user_f.text_field :name, :class => "form-control", :placeholder => "Name" %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= user_f.text_field :email, :class => "form-control", :placeholder => "Email" %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= user_f.password_field :password, :class => "form-control", :placeholder => "Password" %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= user_f.password_field :password_confirmation, :class => "form-control", :placeholder => "Confirm Password" %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+
+  <%= user_f.fields_for :detail do |detail_f| %>
+    <% if not for_vet %>
+    <div class="form-group">
+      <div class="col-sm-8">
+        <%= detail_f.text_field :zipcode, :class => "form-control", :placeholder => "Zipcode" %>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+    <% else %>
+      <div class="form-group">
+        <div class="col-sm-8">
+          <%=
+            detail_f.select(
+              :area_of_practice,
+              options_for_select(
+                [
+                  ['Area of Practice', ''],
+                  ['Companion Animals', 'Companion Animals'],
+                  ['Exotics', 'Exotics'],
+                  ['Mixed Animal', 'Mixed Animal'],
+                  ['Other', 'Other']
+                ],
+                @user.detail.area_of_practice
+              ),
+              {},
+              {
+                :class => "form-control",
+                :id => "user_details_area_of_practice_select"
+              }
+            )
+          %>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <div id="user_details_area_of_practice_text_div" class="form-group hidden">
+        <div class="col-sm-8">
+          <%=
+            detail_f.text_field(
+              :area_of_practice,
+              {
+                :class => "form-control",
+                :placeholder => "Specify your Area of Practice",
+                :id => 'user_details_area_of_practice_text'
+              }
+            )
+          %>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-8">
+          <%= detail_f.text_field :zipcode, :class => "form-control", :placeholder => "Zipcode" %>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-8">
+          <%= detail_f.text_field :veterinary_school, :class => "form-control", :placeholder => "Which Veterinary School did you graduate from?" %>
+        </div>
+        <div class="col-sm-4">
+          <%= detail_f.text_field :veterinary_school_year, :class => "form-control", :placeholder => "Year" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-8">
+          <%=
+            detail_f.select(
+              :degree,
+              options_for_select(
+                [
+                  ['Degree', ''],
+                  ['DVM', 'DVM'],
+                  ['VMD', 'VMD'],
+                  ['Other', 'Other']
+                ],
+                @user.detail.degree
+              ),
+              {},
+              {
+                :class => "form-control",
+                :id => "user_details_degree_select"
+              }
+            )
+          %>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <div id="user_details_degree_text_div" class="form-group hidden">
+        <div class="col-sm-8">
+          <%=
+            detail_f.text_field(
+              :degree,
+              {
+                :class => "form-control",
+                :placeholder => "Specify your Degree",
+                :id => "user_details_degree_text"
+              }
+            )
+          %>
+        </div>
+        <div class="col-sm-4"></div>
+      </div>
+
+      <div class="form-group">
+        <div class="col-sm-8">
+          <%= detail_f.text_field :license_number, :class => "form-control", :placeholder => "Professional License Number" %>
+        </div>
+        <div class="col-sm-4">
+          <%= detail_f.text_field :license_state, :class => "form-control", :placeholder => "State" %>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+
+  <div class="form-group">
+    <div class="col-sm-8">
+      <%= user_f.label :terms, :class => "checkbox inline" do %>
+        <%= user_f.check_box :terms %> 
+        Accept <%= link_to 'Terms of Service', terms_path, :target => '_blank' %>.
+      <% end %>
+    </div>
+    <div class="col-sm-4"></div>
+  </div>
+<% end %>

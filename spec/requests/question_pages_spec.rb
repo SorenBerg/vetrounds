@@ -279,5 +279,12 @@ describe "Question pages" do
       # not consult
       unanswered.should_not have_content "Why is dog?"
     end
+
+    it "allows new consults" do
+      click_link "Request Consult"
+      fill_in "Question", with: question_content
+      click_button submit
+      should have_content question_content
+    end
   end
 end

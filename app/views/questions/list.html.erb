@@ -15,6 +15,9 @@
           <li class="active">
             <a href="#uans-q" data-toggle="tab"><i class="fa fa-comments"></i>&nbsp;<%= @unanswered_label %></a>
           </li>
+          <li>
+            <a href="#rec-consult" data-toggle="tab"><i class="fa fa-user"></i>&nbsp;Request Consult</a>
+          </li>
         </ul>
 
         <!-- Tab panes -->
@@ -25,6 +28,12 @@
           <div class="tab-pane active" id="uans-q">
             <%= render partial: "shared/question_list", :locals => { :questions => @open_questions, :label => "#{@unanswered_label}", :sort => "Oldest first" } %>
             </table>
+          </div>
+          <div class="tab-pane" id="rec-consult">
+            <div class="col-lg-6 col-md-6 col-sm-6">
+              </br>
+              <%= render partial: "shared/forms/question_form", :locals => { :pronoun => "the" } %>
+            </div>
           </div>
         </div>
       </div>
