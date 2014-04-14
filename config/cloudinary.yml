@@ -1,0 +1,7 @@
+---
+development:
+  cloud_name: hlswzqo0o
+production:
+  cloud_name: hddtowmnh
+test:
+  cloud_name: hlswzqo0o

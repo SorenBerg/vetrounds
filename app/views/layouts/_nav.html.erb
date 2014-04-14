@@ -4,40 +4,102 @@
     
   
     <div class="col-lg-12">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="<%= root_url %>">
-        <span class="vet-home">Vet</span><span class="rounds-home">Rounds</span><br>
-        <span class="tag-line">Helping Pets</span>
-      </a>
-    </div>
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<%= root_url %>">
+          <span class="vet-home">Vet</span><span class="rounds-home">Rounds</span><br>
+          <span class="tag-line">Helping Pets</span>
+        </a>
+      </div>
 
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li>
+          <a data-toggle="modal" data-target="#about-modal" href="#">About Us</a>
+          </li>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-
-
-        <% if !signed_in? %>
-          <li><a href="<%= signup_url %>">Sign Up</a></li>
-        <% else %>
-          <li><a href="<%= user_show_path(:id => current_user.id) %>">My Profile</a></li>
-        <% end %>
-
-        <li>
-          <% if signed_in? %>
-            <a href="<%= logout_url %>" class="btn-login">Logout</a>
+          <% if !signed_in? %>
+            <li><a href="<%= signup_url %>">Sign Up</a></li>
           <% else %>
-            <a href="<%= login_url %>" class="btn-login">Login</a>
+            <li><a href="<%= user_show_path(:id => current_user.id) %>">My Profile</a></li>
           <% end %>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</div>
+
+          <li>
+            <% if signed_in? %>
+              <a href="<%= logout_url %>" class="btn-login">Logout</a>
+            <% else %>
+              <a href="<%= login_url %>" class="btn-login">Login</a>
+            <% end %>
+          </li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </div>
 </nav>
+
+<div class="modal fade" id="about-modal" tabindex="-1" role="dialog" aria-labelledby="about-modal-label" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="about-modal-label">About Us</h4>
+      </div>
+      <div class="modal-body">
+        <h4>Mission</h4>
+        <ol>
+          <li>Give pet owners access to high quality information about their animal’s health.</li>
+          <li>Give veterinarians a way to create and manage their online presence by doing what they do best, helping animals.</li>
+        </ol>
+        <h4>Team</h4>
+        <table class="table table-striped">
+          <tr>
+            <td width="100">
+              <%= cl_image_tag("about_brian.jpg", :width => 100, :height => 100, :crop => :fill, :radius => 20) %>
+            </td>
+            <td>
+              <p>
+                <b>Brian Hur, DVM</b>
+              </p>
+              <p>
+              Brian envisioned VetRounds when he saw the need for veterinarians build their online reputation.  He is a licensed veterinarian and former engineer from Microsoft. Brian is our liaison to the veterinary community and develops a lot of the site’s front end. Brian has a cat named Teemo and Boston Terrier named Playa.
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= cl_image_tag("about_joe.jpg", :width => 100, :height => 100, :crop => :fill, :radius => 20) %>
+            </td>
+            <td>
+              <p>
+                <b>Joe Waltman</b>
+              </p>
+              <p>
+              Joe is responsible for product strategy and user acquisition. He has a computer science background and an MBA. Joe is a serial entrepreneur and his last company, RestEngine, was acquired by Twitter. His last pet was a French Bulldog named Howie. 
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <%= cl_image_tag("about_soren.jpg", :width => 100, :height => 100, :crop => :fill, :radius => 20) %>
+            </th>
+            <td>
+              <p>
+                <b>Soren Berg</b>
+              </p>
+              Soren is a full stack developer and is responsible for most of the code that powers VetRounds. He has a computer science degree and was a co-founder at RestEngine. His last job was at Twitter. He has a cat named Summer. 
+            </td>
+          </tr>
+        </table>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Done</button>
+      </div>
+    </div>
+  </div>
+</div>

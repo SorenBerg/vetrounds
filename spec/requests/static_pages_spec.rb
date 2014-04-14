@@ -14,6 +14,16 @@ describe "StaticPages" do
       expect(page).to have_title("Home | Vetrounds")
     end
 
+    describe "about us modal" do
+      let (:modal) { find(:css, "#about-modal") }
+
+      it "should have an about us modal" do
+        click_link "About Us"
+        modal.should have_content "Soren Berg"
+        modal.click_button "Done"
+      end
+    end
+
     describe "question box" do
       before do
         @test = "test question"
