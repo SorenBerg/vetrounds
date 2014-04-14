@@ -27,7 +27,7 @@
         <% if !current_user.is_admin %>
           <%= form_tag search_path, class: "navbar-form navbar-left", method: "get" do |f| %>
               <div class="form-group">
-                <%= text_field_tag :search, params[:search], class: "form-control" %>
+                <%= text_field_tag :search, params[:search], class: "form-control", :placeholder => "Search..." %>
               </div>
           <% end %>
         <% end %>
