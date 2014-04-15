@@ -76,6 +76,11 @@ describe "User pages" do
       should have_content(@user.email)
       should have_content(@user.detail.zipcode)
     end
+
+    it "has link to making new question" do
+      click_link "Ask a Question"
+      current_path.should == questions_new_path
+    end
   end
 
   describe "user profile page as user with question" do
