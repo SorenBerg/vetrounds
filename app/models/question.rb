@@ -7,17 +7,26 @@ class Question < ActiveRecord::Base
   GENDER = { "Not sure" => 0, "Male" => 1, "Female" => 2 }
   SIGNALMENT = { "Not sure" => 0, "Spayed or Neutered" => 1, "Intact" => 2 }
   BREED = { "Not sure" => 0, "Specify breed" => 1 }
+  TAG = { "Not sure" => 0, "Anesthesia" => 1, "Dermatology" => 2,
+          "Dentistry" => 3, "Emergency / Critical care" => 4, "Internal Medicine" => 5,
+          "Cardioloy" => 6, "Neurology" => 7, "Oncology" => 8, "Ophthalmology" => 9,
+          "Radiology" => 10, "Surgery" => 11, "Toxicology" => 12, "Other" => 13 }
 
   validates :content, presence: true
   validates :gender, inclusion: { in: GENDER.values }
   validates :signalment, inclusion: { in: SIGNALMENT.values }
   validates :breed, inclusion: { in: BREED.values }
+  validates :tag, inclusion: { in: TAG.values }
   validates_presence_of :breed_detail, :unless => lambda { self.breed == BREED["Not sure"] }
   validates :is_consult, :inclusion => {:in => [true, false]}
   validates :answered, :inclusion => {:in => [true, false]}
 
   def get_gender
     GENDER.key(read_attribute(:gender))
+  end
+
+  def get_tag
+    TAG.key(read_attribute(:tag))
   end
 
   def get_signalment

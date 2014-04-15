@@ -1,4 +1,5 @@
-<% pronoun ||= "your" %>
+<% is_consult ||= false %>
+<% pronoun = is_consult ? "the" : "your" %>
 <%= form_for @question, url: {action: "create"}, html: {class: "form-horizontal"} do |question_f| %>
   <%= render "shared/question_error_messages" %>
   <% if !signed_in? %>
@@ -16,6 +17,16 @@
 
   <% if !signed_in? %>
     <%= render "shared/forms/fields_for_user" %>
+  <% end %>
+
+  <% if is_consult %>
+    <div class="form-group">
+      <div class="col-sm-8">
+        <%= question_f.label :tag, "What specialty is this question for?" %>
+        <%= question_f.select(:tag, Question::TAG, {}, :class => "form-control") %>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
   <% end %>
 
   <div class="form-group">
