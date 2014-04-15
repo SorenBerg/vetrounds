@@ -147,4 +147,12 @@
 </div>
 </div>
 
+<ul>
+<% @active_content.each do |answer| %>
+  <li>
+    <%= answer.answer %>: <%= answer.thanks.count %>
+  </li>
+<% end %>
+</ul>
+
 <%= render "layouts/footer" %>
