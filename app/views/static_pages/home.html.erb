@@ -23,6 +23,23 @@
         
       <div class="home-bg1">
       <div class="question-box">
+      <!-- <%= render partial: "shared/active_content_carousel", :locals => { :active_content => @active_content } %> -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="active-content">
+            <div class="row">
+              <div class="col-md-3">Name</div>
+              <div class="col-md-9">Question</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">Vet</div>
+              <div class="col-md-9">Answer</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+        </div>
+      </div>
       <div class="slider-head">Licensed veterinarians there for you, 24 hours a day
         </div>
           <%= form_tag(controller: "questions", action: "newpost") do %>
