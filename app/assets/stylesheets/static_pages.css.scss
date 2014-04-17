@@ -1,3 +1,31 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.front-page {
+    font-weight: bold;
+    text-align: center;
+
+    h2 {
+        line-height: 1;
+        font-family: "Hero-Light",sans-serif;
+        font-weight: normal;
+        -webkit-font-smoothing: antialiased;
+        color: #ff4e50;
+        text-align: center;
+    }
+
+    .top-vet-label {
+        padding-top: 15px;
+        font-weight: bold;
+    }
+}
+
+
+
+
+
+.btn-xlg {
+    padding: 18px 34px;
+    font-size: 28px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    }

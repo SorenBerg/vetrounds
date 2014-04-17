@@ -14,10 +14,6 @@ describe "StaticPages" do
       expect(page).to have_title("Home | Vetrounds")
     end
 
-    it "should have some active content" do
-      expect(page).to have_content("blah")
-    end
-
     describe "about us modal" do
       let (:modal) { find(:css, "#about-modal") }
 
@@ -50,5 +46,19 @@ describe "StaticPages" do
       visit terms_url
       expect(page).to have_content("Terms of Service")
     end
+  end
+
+  describe "active content" do
+    before do
+      @answer1 = create(:answered_question, :user => create(:second_client)).answers[0]
+      @answer2 = create(:thanked_answer, :user => create(:second_vet))
+    end
+
+    # it "should have active content" do
+    #   page.should have_content @answer2.answer
+    #   page.should have_content @answer1.question.content
+    #   page.should have_content @answer2.user.name
+    #   page.should have_content @answer2.question.name
+    # end
   end
 end

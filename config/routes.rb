@@ -17,6 +17,8 @@ Vetrounds::Application.routes.draw do
   root "static_pages#home"
   get "terms" => "static_pages#terms", as: :terms
 
+  get "home2" => "static_pages#home2", as: :home2
+
   get "signup" => "users#new", as: :signup
   get "login" => "sessions#new", as: :login
   post "login" => "sessions#create", as: :loginpost

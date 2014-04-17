@@ -10,6 +10,10 @@ FactoryGirl.define do
 		factory :client do
 		end
 
+		factory :second_client do
+			email "second@client.com"
+		end
+
 		factory :vet do
 			name "Steth O Scope"
 			email "vet@someplace.com"
@@ -17,6 +21,10 @@ FactoryGirl.define do
 			is_vet true
 			enabled true
 			association :detail, factory: :vet_detail
+
+			factory :second_vet do
+				email "second@vet.com"
+			end
 		end
 	end
 end

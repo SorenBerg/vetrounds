@@ -4,6 +4,9 @@ class StaticPagesController < ApplicationController
     @active_content = Answer.take(5)
   end
 
+  def home2
+  end
+
   def terms
   end
 end
