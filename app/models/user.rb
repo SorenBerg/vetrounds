@@ -53,6 +53,13 @@ class User < ActiveRecord::Base
     [answers, thanked, agreed].flatten.sort_by(&:updated_at).reverse.first(40)
   end
 
+  def vet_score
+    score = 50
+    score += [15, self.answers.count * 2].min
+    score += [15, self.thanked.count * 2].min
+    score += [15, self.agreed.count * 3].min
+  end
+
 
   private
     def create_remember_token

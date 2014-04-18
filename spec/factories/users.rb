@@ -3,7 +3,7 @@ FactoryGirl.define do
 		
 		detail
 		name "Ignor Amos"
-		email "Huh@what.com"
+		sequence(:email) { |n| "user#{n}@example.com" }
 		password "bestpasswordever"
 		password_confirmation "bestpasswordever"
 
@@ -12,7 +12,7 @@ FactoryGirl.define do
 
 		factory :vet do
 			name "Steth O Scope"
-			email "vet@someplace.com"
+			sequence(:email) { |n| "vet#{n}@example.com" }
 			question_notification "nearby"
 			is_vet true
 			enabled true
