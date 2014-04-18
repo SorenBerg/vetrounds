@@ -4,22 +4,34 @@
 
     h2 {
         line-height: 1;
-        font-family: "Hero-Light",sans-serif;
-        font-weight: normal;
         -webkit-font-smoothing: antialiased;
-        color: #ff4e50;
         text-align: center;
+        font-family: 'Allan', Helvetica, Arial, sans-serif;
     }
 
     .top-vet-label {
         padding-top: 15px;
         font-weight: bold;
     }
+
+    #vet-content {
+        display: none;
+    }
+
+    #client-content {
+        display: none;
+    }
+
+    p, div {
+        font-family: 'Cardo', Georgia, Times, serif;
+    }
+
+    #vet-client-buttons {
+        padding-top: 25%;
+        padding-bottom: 200px;
+    }
+
 }
-
-
-
-
 
 .btn-xlg {
     padding: 18px 34px;
@@ -29,3 +41,13 @@
        -moz-border-radius: 8px;
             border-radius: 8px;
     }
+
+/*
+html{
+    background:url('background.jpg') no-repeat center center;
+
+    min-height:100%;
+
+    background-size:cover;
+}
+*/
