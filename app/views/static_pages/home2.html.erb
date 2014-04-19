@@ -6,113 +6,118 @@
 <link href="http://fonts.googleapis.com/css?family=Allan" rel="stylesheet" type="text/css">
 <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
 
-<%= render "layouts/nav" %>
-<div class="container front-page">
-  <div id="vet-client-buttons" class="splash-header">
-    <div class="row">
-      <h2>I am a...</h2>
-    </div>
-    <div class="col-lg-6 splash-button">
-      <div class="row" id="client-button">
-        <%= cl_image_tag("about_brian.jpg", :width => 200, :height => 200, :crop => :fill, :radius => 20) %>
-      </div>
-      <div class="row">
-        <h2>Pet Owner</h2>
-      </div>
-    </div>
-    <div class="col-lg-6 splash-button">
-      <div class="row" id="vet-button">
-        <%= cl_image_tag("about_brian.jpg", :width => 200, :height => 200, :crop => :fill, :radius => 20) %>
-      </div>
-      <div class="row">
-        <h2>Veterinarian</h2>
-      </div>
-    </div>
-  </div>
+<div class="front-page">
+  <%= render "layouts/nav" %>
 
-  
-
-  <div id="hidden-content">
-    <!-- Client content -->
-    <div id="client-content">
+  <div class="container ">
+    <div id="vet-client-buttons" class="splash-header">
       <div class="row">
-        <%= form_tag(controller: "questions", action: "newpost") do %>
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
-            </div>
+        <h2>I am a...</h2>
+      </div>
+      <div class="row">
+        <div class="col-lg-6 splash-button">
+          <div class="row" id="client-button">
+            <%= cl_image_tag("about_brian.jpg", :width => 200, :height => 200, :crop => :fill, :radius => 20) %>
+          </div>
+          <div class="row">
+            <h2>Pet Owner</h2>
+          </div>
+        </div>
+        <div class="col-lg-6 splash-button">
+          <div class="row" id="vet-button">
+            <%= cl_image_tag("about_brian.jpg", :width => 200, :height => 200, :crop => :fill, :radius => 20) %>
+          </div>
+          <div class="row">
+            <h2>Veterinarian</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+
+    <div id="hidden-content">
+      <!-- Client content -->
+      <div id="client-content">
+        <div class="row">
+          <%= form_tag(controller: "questions", action: "newpost") do %>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
+              </div>
+            
+              <div class="form-group" style="text-align: center;">
+            
+                <button type="submit" class="btn btn-success">Ask Question</button>
           
-            <div class="form-group" style="text-align: center;">
-          
-              <button type="submit" class="btn btn-success">Ask Question</button>
-        
-            </div>
-          </form>
+              </div>
+            </form>
+          <% end %>
+        </div>
+      </div>
+
+      <!-- Vet content -->
+      <div id="vet-content">
+        <div class="row">
+          <img src="http://www.placehold.it/450x250&text=ActiveContent">
+        </div>
+
+        <% (1..3).each do |n| %>
+          <div class="row tag-line">
+            <h2><%= "Tag Line #{n}" %></h2>
+          </div>
         <% end %>
+
+        <div class="row">
+          <button class="btn btn-success btn-xlg">Sign Up</button>
+        </div>
+
+        <div class="content">
+        <div class="container">
+          <div class="row content-row1">
+            <div class="cont-header text-center"><span>How does it work ? </span></div>
+          </div>
+          <div class="row content-row2">
+            <div class="col-sm-4">
+              <div class="cont-template">
+                <div class="cont-icon"><i class="fa fa-info-circle"></i></div>
+                <div class="cont-template-header">1. Answer questions from vets and clients</div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="cont-template">
+                <div class="cont-icon"><i class="fa fa-comment-o"></i></div>
+                <div class="cont-template-header">2. Build up your VetScore.</div>
+                <p></p>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="cont-template">
+                <div class="cont-icon"><i class="fa fa-users"></i></div>
+                <div class="cont-template-header">3. Get clients.</div>
+                <p></p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
+      <!-- End Vet content -->
     </div>
 
-    <!-- Vet content -->
-    <div id="vet-content">
+    <div>
       <div class="row">
-        <img src="http://www.placehold.it/450x250&text=ActiveContent">
+        <h2>Top Vets</h2>
       </div>
-
-      <% (1..3).each do |n| %>
-        <div class="row tag-line">
-          <h2><%= "Tag Line #{n}" %></h2>
+      <% (1..6).each do |n| %>
+        <div class="col-sm-2 col-xs-6">
+          <%= cl_image_tag("about_brian.jpg", :width => 100, :height => 100, :crop => :fill, :radius => 20) %>
+          <div class="top-vet-label">
+            Dr. Brian Hurr
+          </div>
         </div>
       <% end %>
-
-      <div class="row">
-        <button class="btn btn-success btn-xlg">Sign Up</button>
-      </div>
-
-      <div class="content">
-      <div class="container">
-        <div class="row content-row1">
-          <div class="cont-header text-center"><span>How does it work ? </span></div>
-        </div>
-        <div class="row content-row2">
-          <div class="col-sm-4">
-            <div class="cont-template">
-              <div class="cont-icon"><i class="fa fa-comment-o"></i></div>
-              <div class="cont-template-header">1. Answer questions from vets and clients</div>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="cont-template">
-              <div class="cont-icon"><i class="fa fa-comment-o"></i></div>
-              <div class="cont-template-header">2. Build up your VetScore.</div>
-              <p></p>
-            </div>
-          </div>
-          <div class="col-sm-4">
-            <div class="cont-template">
-              <div class="cont-icon"><i class="fa fa-comment-o"></i></div>
-              <div class="cont-template-header">3. Get clients.</div>
-              <p></p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-    <!-- End Vet content -->
-  </div>
 
-  <div>
-    <div class="row">
-      <h2>Top Vets</h2>
-    </div>
-    <% (1..6).each do |n| %>
-      <div class="col-sm-2 col-xs-6">
-        <%= cl_image_tag("about_brian.jpg", :width => 100, :height => 100, :crop => :fill, :radius => 20) %>
-        <div class="top-vet-label">
-          Dr. Brian Hurr
-        </div>
-      </div>
-    <% end %>
   </div>
-
 </div>
 
 

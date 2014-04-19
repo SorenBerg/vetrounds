@@ -2,6 +2,14 @@
     font-weight: bold;
     text-align: center;
 
+    /*
+    background-image: url(image-path('home-bg1.jpg'));
+    min-height: 1100px;
+    background-size: auto 1080px;
+    background-position: center;
+    background-repeat: no-repeat;
+    */
+
     h2 {
         line-height: 1;
         -webkit-font-smoothing: antialiased;
@@ -27,13 +35,13 @@
     }
 
     .splash-header {
-        padding-top: 20%;
-        padding-bottom: 20%;
+        padding-top: 15%;
+        padding-bottom: 15%;
     }
 
 }
 
-
+    
 .btn-xlg {
     padding: 18px 34px;
     font-size: 28px;
@@ -42,13 +50,3 @@
        -moz-border-radius: 8px;
             border-radius: 8px;
     }
-
-/*
-html{
-    background:url('background.jpg') no-repeat center center;
-
-    min-height:100%;
-
-    background-size:cover;
-}
-*/
