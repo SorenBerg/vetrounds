@@ -2,19 +2,18 @@
     font-weight: bold;
     text-align: center;
 
-    /*
+/*
     background-image: url(image-path('home-bg1.jpg'));
-    min-height: 1100px;
-    background-size: auto 1080px;
-    background-position: center;
-    background-repeat: no-repeat;
-    */
+    height: 100%;
+    background-size: cover;
+*/
 
     h2 {
         line-height: 1;
         -webkit-font-smoothing: antialiased;
         text-align: center;
-        font-family: 'Allan', Helvetica, Arial, sans-serif;
+        font-family: 'Sintony', sans-serif;
+
     }
 
     .top-vet-label {
@@ -28,15 +27,31 @@
 
     #client-content {
         display: none;
+
+        .my-question-box {
+        }
     }
 
     p, div {
-        font-family: 'Cardo', Georgia, Times, serif;
+        font-family: 'Sintony', sans-serif;
     }
 
     .splash-header {
         padding-top: 15%;
         padding-bottom: 15%;
+    }
+
+    .active-content {
+
+        .question-area {
+            background:rgba(125,125,125,0.5);
+            height: 75px;
+        }
+
+        .answer-area {
+            background:rgba(125,125,125,0.75);
+            height: 100px;
+        }
     }
 
 }
