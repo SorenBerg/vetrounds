@@ -12,8 +12,10 @@
   <%= render "layouts/nav" %>
 
   <div class="container ">
+    <div id="home-bg"></div>
 
     <div id="vet-client-buttons" class="splash-header">
+
       <div class="row">
         <h2>I am a...</h2>
       </div>
@@ -147,21 +149,23 @@
       <% end %>
     </div>
 
+
+
   </div>
 </div>
-
-
 
 <script>
 $( "#vet-button" ).click(function() {
   $( "#vet-content" ).slideToggle( "slow" );
   $( "#vet-client-buttons" ).slideToggle( "slow" );
+  $("#home-bg").addClass("faded-img");
   //$("#vet-content").addClass("removeThis"); //hide
 });
 
 $( "#client-button" ).click(function() {  
   $( "#client-content" ).slideToggle( "slow" );
   $( "#vet-client-buttons" ).slideToggle( "slow" );
+  $("#home-bg").addClass("faded-img");
 });
 </script>
 

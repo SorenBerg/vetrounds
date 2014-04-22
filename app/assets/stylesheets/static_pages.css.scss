@@ -42,19 +42,37 @@
     }
 
     .splash-header {
-        padding-top: 15%;
-        padding-bottom: 15%;
+        padding-top: 25%;
+        padding-bottom: 5%;
     }
 
     .active-content {
         text-align: left;
         border: 2px solid;
         padding: 4%;
+        background: #fff;
+
 
         .active-agreement {
             text-align: center;
         }
 
+    }
+
+    #home-bg {
+        background-image: url(image-path('home-bg1.jpg'));
+        background-position: 50% 50%;
+        background-size: cover;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        z-index: -1000;
+    }
+
+    .faded-img {
+        opacity: 0.6;
     }
 
 }
