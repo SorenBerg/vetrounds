@@ -65,16 +65,24 @@
         }
     }
 
+    #hidden-content {
+    }
+
     .active-content {
         font-family: 'Open Sans', sans-serif;
         text-align: left;
-        border: 2px solid;
         padding: 4%;
         background: #fff;
 
 
         .active-agreement {
-            text-align: center;
+            text-align: right;
+        }
+
+        .active-question {
+            font-style: italic;
+            font-size: 19px;
+            padding: 3px;
         }
 
     }
