@@ -82,7 +82,11 @@
               </div>
             </div>
             <div class="row active-agreement">
-              <%= @active_content[0].agreements.count %> Vets agree
+              <% agreements = @active_content[0].agreements.count %>
+              <%= pluralize agreements, "Vets" %> agree
+              <% for i in (0...agreements) %>
+                <%= image_tag(@active_content[0].agreements[i].from.avatar_url(:vet_tiny)) if @active_content[0].user.avatar? %>
+              <% end %>
             </div>
           </div>
           
@@ -140,8 +144,9 @@
           <h2>Top Vets</h2>
         </div>
         <div class="row">
-          <% (1..6).each do |n| %>
-            <div class="col-sm-2 col-xs-6">
+          <div class="col-sm-1"></div>
+          <% (1..5).each do |n| %>
+            <div class="col-sm-2 ">
               <div class="avatar-wrapper">
                 <!-- <%= image_tag(@active_content[0].user.avatar_url(:vet_avatar)) %> -->
                 <%= cl_image_tag("about_brian.png", :width => 132, :height => 132, :crop => :fill, :radius => "max") %>
