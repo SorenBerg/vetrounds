@@ -62,16 +62,19 @@
             <img src="http://www.placehold.it/450x250&text=ActiveContent">
           </div>
         -->
-          <div class="col-sm-6 col-sm-offset-3 active-content">
+          <div class="col-sm-4 col-sm-offset-4 active-content">
             <div class="row">
               <div class="col-sm-3">
                 <%= image_tag(@active_content[0].user.avatar_url(:vet_avatar)) if @active_content[0].user.avatar? %>
               </div>
               <div class="col-sm-9">
-                <div class="row">
-                  <%= "Dr. #{@active_content[0].user.name} answered:" %>
+                <div class="row answerer">
+                  <%= link_to "Dr. #{@active_content[0].user.name}", user_show_path(@active_content[0].user.id) %>
                 </div>
                 <div class="row">
+                  answered:
+                </div>
+                <div class="row active-question">
                   <%= link_to @active_content[0].question.content, question_show_path(@active_content[0].question.id) %>
                 </div>
               </div>
