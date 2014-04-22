@@ -1,3 +1,67 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.front-page {
+    font-weight: bold;
+    text-align: center;
+
+/*
+    background-image: url(image-path('home-bg1.jpg'));
+    height: 100%;
+    background-size: cover;
+*/
+
+    h2 {
+        line-height: 1;
+        -webkit-font-smoothing: antialiased;
+        text-align: center;
+        font-family: 'Sintony', sans-serif;
+
+    }
+
+    .top-vet-label {
+        padding-top: 15px;
+        font-weight: bold;
+    }
+
+    #vet-content {
+        display: none;
+    }
+
+    #client-content {
+        display: none;
+
+        .my-question-box {
+        }
+    }
+
+    p, div {
+        font-family: 'Sintony', sans-serif;
+    }
+
+    .splash-header {
+        padding-top: 15%;
+        padding-bottom: 15%;
+    }
+
+    .active-content {
+
+        .question-area {
+            background:rgba(125,125,125,0.5);
+            height: 75px;
+        }
+
+        .answer-area {
+            background:rgba(125,125,125,0.75);
+            height: 100px;
+        }
+    }
+
+}
+
+    
+.btn-xlg {
+    padding: 18px 34px;
+    font-size: 28px;
+    line-height: normal;
+    -webkit-border-radius: 8px;
+       -moz-border-radius: 8px;
+            border-radius: 8px;
+    }
