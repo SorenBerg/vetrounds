@@ -59,31 +59,31 @@
 
       <!-- Vet content -->
       <div id="vet-content">
-        <div class="row active-content">
-          <!--
-          <div class="row">
+        <div class="row">
+        <!--
+          <div class="col-sm-12">
             <img src="http://www.placehold.it/450x250&text=ActiveContent">
           </div>
-          -->
-          <div class="col-sm-6 col-sm-offset-3">
-            <div class="row question-area">
+        -->
+          <div class="col-sm-6 col-sm-offset-3 active-content">
+            <div class="row">
               <div class="col-sm-3">
-                <%= "#{@active_content[0].question.user.name} asked:" %>
-              </div>
-              <div class="col-sm-9">
-                <%= @active_content[0].question.content %>
-              </div>
-            </div>
-            <div class="row answer-area">
-              <div class="col-sm-3">
-                <%= "Dr. #{@active_content[0].user.name} answered:" %>
                 <%= image_tag(@active_content[0].user.avatar_url(:vet_avatar)) if @active_content[0].user.avatar? %>
               </div>
               <div class="col-sm-9">
-                <%= @active_content[0].answer %>
+                <div class="row">
+                  <%= "Dr. #{@active_content[0].user.name} answered:" %>
+                </div>
+                <div class="row">
+                  <%= link_to @active_content[0].question.content, question_show_path(@active_content[0].question.id) %>
+                </div>
               </div>
             </div>
+            <div class="row active-agreement">
+              <%= @active_content[0].agreements.count %> Vets agree
+            </div>
           </div>
+          
           
         </div>
 

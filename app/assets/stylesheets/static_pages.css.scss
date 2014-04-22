@@ -47,16 +47,14 @@
     }
 
     .active-content {
+        text-align: left;
+        border: 2px solid;
+        padding: 4%;
 
-        .question-area {
-            background:rgba(125,125,125,0.5);
-            height: 75px;
+        .active-agreement {
+            text-align: center;
         }
 
-        .answer-area {
-            background:rgba(125,125,125,0.75);
-            height: 100px;
-        }
     }
 
 }
