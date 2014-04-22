@@ -28,7 +28,12 @@
     #client-content {
         display: none;
 
-        .my-question-box {
+        .form-control {
+
+            font-style: italic;
+            font-size: 20px;
+            height: auto;
+            padding: 25px;
         }
     }
 
