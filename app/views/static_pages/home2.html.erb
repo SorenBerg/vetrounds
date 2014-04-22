@@ -20,23 +20,15 @@
         <h2>I am a...</h2>
       </div>
       <div class="row">
-        <div class="col-lg-6 splash-button">
+        <div class="col-sm-4">
           <div class="row" id="client-button">
-            <button class="btn btn-success btn-xlg"> Pet Owner </button>
-
-            
+            <button class="btn btn-success btn-xlg splash-button"> Pet Owner </button> 
           </div>
-
         </div>
-        <div class="col-lg-6 splash-button">
+        <div class="col-sm-4 col-sm-offset-4">
           <div class="row" id="vet-button">
-            <button class="btn btn-success btn-xlg"> <%= image_tag "tinyvet.png" %> Veterinary Expert </button>
-
-          
+            <button class="btn btn-success btn-xlg splash-button"> <%= image_tag "tinyvet.png" %> Veterinary Expert </button>
           </div>
-<!--           <div class="row">
-            <h2>Veterinarian</h2>
-          </div> -->
         </div>
       </div>
     </div>
@@ -46,7 +38,7 @@
     <div id="hidden-content">
       <!-- Client content -->
       <div id="client-content" class="row">
-        <div class="col-xs-8 col-offset-xs-2">
+        <div class="col-xs-8 col-xs-offset-2">
         <%= form_tag(controller: "questions", action: "newpost") do %>
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
@@ -164,7 +156,6 @@ $( "#vet-button" ).click(function() {
 $( "#client-button" ).click(function() {  
   $( "#client-content" ).slideToggle( "slow" );
   $( "#vet-client-buttons" ).slideToggle( "slow" );
-  $("#home-bg").addClass("faded-img");
 });
 </script>
 
