@@ -129,24 +129,39 @@
       <!-- End Vet content -->
     </div>
 
-    <div>
-      <div class="row">
-        <h2>Top Vets</h2>
-      </div>
-      <% (1..6).each do |n| %>
-        <div class="col-sm-2 col-xs-6">
-          <%= cl_image_tag("about_brian.jpg", :width => 100, :height => 100, :crop => :fill, :radius => 20) %>
-          <div class="top-vet-label">
-            Dr. Brian Hur
-          </div>
+    <div class="top-vets-outline">
+      <div class="top-vets">
+        <div class="row">
+          <h2>Top Vets</h2>
         </div>
-      <% end %>
+        <div class="row">
+          <% (1..6).each do |n| %>
+            <div class="col-sm-2 col-xs-6">
+              <div class="avatar-wrapper">
+                <!-- <%= image_tag(@active_content[0].user.avatar_url(:vet_avatar)) %> -->
+                <%= cl_image_tag("about_brian.png", :width => 132, :height => 132, :crop => :fill, :radius => "max") %>
+              </div>
+              <div class="avatar-mask">
+                <%= image_tag("avatar_mask.png") %>
+              </div>
+
+              <div class="top-vet-label">
+                Dr. Brian Hur
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
     </div>
 
 
 
   </div>
 </div>
+
+<!--          
+<%= cl_image_tag("about_brian.jpg", :width => 100, :height => 100, :crop => :fill, :radius => 20) %>
+-->
 
 <script>
 $( "#vet-button" ).click(function() {
