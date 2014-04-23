@@ -23,6 +23,12 @@ box-shadow:         2px 2px 4px 0px rgba(47, 50, 50, 1);
 
     }
 
+@mixin inner-shadow {
+    -moz-box-shadow:    inset 0 0 10px #000000;
+   -webkit-box-shadow: inset 0 0 10px #000000;
+   box-shadow:         inset 0 0 10px #000000;
+}
+
     
 
     #vet-content {
@@ -35,6 +41,7 @@ box-shadow:         2px 2px 4px 0px rgba(47, 50, 50, 1);
         padding-bottom: 15%;
 
         .form-control {
+            box-shadow: 0px 1px 2px #666 inset;
 
             font-style: italic;
             font-size: 20px;
@@ -77,21 +84,24 @@ box-shadow:         2px 2px 4px 0px rgba(47, 50, 50, 1);
         @include generic-shadow;
         
         text-align: left;
+        padding: 4%;
         background: #fff;
-        padding-top: 5px;
 
 
 
         .active-agreement {
-            border: 1px dotted #ccc;
             text-align: right;
+            border-top: 1px dotted #ccc;
+            padding: 3px;
         }
 
         .active-question {
             font-style: italic;
             font-size: 19px;
+            padding: 3px;
             font-weight: 400;
             line-height: 30px;
+            line-height: 20px;
         }
 
     }
@@ -102,8 +112,10 @@ box-shadow:         2px 2px 4px 0px rgba(47, 50, 50, 1);
         border-radius: 50px;
 
         .top-vet-label {
-            padding-top: 10px;
+            padding-top: 1px;
             font-weight: bold;
+            font-size: 14px;
+
         }
 
     }
@@ -111,6 +123,7 @@ box-shadow:         2px 2px 4px 0px rgba(47, 50, 50, 1);
     #home-bg {
         background-image: url(image-path('home-bg1.jpg'));
         background-position: 50% 50%;
+        
         background-size: cover;
         position: absolute;
         top: 0;
@@ -134,4 +147,9 @@ box-shadow:         2px 2px 4px 0px rgba(47, 50, 50, 1);
     -webkit-border-radius: 8px;
        -moz-border-radius: 8px;
             border-radius: 8px;
+-webkit-box-shadow: 1px 1px 1px rgba(50, 50, 50, 0.57);
+-moz-box-shadow:    1px 1px 1px rgba(50, 50, 50, 0.57);
+box-shadow:         1px 1px 1px rgba(50, 50, 50, 0.57);
+
+
     }
