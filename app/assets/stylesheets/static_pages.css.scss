@@ -71,23 +71,20 @@
     .active-content {
         font-family: 'Open Sans', sans-serif;
         text-align: left;
-        padding: 4%;
         background: #fff;
+        padding-top: 5px;
 
 
         .active-agreement {
+            border: 1px dotted #ccc;
             text-align: right;
-            border-top: 1px dotted #ccc;
-            padding: 3px;
         }
 
         .active-question {
             font-style: italic;
             font-size: 19px;
-            padding: 3px;
             font-weight: 400;
             line-height: 30px;
-            line-height: 20px;
         }
 
     }
