@@ -21,6 +21,14 @@ class AvatarUploader < CarrierWave::Uploader::Base
     cloudinary_transformation :radius => "max", :width => 30, :height => 30, :crop => :thumb, :gravity => :face
   end
 
+  version :vet_avatar_big do
+    cloudinary_transformation :radius => "max", :width => 132, :height => 132, :fetch_format => 'png', :crop => :thumb, :gravity => :face
+  end
+
+  version :vet_face do
+    cloudinary_transformation :width => 150, :height => 150, :crop => :thumb, :gravity => :face
+  end
+
   version :vet_photo do
     process :resize_to_fit => [400, 300]
     cloudinary_transformation :radius => 40

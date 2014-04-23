@@ -16,10 +16,38 @@
           <h2><%= @user.name %>'s Profile</h2>
         <% end %>
         <div class="profile-cont">
-          <%= image_tag(@user.avatar_url(:vet_photo)) if @user.avatar? %>
+          <!-- <%= image_tag(@user.avatar_url(:vet_photo)) if @user.avatar? %> -->
           <% if @user.is_vet %>
             <div class="row">
               <div class="col-lg-6 col-md-6 col-sm-6">
+
+                <div class="avatarV2 big" id="expertAvatar" style="<%= "background-image: url(#{@user.avatar_url(:vet_face)})" %>" >
+                </div>
+
+                <div class="points-wrap" style="width : 80px" title="A doctor’s VetScore is a mesure of how much they have helped the community.">
+                  <span class="points-segment">8</span>
+                  <span class="points-segment">5</span>
+                  <div class="vetscore-label">VetScore</div>
+                  <div class="context_popup_member"></div>
+                </div>
+
+                <h1 class="expert_full_name">
+                  Dr. <%= @user.name %>
+                </h1>
+                <div class="expert_credentials">
+                  <div class="expert_specialty">
+                    <%= "#{@user.detail.degree} - #{@user.detail.area_of_practice}" %>
+                  </div>
+                  <div class="expert_specialty">
+                    <%= @user.detail.veterinary_school %> (<%= @user.detail.veterinary_school_year %>)
+                  </div>
+                  <p class="expert_polis">
+                  <span class="polis"><%= @user.detail.zipcode %></span>
+                  </p>
+                </div>
+
+
+
                 <div class="form-horizontal">
                   <div class="form-group">
                     <label class="col-lg-4">Name</label>
