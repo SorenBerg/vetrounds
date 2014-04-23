@@ -36,7 +36,7 @@
 		width: 59px;
 	}
 
-	.context_popup_member {
+	.context-popup-member {
 		display: block;
 		width: 20px;
 		height: 20px;
@@ -86,7 +86,7 @@
 	border-radius: 30px;
 }
 
-.expert_full_name {
+.expert-full-name {
 	font-size: 34px;
 	padding-left: 26px;
 	background: url(image-path('textvetred.png')) no-repeat left 10px;
@@ -96,7 +96,7 @@
 	line-height: 120%;
 }
 
-.expert_specialty {
+.expert-specialty {
 	font-size: 17px;
 	line-height: 20px;
 	font-style: italic;
@@ -104,7 +104,7 @@
 	color: #888;
 }
 
-.expert_polis {
+.expert-polis {
 	display: block;
 	padding-left: 18px;
 	background: url(image-path('map_marker_light_grey.png')) no-repeat left top;
@@ -112,4 +112,16 @@
 	font-size: 13px;
 	color: #999;
 	margin: 5px 0;
+}
+
+.appt-button {
+	padding-top: 20px;
+}
+
+.profile-update {
+	padding-top: 20px;
+}
+
+#answers-table {
+	td {padding-right: 10px;}
 }

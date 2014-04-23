@@ -19,155 +19,109 @@
           <% if @user.is_vet %>
             <!-- <%= image_tag(@user.avatar_url(:vet_photo)) if @user.avatar? %> -->
             <div class="row">
-              <div class="col-lg-6 col-md-6 col-sm-6">
-
+              <div class="col-sm-3 col-lg-2">
                 <div class="avatarV2 big" id="expertAvatar" style="<%= "background-image: url(#{@user.avatar_url(:vet_face)})" %>" >
                 </div>
-
-                <div class="points-wrap" style="width : 80px" title="A doctor’s VetScore is a mesure of how much they have helped the community.">
-                  <span class="points-segment">8</span>
-                  <span class="points-segment">5</span>
-                  <div class="vetscore-label">VetScore</div>
-                  <div class="context_popup_member"></div>
-                </div>
-
-                <h1 class="expert_full_name">
-                  Dr. <%= @user.name %>
-                </h1>
-                <div class="expert_credentials">
-                  <div class="expert_specialty">
-                    <%= "#{@user.detail.degree} - #{@user.detail.area_of_practice}" %>
-                  </div>
-                  <div class="expert_specialty">
-                    <%= @user.detail.veterinary_school %> (<%= @user.detail.veterinary_school_year %>)
-                  </div>
-                  <p class="expert_polis">
-                  <span class="polis"><%= @user.detail.zipcode %></span>
-                  </p>
-                </div>
-
-
-
-                <div class="form-horizontal">
-                  <div class="form-group">
-                    <label class="col-lg-4">Name</label>
-                    <span class="col-lg-8">Dr. <%= @user.name %></span>
-                  </div>
-
-                  <% if current_user == @user %>
-                    <div class="form-group">
-                      <label class="col-lg-4">Email</label>
-                      <span class="col-lg-8"><%= @user.email %></span>
-                      <small> (not publicly displayed) </small>
-                    </div>
-                  <% end %>
-
-                  <div class="form-group">
-                    <label class="col-lg-4">Area of Practice</label>
-                    <span class="col-lg-8"><%= @user.detail.area_of_practice %></span>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-lg-4">Zip Code</label>
-                    <span class="col-lg-8"><%= @user.detail.zipcode %></span>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-lg-4">Veterinary School</label>
-                    <span class="col-lg-8"><%= @user.detail.veterinary_school %> (<%= @user.detail.veterinary_school_year %>)</span>
-                  </div>
-
-                  <div class="form-group">
-                    <label class="col-lg-4">Degree</label>
-                    <span class="col-lg-8"><%= @user.detail.degree %></span>
-                  </div>
-
-                  <% if current_user == @user %>
-                    <div class="form-group">
-                      <label class="col-lg-4">License Number</label>
-                      <span class="col-lg-8"><%= @user.detail.license_number %> (<%= @user.detail.license_state %>)</span>
-                      <small> (not publicly displayed) </small>
-                  </div>
-                  <% end %>
-                </div>
-                <% if current_user == @user %>
-                  <%= form_for current_user, url: {action: "update_user"}, :html => {:multipart => true}, :method => :POST do |f| %>
-                    <%= render "shared/user_error_messages" %>
-                    <p>
-                      <label>My Photo</label>
-                    </p>
-                    <p>
-                      <%= image_tag(@user.avatar_url(:vet_avatar)) if @user.avatar? %>
-                    </p>
-                    <p>
-                      <%= f.file_field :avatar %>
-                      <%= f.hidden_field :id, :value => current_user.id %>
-                      <div class="form-group">
-                        <div class="col-sm-12">
-                          <%= f.submit "Upload Photo", class: "btn btn-primary" %>
-                        </div>
-                      </div>
-                    </p>
-                  <% end %>
-
-                  <%= form_for current_user, url: {action: "update_user"}, :method => :POST do |f| %>
-                    <%= render "shared/user_error_messages" %>
-                    <div class="form-group">
-                      <label class="col-lg-4">Notification settings</label>
-                      <div class="col-sm-8">
-                        <%= f.hidden_field :id, :value => current_user.id %>
-                        <%= f.label :question_notification do %>
-                          Notify me when a new question is asked:
-                          <%= f.select :question_notification, options_for_select([["Never", "none"], ["Always", "all"], ["Only in my area", "nearby"]], :selected => current_user.question_notification) %>
-                          <%= f.submit "Save", class: "btn btn-primary" %>
-                        <% end %>
-                      </div>
-                      <div class="col-sm-4"></div>
-                    </div>
-                  <% end %>
-
-                <% end %>
               </div>
-
-              <% if not current_user.is_vet %>
-                <div class="col-sm-8">
-                  <button class="btn btn-sm btn-default" data-toggle="modal" data-target="#appt-request-modal">Request Appointment</button>
+              <div class="col-sm-9 col-lg-10">
+                <div class="row">
+                  <h1 class="expert-full-name">
+                    Dr. <%= @user.name %>
+                  </h1>
                 </div>
-              <% end %>
-
-              <div class="col-lg-6 col-md-6 col-sm-6">
-                <div class="form-horizontal">
-                  <div class="form-group">
-                    <div class="col-lg-12">
-	                  <% if @user.agreed.count > 0 %>
-                          <span class="btn btn-default btn-profile"><%= pluralize(@user.agreed.count, "Doctor Agreement") %>
-                      </span>
-                      <% end %>
-                      <% if @user.thanked.count > 0 %>
-                          <span class="btn btn-default btn-profile"><%= pluralize(@user.thanked.count, "Thank You Note") %>
-	                  <% end %>
-                      </span>
+                <div class="col-sm-10 col-lg-11 col-sm-push-2 col-lg-push-1">
+                  <div class="expert_credentials">
+                    <div class="expert-specialty">
+                      <%= "#{@user.detail.degree} - #{@user.detail.area_of_practice}" %>
                     </div>
+                    <div class="expert-specialty">
+                      <%= @user.detail.veterinary_school %> (<%= @user.detail.veterinary_school_year %>)
+                    </div>
+                    <p class="expert-polis">
+                    <span class="polis"><%= @user.detail.zipcode %></span>
+                    </p>
                   </div>
                 </div>
+                <div class="col-sm-2 col-lg-1 col-sm-pull-10 col-lg-pull-11">
+                  <div class="points-wrap" style="width : 80px" title="A doctor’s VetScore is a mesure of how much they have helped the community.">
+                    <span class="points-segment"><%= @user.vet_score.to_s.chars[0] %></span><span class="points-segment"><%= @user.vet_score.to_s.chars[1] %></span>
+                    <div class="vetscore-label">VetScore</div>
+                    <div class="context-popup-member"></div>
+                  </div>
+                </div>
+                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+
+                <div class="col-sm-12">
+                  <% if @user.agreed.count > 0 %>
+                    <span class="btn btn-default btn-profile"><%= pluralize(@user.agreed.count, "Doctor Agreement") %>
+                    </span>
+                  <% end %>
+                  <% if @user.thanked.count > 0 %>
+                    <span class="btn btn-default btn-profile"><%= pluralize(@user.thanked.count, "Thank You Note") %>
+                    </span>
+                  <% end %>  
+                </div>
+
+                <div class="col-sm-12 profile-update">
+                  <% if current_user == @user %>
+                    <%= form_for current_user, url: {action: "update_user"}, :html => {:multipart => true}, :method => :POST do |f| %>
+                      <%= render "shared/user_error_messages" %>
+                      <p>
+                        <label>My Photo</label>
+                      </p>
+                      <p>
+                        <%= image_tag(@user.avatar_url(:vet_avatar)) if @user.avatar? %>
+                      </p>
+                      <p>
+                        <%= f.file_field :avatar %>
+                        <%= f.hidden_field :id, :value => current_user.id %>
+                      </p>
+                      <p>
+                        <%= f.submit "Upload Photo", class: "btn btn-primary" %>
+                      </p>
+                    <% end %>
+
+                    <%= form_for current_user, url: {action: "update_user"}, :method => :POST do |f| %>
+                      <%= render "shared/user_error_messages" %>
+                      <p>
+                        <%= f.hidden_field :id, :value => current_user.id %>
+                        <label>Notify me when a new question is asked:</label>
+                      </p>
+                      <p>
+                        <%= f.select :question_notification, options_for_select([["Never", "none"], ["Always", "all"], ["Only in my area", "nearby"]], :selected => current_user.question_notification) %> <%= f.submit "Save", class: "btn btn-primary" %>
+                      </p>
+                    <% end %>
+                  <% end %>
+                </div>
+
+
+                <% if not current_user.is_vet %>
+                  <div class="col-sm-12 appt-button">
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#appt-request-modal-">Request Appointment</button>
+                  </div>
+                <% end %>
               </div>
             </div>
             <div class="row">
               <div class="col-lg-12 col-md-12 col-sm-12">
                 <% if @user.answers.count > 0 %>
                   <h3><%= pluralize(@user.answers.count, "Answered Question") %>:</h3>
-                  <table id="answers">
+                  <table id="answers-table">
                     <tr>
-                      <th>Thanks</th>
                       <th>Question</th>
+                      <th>Thanks</th>
                     </tr>
                     <% @user.answers.each do |answer| %>
                       <tr>
-                        <td> 
-                          <%= answer.thanks.count %>
-                        </td>
                         <td>
                           <a href="<%= question_show_path(:id => answer.question.id) %>"><%= answer.question.content.truncate(250) %></a>
+                        </td>
+                        <td> 
+                          <%= answer.thanks.count %>
                         </td>
                       </tr>
                     <% end %>
