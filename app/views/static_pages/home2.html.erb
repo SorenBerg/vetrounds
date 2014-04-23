@@ -66,12 +66,13 @@
         -->
           <div class="col-sm-4 col-sm-offset-4 active-content">
             <div class="row">
+              <% answering_vet = @active_content[0].user %>
               <div class="col-sm-3">
-                <%= image_tag(@active_content[0].user.avatar_url(:vet_avatar)) if @active_content[0].user.avatar? %>
+                <%= link_to image_tag(answering_vet.avatar_url(:vet_avatar)), user_show_path(answering_vet.id) if answering_vet.avatar? %>
               </div>
               <div class="col-sm-9">
-                <div class="row answerer">
-                  <%= image_tag "textvetred.png" %> <%=  link_to "Dr. #{@active_content[0].user.name}", user_show_path(@active_content[0].user.id) %>
+                <div class="row active-answerer">
+                  <%= image_tag "textvetred.png" %> <%= link_to "Dr. #{answering_vet.name}", user_show_path(answering_vet.id) %>
                 </div>
                 <div class="row">
                   answered:
@@ -81,12 +82,16 @@
                 </div>
               </div>
             </div>
-            <div class="row active-agreement">
-              <% agreements = @active_content[0].agreements.count %>
-              <%= pluralize agreements, "Vets" %> agree
-              <% for i in (0...agreements) %>
-                <%= image_tag(@active_content[0].agreements[i].from.avatar_url(:vet_tiny)) if @active_content[0].user.avatar? %>
-              <% end %>
+            <div class="row">
+              <div class="active-agreement">
+                <% agreements = @active_content[0].agreements.count %>
+                <%= pluralize agreements, "Vet" %> <%= agreements == 1 ? "agrees" : "agree" %>:
+                &nbsp;&nbsp;
+                <% for i in (0...agreements) %>
+                  <% agreeing_vet = @active_content[0].agreements[i].from %>
+                  <%= link_to image_tag(agreeing_vet.avatar_url(:vet_tiny)), user_show_path(agreeing_vet.id) if agreeing_vet.avatar? %>
+                <% end %>
+              </div>
             </div>
           </div>
           
