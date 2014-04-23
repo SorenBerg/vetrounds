@@ -10,6 +10,11 @@
     background-size: cover;
 */
 
+@mixin generic-shadow {
+    -webkit-box-shadow: 2px 2px 4px 0px rgba(47, 50, 50, 1);
+-moz-box-shadow:    2px 2px 4px 0px rgba(47, 50, 50, 1);
+box-shadow:         2px 2px 4px 0px rgba(47, 50, 50, 1);
+}
     h2 {
         line-height: 1;
         -webkit-font-smoothing: antialiased;
@@ -69,10 +74,12 @@
     }
 
     .active-content {
-        font-family: 'Open Sans', sans-serif;
+        @include generic-shadow;
+        
         text-align: left;
         background: #fff;
         padding-top: 5px;
+
 
 
         .active-agreement {
