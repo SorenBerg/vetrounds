@@ -17,6 +17,14 @@ describe "Question pages" do
       should have_link('Terms of Service', href: terms_path)
     end
 
+    it "has correct pronoun" do
+      should have_content "your pet"
+    end
+
+    it "doesn't have specialty dropdown" do
+      should_not have_content "specialty"
+    end
+
     before do
       fill_in "Question",         with: question_content
       fill_in "Name",             with: "Example User"
@@ -283,8 +291,16 @@ describe "Question pages" do
     it "allows new consults" do
       click_link "Request Consult"
       fill_in "Question", with: question_content
+      select  "Anesthesia", :from => "question_tag"
       click_button submit
       should have_content question_content
+      should have_content "Anesthesia"
     end
+
+    it "has correct pronoun" do
+      click_link "Request Consult"
+      should have_content "the pet"
+    end
+
   end
 end

@@ -134,4 +134,44 @@ describe User do
       specify { expect(user_for_invalid_password).to be_false }
     end
   end
+
+  describe "with vet_score" do
+    before do
+      @vet = build(:vet, :email => "simple@vet.com")
+      @answered = create(:answered_question)
+      @answered_vet = @answered.answers[0].user
+
+      @thanked = create(:answered_and_thanked_question)
+      @thanked_vet = @thanked.answers[0].user
+      @agreed = create(:answered_and_agreed_question)
+      @agreed_vet = @agreed.answers[0].user
+    end
+
+    it "calculates a score" do
+      @vet.vet_score.should be_an(Integer)
+    end
+
+    it "returns 50 for default score" do
+      @vet.vet_score.should be(50)
+    end
+
+    it "raises score for answers" do
+      @answered_vet.vet_score.should be > 50
+    end
+
+    it "getting thanked raises score" do
+      @answered_vet.vet_score.should be < @thanked_vet.vet_score
+    end
+
+    it "agreements are worth more than thank yous" do
+      @thanked_vet.vet_score.should be < @agreed_vet.vet_score
+    end
+
+    it "limits points from one source" do
+      (1..8).each do
+        create(:answer, :question => @answered, :user => @answered_vet)
+      end
+      @answered_vet.vet_score.should be < 66
+    end
+  end
 end

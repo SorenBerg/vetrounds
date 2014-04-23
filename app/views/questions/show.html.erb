@@ -17,6 +17,15 @@
             <p><h3><%= @question.content %></h3></p>
             <table class="table table-bordered">
               <tbody>
+                <% if @question.is_consult  %>
+                  <tr>
+                    <td>
+                      Question specialty - <%= @question.get_tag %>
+                    </td>
+                    <td>
+                    </td>
+                  </tr>
+                <% end %>
                 <tr>
                   <td>
                     Kind of Animal -

@@ -24,10 +24,8 @@ describe QuestionsController do
 
       context "sends notification email", type: :mailer do
         it "to user" do
-          user = build(:client)
           post_create
-
-          ActionMailer::Base.deliveries.last.to.should eq [user.email]
+          ActionMailer::Base.deliveries.last.to.should eq [@user_attr[:email]]
         end
 
         it "with sendgrid header" do

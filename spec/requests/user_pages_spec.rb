@@ -264,5 +264,9 @@ describe "User pages" do
         should have_link(@agreeingVet.name, href: user_show_path(@agreeingVet.id))
       end
     end
+
+    it "should have vet score" do
+      should have_selector("h3", :text => "VetScore: 59")
+    end
   end
 end
