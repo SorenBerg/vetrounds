@@ -143,14 +143,14 @@ describe "User pages" do
 
     it "contains vet info" do
       should have_content(@vet.name)
-      should have_content(@vet.email)
+      #should have_content(@vet.email)
       should have_content(@vet.detail.zipcode)
       should have_content(@vet.detail.area_of_practice)
       should have_content(@vet.detail.veterinary_school)
       should have_content(@vet.detail.veterinary_school_year)
       should have_content(@vet.detail.degree)
-      should have_content(@vet.detail.license_number)
-      should have_content(@vet.detail.license_state)
+      #should have_content(@vet.detail.license_number)
+      #should have_content(@vet.detail.license_state)
     end
 
     it "contains picture upload button" do
@@ -163,14 +163,14 @@ describe "User pages" do
 
     it "shows thank you's per question" do
       #counting header
-      page.all('table#answers tr').count.should == 2
-      questions_row = page.all('table#answers tr')[1].all('td')
-      questions_row[0].text.should eq("1")
-      questions_row[1].text.should eq(@question.content)
+      page.all('table#answers-table tr').count.should == 2
+      questions_row = page.all('table#answers-table tr')[1].all('td')
+      questions_row[1].text.should eq("1")
+      questions_row[0].text.should eq(@question.content)
     end
 
     it "has notification settings" do
-      should have_selector("label", :text => "Notification settings")
+      should have_css("#user_question_notification")
       should have_content("Notify me when a new question is asked:")
     end
 
@@ -266,7 +266,7 @@ describe "User pages" do
     end
 
     it "should have vet score" do
-      should have_selector("h3", :text => "VetScore: 59")
+      should have_selector(".points-wrap", :text => "59 VetScore")
     end
   end
 end
