@@ -66,6 +66,17 @@
 	box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
 }
 
+.avatarV2.medium {
+	height: 80px;
+	width: 80px;
+	border-radius: 80px;
+	border-width: 3px;
+	-moz-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	-webkit-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	-o-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+}
+
 .avatarV2 {
 	background-repeat: no-repeat;
 	background-position: center;
