@@ -14,7 +14,7 @@
   <%= render "layouts/nav" %>
 
   <div class="container">
-    <div id="home-bg"></div>
+    <!--<div id="home-bg"></div>-->
 
     <div id="vet-client-buttons" class="splash-header">
 
@@ -59,63 +59,39 @@
       <!-- Vet content -->
       <div id="vet-content">
         <div class="row">
-        <!--
-          <div class="col-sm-12">
-            <img src="http://www.placehold.it/450x250&text=ActiveContent">
-          </div>
-        -->
-          <div class="col-sm-4 col-sm-offset-4 active-content">
-            <div class="row">
-              <% answering_vet = @active_content[0].user %>
-              <div class="col-sm-3">
-                <%= link_to image_tag(answering_vet.avatar_url(:vet_avatar)), user_show_path(answering_vet.id) if answering_vet.avatar? %>
-              </div>
-              <div class="col-sm-9">
-                <div class="row active-answerer">
-                  <%= image_tag "textvetred.png" %> <%= link_to "Dr. #{answering_vet.name}", user_show_path(answering_vet.id) %>
-                </div>
-                <div class="row">
-                  answered:
-                </div>
-                <div class="row active-question">
-                  <%= link_to @active_content[0].question.content, question_show_path(@active_content[0].question.id) %>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="active-agreement">
-                <% agreements = @active_content[0].agreements.count %>
-                <%= pluralize agreements, "Vet" %> <%= agreements == 1 ? "agrees" : "agree" %>:
-                &nbsp;&nbsp;
-                <% for i in (0...agreements) %>
-                  <% agreeing_vet = @active_content[0].agreements[i].from %>
-                  <%= link_to image_tag(agreeing_vet.avatar_url(:vet_tiny)), user_show_path(agreeing_vet.id) if agreeing_vet.avatar? %>
-                <% end %>
-              </div>
-            </div>
-          </div>
           
-          
-        </div>
 
+          <div class="col-sm-8 col-sm-offset-4">
         
-          <div class="row tag-line">
-                        
-            <h2>Build your Virtual Practice</h2>
-            <h2>For Free</h2>
-            
+            <div class="row tag-line">
+                          
+              <h2>Build your Virtual Practice For Free</h2>
+              <h2>Another Tag line right here</h2>
+              <h2>Another Tag line to finish off</h2>
+              
+            </div>
+          
+
+            <div class="row sign-up">
+              <button class="btn btn-success btn-xlg">Sign Up</button>
+            </div>
+
           </div>
-        
+
+        </div>
 
         <div class="row">
-          <button class="btn btn-success btn-xlg">Sign Up</button>
-        </div>
+          <div class="col-sm-6 col-sm-offset-3 active-content-wrapper">
 
+            <%= render partial: "shared/active_content", :locals => { :active_content => @active_content} %>
+          </div>
+        </div>
+        <!--
         <div class="content">
         <div class="container">
           <div class="row content-row1">
             <div class="cont-header text-center"><span>How does it work ? </span></div>
-          </div>
+          </div> 
           <div class="row content-row2">
             <div class="col-sm-4">
               <div class="cont-template">
@@ -140,6 +116,8 @@
           </div>
         </div>
       </div>
+      -->
+
       <!-- End Vet content -->
     </div>
 
@@ -186,7 +164,7 @@
 $( "#vet-button" ).click(function() {
   $( "#vet-content" ).slideToggle( "slow" );
   $( "#vet-client-buttons" ).slideToggle( "slow" );
-  $("#home-bg").addClass("faded-img");
+  $(".front-page").addClass("faded-img");
   //$("#vet-content").addClass("removeThis"); //hide
 });
 

@@ -1,0 +1,30 @@
+<div class="col-xs-12 active-content">
+  <div class="row">
+    <% answering_vet = active_content[0].user %>
+    <div class="col-sm-3">
+      <%= link_to image_tag(answering_vet.avatar_url(:vet_avatar)), user_show_path(answering_vet.id) if answering_vet.avatar? %>
+    </div>
+    <div class="col-sm-9">
+      <div class="row active-answerer">
+        <%= image_tag "textvetred.png" %> <%= link_to "Dr. #{answering_vet.name}", user_show_path(answering_vet.id) %>
+      </div>
+      <div class="row">
+        answered:
+      </div>
+      <div class="row active-question">
+        <%= link_to active_content[0].question.content, question_show_path(active_content[0].question.id) %>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="active-agreement">
+      <% agreements = active_content[0].agreements.count %>
+      <%= pluralize agreements, "Vet" %> <%= agreements == 1 ? "agrees" : "agree" %>:
+      &nbsp;&nbsp;
+      <% for i in (0...agreements) %>
+        <% agreeing_vet = active_content[0].agreements[i].from %>
+        <%= link_to image_tag(agreeing_vet.avatar_url(:vet_tiny)), user_show_path(agreeing_vet.id) if agreeing_vet.avatar? %>
+      <% end %>
+    </div>
+  </div>
+</div>

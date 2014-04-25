@@ -3,6 +3,10 @@
 
 @import url(http://fonts.googleapis.com/css?family=Lato:300,400);
 
+@import "mixins";
+@import "buttons";
+@import "avatarV2";
+
 @mixin box_sizing {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -627,7 +631,7 @@ footer {
 }
     
 .tab-cont-q > .nav-tabs > li {
-    float: right;
+    float: left;
 }
 
 .tab-cont-q > .nav-tabs > li > a {

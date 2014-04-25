@@ -1,0 +1,46 @@
+.avatarV2 {
+	display: inline-block;
+	margin-left: 30px;
+	vertical-align: baseline;
+
+	background-repeat: no-repeat;
+	background-position: center;
+	-moz-background-size: cover;
+	-webkit-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-ms-box-sizing: border-box;
+	box-sizing: border-box;
+	border-width: 2px;
+	border-style: solid;
+	border-color: #c1c3c5;
+	position: relative;
+	display: inline-block;
+	height: 54px;
+	width: 54px;
+	border-radius: 30px;
+}
+
+.avatarV2.big {
+	height: 140px;
+	width: 140px;
+	border-radius: 100px;
+	border-width: 4px;
+	-moz-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	-webkit-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	-o-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+}
+
+.avatarV2.medium {
+	height: 80px;
+	width: 80px;
+	border-radius: 80px;
+	border-width: 3px;
+	-moz-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	-webkit-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	-o-box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+	box-shadow: rgba(0,0,0,0.25) 5px 5px 10px 1px inset;
+}
