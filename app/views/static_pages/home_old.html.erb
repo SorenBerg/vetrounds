@@ -1,0 +1,167 @@
+<% provide(:title, "Home") %>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div> 
+<% end %>
+
+<%= render "layouts/nav" %>
+    
+
+
+<div id="carousel-example-generic" class="carousel slide slider-vet" data-ride="carousel">
+        <!-- Indicators -->
+  
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+
+        <!-- Wrapper for slides -->
+  <div class="carousel-inner">
+    
+    <div class="item active">
+        
+      <div class="home-bg1">
+      <div class="question-box">
+      <!-- <%= render partial: "shared/active_content_carousel", :locals => { :active_content => @active_content } %> -->
+      <div class="row">
+        <div class="col-md-3">
+          <div class="active-content">
+            <div class="row">
+              <div class="col-md-3">Name</div>
+              <div class="col-md-9">Question</div>
+            </div>
+            <div class="row">
+              <div class="col-md-3">Vet</div>
+              <div class="col-md-9">Answer</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-9">
+        </div>
+      </div>
+      <div class="slider-head">Licensed veterinarians there for you, 24 hours a day
+        </div>
+          <%= form_tag(controller: "questions", action: "newpost") do %>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
+            </div>
+          
+            <div class="form-group" style="text-align: center;">
+          
+              <button type="submit" class="btn btn-success">Ask Question</button>
+        
+            </div>
+          </form>
+          <% end %>
+      </div>
+
+                
+      <div class="carousel-caption">          
+
+      </div>
+    </div>
+  </div>
+
+          
+  <div class="item ">
+    <div class="home-bg2">
+    <div class="slider-box">
+    <div class="slider-head">No waiting room necessary</div>
+    <p></p>
+    <%= form_tag(controller: "questions", action: "newpost") do %>
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
+      </div>
+      <div class="form-group" style="text-align: center;">
+        <button type="submit" class="btn btn-success">Ask Question</button>
+      </div>
+    </form>
+    <% end %>
+  
+    <div class="carousel-caption">
+    </div>
+  </div> 
+  </div>
+</div>
+
+
+          <div class="item ">
+
+            <div class="home-bg3">
+            <div class="slider-head">Ask a question and have it answered for free</div>
+            <p></p>
+            <%= form_tag(controller: "questions", action: "newpost") do %>
+              <div class="form-group">
+                <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
+              </div>
+              <div class="form-group" style="text-align: center;">
+                <button type="submit" class="btn btn-success">Ask Question</button>
+              </div>
+            </form>
+            <% end %>
+          </div>
+
+
+            <div class="carousel-caption">
+            </div>
+          
+        </div>
+
+        </div>
+
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+      </div>
+
+<div class="modal fade" id="disclaimer" style="display: none; ">  
+              <div class="modal-dialog">  
+              <a class="close" data-dismiss="modal">×</a>  
+              <h5 class="modal-title">Disclaimer</h5>  
+              </div>  
+              <div class="modal-body">  
+              <h6>This is the</h6>  
+              <p>disclaimer</p>                
+              </div>  
+              <div class="modal-footer">  
+              <a href="#" class="btn" data-dismiss="modal">Close</a>  
+              </div> 
+            </div>
+
+<div class="content">
+  <div class="container">
+    <div class="row content-row1">
+      <div class="cont-header text-center"><span>How does it work ? </span></div>
+    </div>
+    <div class="row content-row2">
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="cont-template">
+          <div class="cont-icon"><i class="fa fa-comment-o"></i></div>
+          <div class="cont-template-header">1. Ask your question</div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="cont-template">
+          <div class="cont-icon"><i class="fa fa-comment-o"></i></div>
+          <div class="cont-template-header">2. A licensed veterinarian reviews the question.</div>
+          <p></p>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-sm-4">
+        <div class="cont-template">
+          <div class="cont-icon"><i class="fa fa-comment-o"></i></div>
+          <div class="cont-template-header">3. You receive an answer for free!</div>
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<%= render "layouts/footer" %>
