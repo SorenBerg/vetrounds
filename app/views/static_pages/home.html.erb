@@ -145,8 +145,10 @@
     <% (1..5).each do |i| %>
       <div class="col-sm-2 center-block">
         <% if @top5[i].present? %>
-          <div class="avatarV2 medium" style="background-image: url(<%= @top5[i].avatar_url(:vet_face) %>)">
-          </div>
+          <a href="<%= user_show_path(@top5[i]) %>">
+            <div class="avatarV2 medium" style="background-image: url(<%= @top5[i].avatar_url(:vet_face) %>)">
+            </div>
+          </a>
 
           <div class="top-vet-label">
             

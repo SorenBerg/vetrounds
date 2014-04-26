@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def new
     if signed_in?
+      flash[:notice] = "You are already logged in.  Click 'My Profile' to see your profile."
       redirect_to root_url
       return
     end
