@@ -39,16 +39,26 @@
 
     <div id="hidden-content">
       <!-- Client content -->
+      
       <div id="client-content" class="row">
-        <div class="col-xs-8 col-xs-offset-2">
-        <%= form_tag(controller: "questions", action: "newpost") do %>
+        <div class="col-sm-8 col-sm-offset-4">
+          
+          <div class="row tag-line">
+                        
+            <h2>Client tag line</h2>
+            <h2>Another Tag line right here</h2>
+            
+          </div>
+        </div>
+        <div class="col-xs-8 col-xs-offset-2 question-box">
+          <%= form_tag(controller: "questions", action: "newpost") do %>
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Ask your question for free right here..." name="question">
             </div>
           
             <div class="form-group" style="text-align: center;">
           
-              <button type="submit" class="btn btn-success">Ask Question</button>
+              <button type="submit" class="btn btn-success btn-xlg">Ask Question</button>
         
             </div>
           </form>
@@ -81,11 +91,69 @@
         </div>
 
         <div class="row">
-          <div class="col-sm-6 col-sm-offset-3 active-content-wrapper">
+          <div class="col-md-6 col-md-offset-3 active-content-wrapper">
+            <div id="my-carousel" class="carousel slide" data-ride="carousel">
 
-            <%= render partial: "shared/active_content", :locals => { :active_content => @active_content} %>
+              <!--
+              <ol class="carousel-indicators">
+                <li data-target="#my-carousel" data-slide-to="0" class="active"></li>
+                <li data-target="#my-carousel" data-slide-to="1"></li>
+                <li data-target="#my-carousel" data-slide-to="2"></li>
+              </ol>
+              -->
+
+              <!-- Wrapper for slides -->
+              <div class="carousel-inner">
+                
+                <div class="item active">
+                  <%= render partial: "shared/active_content", :locals => { :active_content => @active_content[0]} %>
+                </div>
+
+                <div class="item">
+                  <%= render partial: "shared/active_content", :locals => { :active_content => @active_content[1]} %>
+                </div>
+
+                <div class="item">
+                  <%= render partial: "shared/active_content", :locals => { :active_content => @active_content[2]} %>
+                </div>
+              </div>
+              <!-- Carousel nav -->
+              <!--
+              <a class="carousel-control left" href="#my-carousel" data-slide="prev">
+                  <span class="glyphicon glyphicon-chevron-left"></span>
+              </a>
+              <a class="carousel-control right" href="#my-carousel" data-slide="next">
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+              </a>
+              -->
+            </div>
+          </div>
+
+          
+        </div>
+
+        <!--
+        <div class="row">
+          <div class="col-xs-6 col-sm-4">
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-left"></span>
+            </a>
+          </div>
+          <div class="col-xs-12 col-sm-4">
+            <ol class="carousel-indicators">
+              <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+              <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+            </ol>
+          </div>
+          <div class="col-xs-6 col-sm-4">
+            <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+              <span class="glyphicon glyphicon-chevron-right"></span>
+            </a>
           </div>
         </div>
+        -->
+
         <!--
         <div class="content">
         <div class="container">
