@@ -46,9 +46,14 @@
         padding-top: 22%;
         padding-bottom: 17%;
 
-        .splash-button {
-            width: 100%;
-            height: 75px;
+        .splash-item {
+            /* DANGER: this is needed because buttons are static sized */
+            height: 88px;
+            padding-top: 20px;
+        }
+
+        .btn-xlg {
+            width: 90%;
         }
     }
 
