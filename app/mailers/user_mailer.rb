@@ -65,7 +65,7 @@ class UserMailer < ActionMailer::Base
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
 
     mail(
-      to: 'joe@vetrounds, soren@vetrounds.com, brian@vetrounds.com',
+      to: 'joe@vetrounds.com, soren@vetrounds.com, brian@vetrounds.com',
       subject: 'A new vet account has been created',
     )
   end
