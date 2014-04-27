@@ -47,6 +47,10 @@
         padding-top: 10%;
         padding-bottom: 17%;
 
+        .splash-item-wrapper {
+            padding-top: 5%;
+        }
+
         .splash-item {
             /* DANGER: this is needed because buttons are static sized */
             height: 88px;
