@@ -1,10 +1,39 @@
-<div class="container-fluid" id="active-content">
-  <div class="row">
-    <div class="col-md-3">Name</div>
-    <div class="col-md-9">Question</div>
-  </div>
-  <div class="row">
-    <div class="col-md-3">Vet</div>
-    <div class="col-md-9">Answer</div>
-  </div>
+<div class="col-md-6 col-md-offset-3 active-content-wrapper">
+  <% if active_content.present? %>
+    <div id="my-carousel<%= carousel_id %>" class="carousel slide" data-ride="carousel">
+
+      <!--
+      <ol class="carousel-indicators">
+        <li data-target="#my-carousel<%= carousel_id %>" data-slide-to="0" class="active"></li>
+        <li data-target="#my-carousel<%= carousel_id %>" data-slide-to="1"></li>
+        <li data-target="#my-carousel<%= carousel_id %>" data-slide-to="2"></li>
+      </ol>
+      -->
+
+      <!-- Wrapper for slides -->
+      <div class="carousel-inner">
+        
+        <div class="item active">
+          <%= render partial: "shared/active_content", :locals => { :answer=> active_content[0]} %>
+        </div>
+
+        <div class="item">
+          <%= render partial: "shared/active_content", :locals => { :answer=> active_content[1]} %>
+        </div>
+
+        <div class="item">
+          <%= render partial: "shared/active_content", :locals => { :answer=> active_content[2]} %>
+        </div>
+      </div>
+      <!-- Carousel nav -->
+      <!--
+      <a class="carousel-control left" href="#my-carousel<%= carousel_id %>" data-slide="prev">
+          <span class="glyphicon glyphicon-chevron-left"></span>
+      </a>
+      <a class="carousel-control right" href="#my-carousel<%= carousel_id %>" data-slide="next">
+          <span class="glyphicon glyphicon-chevron-right"></span>
+      </a>
+      -->
+    </div>
+  <% end %>
 </div>
