@@ -226,6 +226,38 @@ describe "User pages" do
       email.to_s.include?(@user.name).should be true
       email.to_s.include?("Example Request").should be true
     end
+
+    it "does not show consults" do
+      consult = create(:consult)
+      answer = create(:answer, :user => @vet, :question => consult)
+      visit user_show_path({:id => @vet.id})
+      should have_content "Answered Consult"
+      should_not have_content consult.content
+    end
+  end
+
+  describe "vet profile page as non user" do
+    before do
+      # @vet = create(:vet)
+      # visit user_show_path({:id => @vet.id})
+
+      @question = create(:answered_question)
+      @answer = @question.answers[0]
+      @vet = @answer.user
+      visit user_show_path({:id => @vet.id})
+    end
+
+    it "allows non-user to request appointment" do
+      click_button "Request Appointment"
+      click_button "Send Request"
+      current_path.should == signup_path
+      should have_content "You must create an account"
+    end
+
+    it "has a link to the vet's answers" do
+      find("#answers-table").click_link @question.content
+      current_path.should == question_show_path(@question.id)
+    end
   end
 
   describe "vet profile page with feedback" do

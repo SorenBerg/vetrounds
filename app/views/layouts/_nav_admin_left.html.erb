@@ -1,19 +1,23 @@
-<% if current_user.is_admin %>
-  <div class="col-lg-2 col-md-2 col-sm-2 side-menu-q">
-    <ul>
-      <li><a href="<%= admin_path %>"><i class="fa fa-user"></i>Vets</a></li>
-      <li><a href="<%= admin_clients_path %>"><i class="fa fa-user"></i>Clients</a></li>
-    </ul>
-  </div>
-<% else %>
-  <div class="col-lg-2 col-md-2 col-sm-2 side-menu-q">
-    <ul>
-      <li><a href="<%= user_show_path(:id => current_user.id) %>"><i class="fa fa-user"></i>My Profile</a></li>
+<% if signed_in? %>
+  <% if current_user.is_admin %>
+    <div class="col-lg-2 col-md-2 col-sm-2 side-menu-q">
+      <ul>
+        <li><a href="<%= admin_path %>"><i class="fa fa-user"></i>Vets</a></li>
+        <li><a href="<%= admin_clients_path %>"><i class="fa fa-user"></i>Clients</a></li>
+      </ul>
+    </div>
+  <% else %>
+    <div class="col-lg-2 col-md-2 col-sm-2 side-menu-q">
+      <ul>
+        <li><a href="<%= user_show_path(:id => current_user.id) %>"><i class="fa fa-user"></i>My Profile</a></li>
 
-      <% if @current_user.is_vet %>
-        <li><a href="<%= list_questions_path %>"><i class="fa fa-envelope"></i>Questions</a></li>
-        <li><a href="<%= list_consults_path %>"><i class="fa fa-envelope"></i>Consults</a></li>
-      <% end %>
-    </ul>
-  </div>
+        <% if @current_user.is_vet %>
+          <li><a href="<%= list_questions_path %>"><i class="fa fa-envelope"></i>Questions</a></li>
+          <li><a href="<%= list_consults_path %>"><i class="fa fa-envelope"></i>Consults</a></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% else %>
+  <div class="col-sm-2"></div>
 <% end %>

@@ -92,14 +92,14 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    if !signed_in?
-      redirect_to root_url
-      return
-    end
 
     @question = Question.find(params[:id])
 
-    if current_user.is_vet
+    if @question.is_consult and not current_user_is_vet?
+      redirect_to root_url
+    end
+
+    if current_user_is_vet?
       @newanswer = Answer.new
     end
   end
