@@ -45,6 +45,7 @@ class UsersController < ApplicationController
 
     if (@user.save)
       UserMailer.welcome_email(@user).deliver
+      UserMailer.internal_vet_notify(@user).deliver
 
       #Mixpanel
       register_properties(created_at: @user.created_at, email: @user.email, user_type: "vet")

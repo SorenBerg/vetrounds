@@ -58,4 +58,15 @@ class UserMailer < ActionMailer::Base
       subject: "#{from.name} requests an appointment",
     )
   end
+  
+  def internal_vet_notify(user)
+    @user = user
+
+    headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
+
+    mail(
+      to: 'joe@vetrounds, soren@vetrounds.com, brian@vetrounds.com',
+      subject: 'A new vet account has been created',
+    )
+  end
 end
