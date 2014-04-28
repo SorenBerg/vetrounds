@@ -39,7 +39,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url
-    ActionController::Base.helpers.asset_path("vet_default.jpg")
+    "http://res.cloudinary.com/hddtowmnh/image/upload/w_150,h_150,c_thumb,g_face/vet_default.jpg"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
