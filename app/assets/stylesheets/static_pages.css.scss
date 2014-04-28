@@ -126,19 +126,6 @@
         background: #fff;
         border-radius: 12px;
 
-        .avatar-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            z-index: 2;
-
-            .avatar-mask {
-                z-index: 3;
-            }
-        }
-
         .active-agreement {
             text-align: right;
             border-top: 1px dotted #ccc;

@@ -2,10 +2,14 @@
   <% if answer.present? %>
     <div class="row">
       <% answering_vet = answer.user %>
-      <div class="col-sm-3">
-        <%= link_to image_tag(answering_vet.avatar_url(:vet_avatar)), user_show_path(answering_vet.id) if answering_vet.avatar? %>
+      <div class="col-lg-3 col-md-4">
+
+        <a href="<%= user_show_path(answering_vet.id) %>">
+          <div class="avatarV2 medium" style="background-image: url(<%= answering_vet.avatar_url(:vet_face) %>)">
+          </div>
+        </a>
       </div>
-      <div class="col-sm-9">
+      <div class="col-lg-9 col-md-8">
         <div class="row active-answerer">
           <%= image_tag "textvetred.png" %> <%= link_to "Dr. #{answering_vet.name}", user_show_path(answering_vet.id) %>
         </div>
@@ -18,13 +22,16 @@
       </div>
     </div>
     <div class="row">
-      <div class="active-agreement">
+      <div class="col-xs-12 active-agreement">
         <% agreements = answer.agreements.count %>
         <%= pluralize agreements, "Vet" %> <%= agreements == 1 ? "agrees" : "agree" %>:
         &nbsp;&nbsp;
         <% for i in (0...agreements) %>
           <% agreeing_vet = answer.agreements[i].from %>
-          <%= link_to image_tag(agreeing_vet.avatar_url(:vet_tiny)), user_show_path(agreeing_vet.id) if agreeing_vet.avatar? %>
+          <a href="<%= user_show_path(agreeing_vet.id) %>">
+            <div class="avatarV2 tiny" style="background-image: url(<%= agreeing_vet.avatar_url(:vet_face) %>)">
+            </div>
+          </a>
         <% end %>
       </div>
     </div>
