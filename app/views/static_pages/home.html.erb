@@ -8,29 +8,31 @@
 <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <link href="http://fonts.googleapis.com/css?family=Cardo" rel="stylesheet" type="text/css">
 
-<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+<link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
+ <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
 
 <div class="front-page">
   <%= render "layouts/nav" %>
 
-  <div class="container">
+  <div class="container main-container">
     <!--<div id="home-bg"></div>-->
 
     <div id="vet-client-buttons" class="splash-header">
       <div class="row">
-        <div class="col-sm-8 col-sm-offset-2">
-          <h2>Reliable Answers </h2>
-          <h2>from</h2>
-          <h2>Licensed Veterinarians</h2>
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="header-block">
+            <h2>Reliable Answers from</h2>
+            <h2>Licensed Veterinarians</h2>
+          </div>
         </div>
       </div>
       <div class="row splash-item-wrapper">
-        <div class="col-sm-4">
+        <div class="col-sm-4 col-sm-offset-1">
           <div class="row splash-item" id="client-button">
             <button class="btn btn-success btn-xlg"> <%= image_tag "paw.png" %> Pet Owners </button> 
           </div>
         </div>
-        <div class="col-sm-4 col-sm-offset-4">
+        <div class="col-sm-4 col-sm-offset-2">
           <div class="row splash-item" id="vet-button">
             <button class="btn btn-success btn-xlg"> <%= image_tag "tinyvet.png" %> Veterinarians </button>
           </div>
@@ -51,11 +53,11 @@
         <div class="col-sm-8 col-sm-offset-2">
           
           <div class="row tag-line">
-                        
-            <h2>Free advice from Licensed Veterinarians</h2>
-            
-            <h2>Find veterinarians you can rely on</h2>
-            
+            <div class="header-block">
+              <h2>Free advice from Licensed Veterinarians</h2>
+              
+              <h2>Find veterinarians you can rely on</h2>
+            </div>
           </div>
         </div>
         <div class="col-sm-8 col-sm-offset-2 question-box">
@@ -83,13 +85,12 @@
           <div class="col-sm-8 col-sm-offset-2">
         
             <div class="row tag-line">
-                          
-              <h2>Build your Virtual Practice For Free</h2>
-              <h2>Connect with existing and potential clients</h2>
-              <h2>Consult with your peers</h2>
-              
+              <div class="header-block">
+                <h2>Connect with existing and potential clients</h2>
+                <h2>Consult with your peers</h2>
+                <h2>Help create reliable pet health information</h2>
+              </div>
             </div>
-          
 
             <div class="row sign-up">
               <a class="btn btn-success btn-xlg" id="vet-sign-up" href="<%= signup_path %>#doctor-signup">Sign Up</a>
