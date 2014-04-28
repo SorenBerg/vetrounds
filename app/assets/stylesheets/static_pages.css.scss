@@ -1,5 +1,6 @@
 @import "mixins";
 
+
 .front-page {
     font-weight: bold;
     text-align: center;
@@ -16,7 +17,8 @@
     }
 
     .row {
-        h2 { 
+        
+        h2,li { 
             font-size: 40px;
             font-style: bold;
             color: #fff;
@@ -24,6 +26,9 @@
             text-shadow: black 0.1em 0.1em 0.2em;
             font-family: 'Lato', sans-serif;
         }
+    }
+
+   
     }
 
     .i-am-tag {
