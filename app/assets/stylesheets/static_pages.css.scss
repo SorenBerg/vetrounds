@@ -45,6 +45,17 @@
 
     }
 
+    .main-container {
+
+    }
+
+    .header-block {
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 30px;
+        padding-top: 2%;
+        padding-bottom: 2%;
+    }
+
     .splash-header {
         padding-top: 10%;
         padding-bottom: 17%;
@@ -54,13 +65,10 @@
         }
 
         .splash-item {
-            /* DANGER: this is needed because buttons are static sized */
-            height: 88px;
             padding-top: 20px;
         }
 
         .btn-xlg {
-            /* DANGER: this is needed because buttons are static sized */
             height: 88px;
             width: 90%;
         }
