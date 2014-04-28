@@ -151,7 +151,7 @@
   </div>
   <div class="row-fluid">
     <div class="col-sm-1"></div>
-    <% (1..5).each do |i| %>
+    <% (0..4).each do |i| %>
       <div class="col-sm-2 center-block">
         <% if @top5[i].present? %>
           <a href="<%= user_show_path(@top5[i]) %>">
