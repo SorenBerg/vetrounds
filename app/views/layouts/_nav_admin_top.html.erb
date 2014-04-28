@@ -39,6 +39,11 @@
             </ul>
           </li>
         </ul>
+      <% else %>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="<%= login_url %>">Sign In</a></li>
+          <li><a href="<%= signup_url %>#client-signup">Register</a></li>
+        </ul>
       <% end %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
