@@ -42,12 +42,33 @@
                   </div>
                 </div>
                 <div class="col-sm-2 col-lg-1 col-sm-pull-10 col-lg-pull-11">
-                  <div class="points-wrap" style="width : 80px" title="A doctor’s VetScore is a mesure of how much they have helped the community.">
+                  <div class="points-wrap" style="width : 80px" data-toggle="modal" href="#normalModal" title="A doctor’s VetScore is a mesure of how much they have helped the community.">
                     <span class="points-segment"><%= @user.vet_score.to_s.chars[0] %></span><span class="points-segment"><%= @user.vet_score.to_s.chars[1] %></span>
                     <div class="vetscore-label">VetScore</div>
                     <div class="context-popup-member"></div>
                   </div>
                 </div>
+
+                              <div id="normalModal" class="modal fade">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                      <h4 class="modal-title">VetScore Rating</h4>
+                    </div>
+                    <div class="modal-body">
+
+                      The VetScore rating is based on how active a veterinarian is in helping the community.  The VetScore is a combination of veterinary achievements, reviewing and agreeing with answers from colleagues , answering questions, and receiving thanks from the community.  The veterinarians with the highest ratings receive recognition, promotion and can receive awards for their achievements. 
+                     
+
+
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+
+
                 
               </div>
             </div>
