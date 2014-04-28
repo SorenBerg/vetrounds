@@ -14,6 +14,10 @@ module SessionsHelper
     @current_user = user
   end
 
+  def current_user_is_vet?
+    current_user.present? and current_user.is_vet
+  end
+
   def current_user
     remember_token = User.encrypt(cookies[:remember_token])
     @current_user ||= User.find_by(remember_token: remember_token)

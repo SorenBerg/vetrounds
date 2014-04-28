@@ -4,7 +4,7 @@ module ThanksHelper
   end
 
   def get_thank_from_current_user (answer)
-    if answer.nil?
+    if answer.nil? or current_user.nil?
       return nil
     end
 

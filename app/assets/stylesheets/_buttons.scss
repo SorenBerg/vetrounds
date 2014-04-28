@@ -20,10 +20,10 @@
     -moz-border-radius: 21px;
     border-radius: 21px;
 
-    transition:All 1.5846s ease;
-    -webkit-transition:All 1.5846s ease;
-    -moz-transition:All 1.5846s ease;
-    -o-transition:All 1.5846s ease;
+    transition:All 0.2s ease;
+    -webkit-transition:All 0.2s ease;
+    -moz-transition:All 0.2s ease;
+    -o-transition:All 0.2s ease;
     -webkit-box-shadow: 1px 1px 1px rgba(50, 50, 50, 0.57);
     -moz-box-shadow:    1px 1px 1px rgba(50, 50, 50, 0.57);
     box-shadow:         1px 1px 1px rgba(50, 50, 50, 0.57);
@@ -39,11 +39,7 @@
 }
 
 .btn-xlg:hover {
-    transform: rotate(0deg) scale(1.121) skew(1deg) translate(0px);
-    -webkit-transform: rotate(0deg) scale(1.121) skew(1deg) translate(0px);
-    -moz-transform: rotate(0deg) scale(1.121) skew(1deg) translate(0px);
-    -o-transform: rotate(0deg) scale(1.121) skew(1deg) translate(0px);
-    -ms-transform: rotate(0deg) scale(1.121) skew(1deg) translate(0px);
+    
     -webkit-box-shadow: -1px 11px 11px 0px rgba(50, 50, 50, 0.85);
     -moz-box-shadow:    -1px 11px 11px 0px rgba(50, 50, 50, 0.85);
     box-shadow:         -1px 11px 11px 0px rgba(50, 50, 50, 0.85);

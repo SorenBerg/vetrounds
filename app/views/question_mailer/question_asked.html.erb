@@ -6,7 +6,7 @@
   <body>
     <h1>A question has been asked by <%= @question.user.name %></h1>
     <p>Here is the question: <br> <%= @question.content %> </p>
-    <p> <%= link_to("Click here to answer the question", question_show_url(@question)) %>
+    <p> <%= link_to("Click here to answer the question", "www.vetrounds.com/#{question_show_path(@question)}") %>
 	</p>
     <p>
       When you have a chance, you should log in and answer their question</p>

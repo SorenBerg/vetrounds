@@ -204,12 +204,36 @@ describe "Question pages" do
       email.to_s.include?("Test Name").should be true
     end
 
+    it "will not show a user consults" do
+      consult = create(:consult)
+      visit question_show_path({:id => consult.id})
+      current_path.should == root_path
+    end
+
     it "should have headings" do
       should have_selector("h2", :text => "Question")
       should have_selector("h2", :text => "1 Answer")
     end
 
     it { should have_title(full_title("Question")) }
+  end
+
+  describe "question show page as non user" do
+
+    before do
+      @question = create(:answered_question)
+      visit question_show_path({:id => @question.id})
+    end
+
+    it "shows question" do
+      should have_content @question.content
+    end
+
+    it "prevents thank you's" do
+      click_button "Thank"
+      should have_content "You must sign in"
+      should_not have_content "Done"
+    end
   end
 
   describe "question show page as vet" do

@@ -95,7 +95,7 @@
                 </div>
 
 
-                <% if not current_user.is_vet %>
+                <% if not current_user_is_vet? %>
                   <div class="col-sm-12 appt-button">
                     <button class="btn btn-primary" data-toggle="modal" data-target="#appt-request-modal-">Request Appointment</button>
                   </div>
@@ -112,14 +112,16 @@
                       <th>Thanks</th>
                     </tr>
                     <% @user.answers.each do |answer| %>
-                      <tr>
-                        <td>
-                          <a href="<%= question_show_path(:id => answer.question.id) %>"><%= answer.question.content.truncate(250) %></a>
-                        </td>
-                        <td> 
-                          <%= answer.thanks.count %>
-                        </td>
-                      </tr>
+                      <% if current_user_is_vet? or not answer.question.is_consult %>
+                        <tr>
+                          <td>
+                            <a href="<%= question_show_path(:id => answer.question.id) %>"><%= answer.question.content.truncate(250) %></a>
+                          </td>
+                          <td> 
+                            <%= answer.thanks.count %>
+                          </td>
+                        </tr>
+                      <% end %>
                     <% end %>
                   </table>
                 <% end %>
@@ -132,7 +134,15 @@
                   <% @user.activity_stream.each do |item| %>
                     <li>
                       <% if item.is_a? Answer %>
-                        <b>Answered</b> '<%= link_to(item.question.content, question_show_path(item.question.id)) %>'
+                        <% if item.question.is_consult %>
+                          <% if current_user_is_vet? %>
+                            <b>Answered Consult</b> '<%= link_to(item.question.content, question_show_path(item.question.id)) %>'
+                          <% else %>
+                            <b>Answered Consult</b> 
+                          <% end %>
+                        <% else %>
+                          <b>Answered</b> '<%= link_to(item.question.content, question_show_path(item.question.id)) %>'
+                        <% end %>
                       <% elsif item.is_a? Thank %>
                         <b>Thank you</b> from <%= link_to(item.from.name, user_show_path(item.from.id)) %>: '<%= item.feedback %>'
                       <% elsif item.is_a? Agreement %>

@@ -28,6 +28,7 @@
 
     .i-am-tag {
         color: black;
+        padding-top: 5%;
     }
 
     .btn {
@@ -43,8 +44,12 @@
     }
 
     .splash-header {
-        padding-top: 22%;
+        padding-top: 10%;
         padding-bottom: 17%;
+
+        .splash-item-wrapper {
+            padding-top: 5%;
+        }
 
         .splash-item {
             /* DANGER: this is needed because buttons are static sized */
@@ -53,6 +58,8 @@
         }
 
         .btn-xlg {
+            /* DANGER: this is needed because buttons are static sized */
+            height: 88px;
             width: 90%;
         }
     }
@@ -102,7 +109,9 @@
         @include generic-shadow;
         
         text-align: left;
-        margin: 10px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        margin-right: 10px;
         padding-top: 7px;
         background: #fff;
         border-radius: 12px;
@@ -160,10 +169,6 @@
     }
 
 }
-
-
-
-
 
 
 

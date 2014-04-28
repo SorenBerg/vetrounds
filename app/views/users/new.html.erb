@@ -1,4 +1,7 @@
 <% provide(:title, "Signup") %>
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div> 
+<% end %>
 
 <%= render "layouts/nav_admin_top" %>
 
@@ -20,9 +23,13 @@
 
           <div class="tab-pane active" id="doctor-signup">
             <%= form_for @user, url: {action: "create_vet"}, html: {class: "form-horizontal", id: "vet_new_user"} do |f| %>
+
               <%= render "shared/user_error_messages" %>
 
               <%= render partial: "shared/forms/fields_for_user", :locals => { :for_vet => true } %>
+
+                                       <p><small>Note: Your email and license number will be kept confidential and are only used for verification </small></p>
+
               
               <div class="form-group">
                 <div class="col-sm-12">
@@ -30,7 +37,7 @@
                 </div>
               </div>
               <%= link_to "Already have an account?", login_path %>
-              <p><small>Note - Your email and license number are confidential and will not be publicly visible</small></p>
+ 
             <% end %>
 
           </div>  

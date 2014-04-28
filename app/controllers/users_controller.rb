@@ -60,10 +60,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !signed_in?
-      redirect_to root_url
-      return
-    end
 
     @user = User.find_by_id(params[:id])
 
@@ -93,7 +89,7 @@ class UsersController < ApplicationController
   def request_appointment
     if !signed_in?
       flash[:notice] = "You must create an account to request an appointment"
-      redirect_to root_url
+      redirect_to signup_url
       return
     end
     user = User.find_by_id(params[:from_id])
