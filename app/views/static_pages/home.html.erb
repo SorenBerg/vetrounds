@@ -163,10 +163,7 @@
             
             <%= image_tag "textvetred.png" %> Dr. <%= @top5[i].name %>
             
-            <div> <%= "#{@top5[i].detail.area_of_practice}" %></div>
-            <p class="expert-polis">
-              <span class="polis top-vet-label"><%= @top5[i].detail.zipcode %></span>
-            </p>
+            <div> <%= @top5[i].detail.area_of_practice == "Companion Animals" ? "Companion Animal Medicine" : @top5[i].detail.area_of_practice %></div>
           </div>
         <% end %>
       </div>
