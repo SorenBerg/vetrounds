@@ -191,7 +191,7 @@
               <ul>
                 <% answer.thanks.each do |thank| %>
                   <li>
-                    <% if thank.feedback %>
+                    <% if thank.feedback.present? %>
                       <b><%= thank.from.name %></b>: <%= thank.feedback %>
                     <% else %>
                       <b><%= thank.from.name %></b>: Thanks
