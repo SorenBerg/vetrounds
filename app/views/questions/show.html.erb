@@ -150,23 +150,22 @@
             <div class="row answer-temp-user">
           <% end %>
             <div class="col-lg-2 col-md-3 col-sm-3 text-center">
-              <%= image_tag(answer.user.avatar_url(:vet_avatar)) if answer.user.avatar? %><br><br>
+              <a href="<%= user_show_path(answer.user.id) %>">
+                <div class="avatarV2 medium" style="background-image: url(<%= answer.user.avatar_url(:vet_face) %>)">
+                </div>
+              </a>
+
+              <br>
               <span>
                 <a href="<%= user_show_path(:id => answer.user.id) %>"> Dr. <%= answer.user.name %></a>
               </span>
             </div>
-
-
-
             <div class="col-lg-8 col-md-6 col-sm-6">
 
               <p>
                 <%= answer.answer %>
                 <a data-toggle="modal" href="#normalModal" class="href">//Disclaimer</a>
               </p>
-            
-
-
               <div id="normalModal" class="modal fade">
                 <div class="modal-dialog">
                   <div class="modal-content">
@@ -192,7 +191,7 @@
               <ul>
                 <% answer.thanks.each do |thank| %>
                   <li>
-                    <% if thank.feedback %>
+                    <% if thank.feedback.present? %>
                       <b><%= thank.from.name %></b>: <%= thank.feedback %>
                     <% else %>
                       <b><%= thank.from.name %></b>: Thanks

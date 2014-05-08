@@ -108,8 +108,6 @@ class UsersController < ApplicationController
     redirect_to user_show_path(:id => user.id)
   end
 
-
-
   private
     def client_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation, :terms, detail_attributes: [:zipcode])

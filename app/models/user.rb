@@ -60,6 +60,14 @@ class User < ActiveRecord::Base
     score += [15, self.agreed.count * 3].min
   end
 
+  def location
+    location = ZIP_CODE.find(self.detail.zipcode)
+    if location.present?
+      return "#{location['city'].titleize}, #{location['state']}"
+    else
+      return self.detail.zipcode
+    end
+  end
 
   private
     def create_remember_token

@@ -14,6 +14,7 @@ gem 'google-analytics-rails'
 gem 'carrierwave'
 gem 'cloudinary'
 gem "pg", "~> 0.17.1"
+gem 'newrelic_rpm'
 
 group :production do
   gem "rails_12factor", "~> 0.0.2"

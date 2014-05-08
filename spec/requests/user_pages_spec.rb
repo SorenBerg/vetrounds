@@ -143,14 +143,12 @@ describe "User pages" do
 
     it "contains vet info" do
       should have_content(@vet.name)
-      #should have_content(@vet.email)
-      should have_content(@vet.detail.zipcode)
+      #zipcode conversion for 12345
+      should have_content("Schenectady, NY")
       should have_content(@vet.detail.area_of_practice)
       should have_content(@vet.detail.veterinary_school)
       should have_content(@vet.detail.veterinary_school_year)
       should have_content(@vet.detail.degree)
-      #should have_content(@vet.detail.license_number)
-      #should have_content(@vet.detail.license_state)
     end
 
     it "contains picture upload button" do

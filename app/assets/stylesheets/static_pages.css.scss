@@ -126,19 +126,6 @@
         background: #fff;
         border-radius: 12px;
 
-        .avatar-wrapper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            z-index: 2;
-
-            .avatar-mask {
-                z-index: 3;
-            }
-        }
-
         .active-agreement {
             text-align: right;
             border-top: 1px dotted #ccc;
@@ -166,6 +153,16 @@
                 font-weight: 100;
                 padding-bottom: 30px;
         }
+
+        .expert-polis {
+            display: inline-block;
+            padding-left: 18px;
+            background: url(image-path('map_marker_white.png')) no-repeat left top;
+            line-height: 15px;
+            font-size: 13px;
+            color: #ffffff;
+            margin: 5px 0;
+        }
     }
 
     .faded-img {
@@ -178,6 +175,8 @@
         color: #999999;
         width: 100%;
     }
+
+
 
 }
 
