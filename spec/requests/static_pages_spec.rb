@@ -6,8 +6,8 @@ describe "StaticPages" do
       visit root_url
     end
 
-    it "should have the page title 'Home | Vetrounds'" do
-      expect(page).to have_title("Home | Vetrounds")
+    it "should have the page title 'VetRounds'" do
+      expect(page).to have_title("VetRounds")
     end
 
     describe "about us modal" do

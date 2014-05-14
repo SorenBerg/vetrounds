@@ -17,7 +17,7 @@
           answered:
         </div>
         <div class="row active-question">
-          <%= link_to answer.question.content, question_show_path(answer.question.id) %>
+          <%= link_to truncate(answer.question.content, :length => 200, :separator => ' '), question_show_path(answer.question.id) %>
         </div>
       </div>
     </div>
