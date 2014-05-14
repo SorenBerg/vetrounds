@@ -20,6 +20,7 @@ FactoryGirl.define do
 			question_notification "nearby"
 			is_vet true
 			enabled true
+			bio "test bio"
 			association :detail, factory: :vet_detail
 
 			factory :second_vet do

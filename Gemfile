@@ -15,6 +15,7 @@ gem 'carrierwave'
 gem 'cloudinary'
 gem "pg", "~> 0.17.1"
 gem 'newrelic_rpm'
+gem 'rails_autolink', '~> 1.1.5'
 
 group :production do
   gem "rails_12factor", "~> 0.0.2"

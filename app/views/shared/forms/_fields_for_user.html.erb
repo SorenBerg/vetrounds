@@ -25,6 +25,15 @@
     <div class="col-sm-4"></div>
   </div>
 
+  <% if for_vet %>
+    <div class="form-group">
+      <div class="col-sm-8">
+        <%= user_f.text_area :bio, :class => "form-control", :placeholder => "Bio (can include links)" %>
+      </div>
+      <div class="col-sm-4"></div>
+    </div>
+  <% end %>
+
   <%= user_f.fields_for :detail do |detail_f| %>
     <% if not for_vet %>
     <div class="form-group">

@@ -50,6 +50,7 @@ describe "User pages" do
         find(:css, "#vet_new_user #user_email").set("vet@example.com")
         find(:css, "#vet_new_user #user_password").set("foobar")
         find(:css, "#vet_new_user #user_password_confirmation").set("foobar")
+        find(:css, "#vet_new_user #user_bio").set("")
         find(:css, "#vet_new_user #user_detail_attributes_zipcode").set("12345")
         find(:css, "#vet_new_user #user_detail_attributes_veterinary_school").set("blah")
         find(:css, "#vet_new_user #user_detail_attributes_license_number").set("12345")
@@ -143,6 +144,7 @@ describe "User pages" do
 
     it "contains vet info" do
       should have_content(@vet.name)
+      should have_content(@vet.bio)
       #zipcode conversion for 12345
       should have_content("Schenectady, NY")
       should have_content(@vet.detail.area_of_practice)
@@ -178,6 +180,15 @@ describe "User pages" do
       @vet.reload
       @vet.question_notification.should eq("all")
       
+    end
+
+    it "can update bio" do
+      find(:css, "#user_bio").set("test www.google.com link")
+      click_button "Update"
+      @vet.reload
+      @vet.bio.should eq("test www.google.com link")
+      #linkify is done on display
+      should have_link('www.google.com', href: "http://www.google.com")
     end
   end
 

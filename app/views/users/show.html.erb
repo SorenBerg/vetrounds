@@ -67,9 +67,13 @@
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                     </div>
                   </div>
-
-
-                
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6">
+                <% if @user.bio.length > 0 %>
+                  <%= auto_link(@user.bio) %>
+                <% end %>
               </div>
             </div>
             <div class="row">
@@ -109,7 +113,24 @@
                         <label>Notify me when a new question is asked:</label>
                       </p>
                       <p>
-                        <%= f.select :question_notification, options_for_select([["Never", "none"], ["Always", "all"], ["Only in my area", "nearby"]], :selected => current_user.question_notification) %> <%= f.submit "Save", class: "btn btn-primary" %>
+                        <%= f.select :question_notification, options_for_select([["Never", "none"], ["Always", "all"], ["Only in my area", "nearby"]], :selected => current_user.question_notification) %> 
+                      </p>
+                      <p>
+                        <%= f.submit "Save", class: "btn btn-primary" %>
+                      </p>
+                    <% end %>
+
+                    <%= form_for current_user, url: {action: "update_user"}, :method => :POST do |f| %>
+                      <%= render "shared/user_error_messages" %>
+                      <p>
+                        <%= f.hidden_field :id, :value => current_user.id %>
+                        <label>Update Bio</label>
+                      </p>
+                      <p>
+                        <%= f.text_area :bio, :class => "form-control", :placeholder => "Bio (can include links)" %>
+                      </p>
+                      <p>
+                        <%= f.submit "Update", class: "btn btn-primary" %>
                       </p>
                     <% end %>
                   <% end %>
