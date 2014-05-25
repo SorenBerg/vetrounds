@@ -23,7 +23,7 @@
     </tr>
   </thead>
   <tbody>
-    <% questions.each do |question| %>
+    <% questions.order('created_at DESC').each do |question| %>
       <tr>
         <td><%= question.user.name %></td>
         <td><%= question.content.truncate(250) %></td>
