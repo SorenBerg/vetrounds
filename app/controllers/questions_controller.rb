@@ -1,4 +1,7 @@
 class QuestionsController < ApplicationController
+
+  skip_before_filter :verify_authenticity_token, :except => [:create]
+
   def new
     #called on page load
     @question = Question.new
