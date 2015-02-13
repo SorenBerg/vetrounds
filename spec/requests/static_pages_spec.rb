@@ -22,7 +22,7 @@ describe "StaticPages" do
 
     describe "client section" do
       before do
-        click_button "Pet Owner"
+        # click_button "Pet Owner"
       end
 
       describe "question box" do
@@ -42,16 +42,16 @@ describe "StaticPages" do
       end
     end
 
-    describe "vet section" do
-      before do
-        find(:css, "#vet-button").click
-      end
+    # describe "vet section" do
+    #   before do
+    #     find(:css, "#vet-button").click
+    #   end
 
-      it "should allow sign ups" do
-        find(:css, "#vet-content").click_link "Sign Up"
-        current_path.should eq(signup_path)
-      end
-    end
+    #   it "should allow sign ups" do
+    #     find(:css, "#vet-content").click_link "Sign Up"
+    #     current_path.should eq(signup_path)
+    #   end
+    # end
 
     # describe "active content" do
     #   before do
