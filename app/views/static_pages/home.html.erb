@@ -49,43 +49,37 @@
         </div>
         <%= render partial: "shared/active_content_carousel", :locals => { :active_content=> @active_content, :carousel_id => 1 } %>
       </div>
-
-
     </div>
-
-    
-
-
   </div>
-</div>
 
-<div id="top-vets" class="container-fluid">
-  <div class="row-fluid">
-    <h2>Top Vets</h2>
-  </div>
-  <div class="row-fluid">
-    <div class="col-sm-1"></div>
-    <% (0..4).each do |i| %>
-      <div class="col-sm-2 center-block">
-        <% if @top5[i].present? %>
-          <a href="<%= user_show_path(@top5[i]) %>">
-            <div class="avatarV2 medium" style="background-image: url(<%= @top5[i].avatar_url(:vet_face) %>)">
-            </div>
-          </a>
+  <div id="top-vets" class="container-fluid">
+    <div class="row-fluid">
+      <h2>Top Vets</h2>
+    </div>
+    <div class="row-fluid">
+      <div class="col-sm-1"></div>
+      <% (0..4).each do |i| %>
+        <div class="col-sm-2 center-block">
+          <% if @top5[i].present? %>
+            <a href="<%= user_show_path(@top5[i]) %>">
+              <div class="avatarV2 medium" style="background-image: url(<%= @top5[i].avatar_url(:vet_face) %>)">
+              </div>
+            </a>
 
-          <div class="top-vet-label">
-            
-            <%= image_tag "textvetred.png" %> Dr. <%= @top5[i].name %>
-            
-            <div> <%= @top5[i].detail.area_of_practice == "Companion Animals" ? "Companion Animal Medicine" : @top5[i].detail.area_of_practice %>
+            <div class="top-vet-label">
+              
+              <%= image_tag "textvetred.png" %> Dr. <%= @top5[i].name %>
+              
+              <div> <%= @top5[i].detail.area_of_practice == "Companion Animals" ? "Companion Animal Medicine" : @top5[i].detail.area_of_practice %>
+              </div>
+              <p class="expert-polis">
+                <span class="polis"><%= @top5[i].location %></span>
+              </p>
             </div>
-            <p class="expert-polis">
-              <span class="polis"><%= @top5[i].location %></span>
-            </p>
-          </div>
-        <% end %>
-      </div>
-    <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
 
