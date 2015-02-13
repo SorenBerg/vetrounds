@@ -17,33 +17,6 @@
   <div class="container main-container">
     <!--<div id="home-bg"></div>-->
 
-    <div id="vet-client-buttons" class="splash-header">
-      <div class="row">
-        <div class="col-sm-6 col-sm-offset-3">
-          <div class="header-block">
-            <h2>Reliable Answers from</h2>
-            <h2>Licensed Veterinarians.</h2>
-          </div>
-        </div>
-      </div>
-      <div class="row splash-item-wrapper">
-        <div class="col-sm-4 col-sm-offset-1">
-          <div class="row splash-item" id="client-button">
-            <button class="btn btn-dark-red btn-xlg"> <%= image_tag "paw.png" %> Pet Owners </button> 
-          </div>
-        </div>
-        <div class="col-sm-4 col-sm-offset-2">
-          <div class="row splash-item" id="vet-button">
-            <button class="btn btn-dark-red btn-xlg"> <%= image_tag "tinyvet.png" %> Veterinarians </button>
-          </div>
-
-
-        </div>
-      </div>
-      <%= render partial: "shared/active_content_carousel", :locals => { :active_content=> @active_content, :carousel_id => 1 } %>
-
-    </div>
-
     
 
     <div id="hidden-content">
@@ -77,66 +50,7 @@
         <%= render partial: "shared/active_content_carousel", :locals => { :active_content=> @active_content, :carousel_id => 1 } %>
       </div>
 
-      <!-- Vet content -->
-      <div id="vet-content">
-        <div class="row">
-          
 
-          <div class="col-sm-8 col-sm-offset-2">
-        
-            <div class="row tag-line">
-              <div class="header-block">
-                <h2>Connect with existing and potential clients</h2>
-                <h2>Consult with your peers</h2>
-                <h2>Help create reliable pet health information</h2>
-              </div>
-            </div>
-
-            <div class="row sign-up">
-              <a class="btn btn-dark-red btn-xlg" id="vet-sign-up" href="<%= signup_path %>#doctor-signup">Sign Up</a>
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="row">
-          <%= render partial: "shared/active_content_carousel", :locals => { :active_content=> @active_content, :carousel_id => 2 } %> 
-        </div>
-
-        <!--
-        <div class="content">
-        <div class="container">
-          <div class="row content-row1">
-            <div class="cont-header text-center"><span>How does it work ? </span></div>
-          </div> 
-          <div class="row content-row2">
-            <div class="col-sm-4">
-              <div class="cont-template">
-                <div class="cont-icon"><i class="fa fa-info-circle"></i></div>
-                <div class="cont-template-header">1. Answer questions from vets and clients</div>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="cont-template">
-                <div class="cont-icon"><i class="fa fa-comment-o"></i></div>
-                <div class="cont-template-header">2. Build up your VetScore.</div>
-                <p></p>
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="cont-template">
-                <div class="cont-icon"><i class="fa fa-users"></i></div>
-                <div class="cont-template-header">3. Get clients.</div>
-                <p></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      -->
-
-      <!-- End Vet content -->
     </div>
 
     
