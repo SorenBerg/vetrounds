@@ -16,7 +16,7 @@
         font-family: 'Lato', sans-serif;
     }
 
-    .row {
+    .main-container {
         
         h2,li { 
             font-size: 40px;
@@ -75,7 +75,6 @@
     }
 
     #client-content {
-        display: none;
         padding-top: 4%;
         padding-bottom: 1%;
 
@@ -100,7 +99,7 @@
 
     .tag-line {
         padding: 5%;
-        padding-top: 15%;
+        padding-top: 10%;
     }
 
     .sign-up {

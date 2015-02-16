@@ -9,7 +9,7 @@ class QuestionMailer < ActionMailer::Base
 
     mail(
       to: @question.user.email,
-      subject: 'Your question has been answered at VetRounds'
+      subject: 'Your question has been answered at VetPronto!'
     )
   end
 
@@ -22,7 +22,7 @@ class QuestionMailer < ActionMailer::Base
 
     mail(
       to: to_email,
-      subject: 'Vetrounds: ' + current_user.name + ' shared an answer with you'
+      subject: 'VetPronto: ' + current_user.name + ' shared an answer with you'
     )
   end
 
@@ -33,7 +33,7 @@ class QuestionMailer < ActionMailer::Base
 
     mail(
       to: vet.email,
-      subject: 'New question on Vetrounds'
+      subject: 'New question on VetPronto'
     )
   end
 end

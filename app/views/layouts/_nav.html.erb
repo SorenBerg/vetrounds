@@ -2,44 +2,60 @@
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     
-  
-    <div class="col-lg-12">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="<%= root_url %>">
-          <%= image_tag "navlogo.png" %><br>
-          <span class="tag-line">Helping Pets</span>
-        </a>
-      </div>
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="http://vetpronto.com">
+            <img style="max-width:250px; margin-top: -25px;" src="http://cdn2.hubspot.net/hub/463063/file-2313206550-png/logo-494439-edited.png">
+          </a>
+          <span class="logo-tag-line hidden-xs">Mobile Veterinarians</span>
+        </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-          <a data-toggle="modal" data-target="#about-modal" href="#">About Us</a>
-          </li>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li>
+            <a href="http://vetpronto.com">Home</a>
+            </li>
 
-          <% if !signed_in? %>
-            <li><a href="<%= signup_url %>">Sign Up</a></li>
-          <% else %>
-            <li><a href="<%= user_show_path(:id => current_user.id) %>">My Profile</a></li>
-          <% end %>
+            <li><a href="http://vetpronto.com/appointment">Schedule house call</a></li>
 
-          <li>
-            <% if signed_in? %>
-              <a href="<%= logout_url %>" class="btn-login">Logout</a>
+            <!-- <li>
+              <% if signed_in? %>
+                <a href="<%= logout_url %>" class="btn-login">Logout</a>
+              <% else %>
+                <a href="<%= login_url %>" class="btn-login">Login</a>
+              <% end %>
+            </li> -->
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li>
+            <a data-toggle="modal" data-target="#about-modal" href="#">About Us</a>
+            </li>
+
+            <% if !signed_in? %>
+              <li><a href="<%= signup_url %>">Sign Up</a></li>
             <% else %>
-              <a href="<%= login_url %>" class="btn-login">Login</a>
+              <li><a href="<%= user_show_path(:id => current_user.id) %>">My Profile</a></li>
             <% end %>
-          </li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+
+            <!-- <li>
+              <% if signed_in? %>
+                <a href="<%= logout_url %>" class="btn-login">Logout</a>
+              <% else %>
+                <a href="<%= login_url %>" class="btn-login">Login</a>
+              <% end %>
+            </li> -->
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </div>
   </div>
 </nav>
 
