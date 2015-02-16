@@ -18,7 +18,7 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: @user.email,
-      subject: 'Welcome to VetRounds',
+      subject: 'Welcome to VetPronto',
       template_name: template_name
     )
   end
@@ -30,7 +30,7 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: user.email,
-      subject: "Vetrounds : Password Reset"
+      subject: "VetPronto questions: Password Reset"
     )
   end
   
@@ -41,7 +41,7 @@ class UserMailer < ActionMailer::Base
 
     mail(
       to: user.email,
-      subject: 'Your account on VetRounds has been enabled',
+      subject: 'Your account on VetPronto has been enabled',
     )
   end
 
@@ -65,7 +65,7 @@ class UserMailer < ActionMailer::Base
     headers['X-SMTPAPI'] = '{"filters":{"subscriptiontrack":{"settings":{"enable":1,"text/html":"Unsubscribe <%Here%>","text/plain":"Unsubscribe Here: <% %>"}}}}'
 
     mail(
-      to: 'joe@vetrounds.com, soren@vetrounds.com, brian@vetrounds.com',
+      to: 'joe@vetpronto.com, soren@vetpronto.com, brian@vetpronto.com',
       subject: 'A new vet account has been created',
     )
   end
