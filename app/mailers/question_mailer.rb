@@ -1,5 +1,5 @@
 class QuestionMailer < ActionMailer::Base
-  default from: "no-reply@vetrounds.com"
+  default from: "info@vetpronto.com"
 
   def question_answered(question, answer)
     @question = question
