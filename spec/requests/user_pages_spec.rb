@@ -224,17 +224,17 @@ describe "User pages" do
       should_not have_content("Answered Question")
     end
 
-    it "allows user to request appointment" do
-      click_button "Request Appointment"
-      find(:css, "#request").set("Example Request")
-      click_button "Send Request"
-      should have_content "Request sent"
-      # if this test goes flaky add sleep for quick fix or mock
-      email = ActionMailer::Base.deliveries.last
-      email.to.should eq [@vet.email]
-      email.to_s.include?(@user.name).should be true
-      email.to_s.include?("Example Request").should be true
-    end
+    # it "allows user to request appointment" do
+    #   click_button "Request Appointment"
+    #   find(:css, "#request").set("Example Request")
+    #   click_button "Send Request"
+    #   should have_content "Request sent"
+    #   # if this test goes flaky add sleep for quick fix or mock
+    #   email = ActionMailer::Base.deliveries.last
+    #   email.to.should eq [@vet.email]
+    #   email.to_s.include?(@user.name).should be true
+    #   email.to_s.include?("Example Request").should be true
+    # end
 
     it "does not show consults" do
       consult = create(:consult)
@@ -256,12 +256,12 @@ describe "User pages" do
       visit user_show_path({:id => @vet.id})
     end
 
-    it "allows non-user to request appointment" do
-      click_button "Request Appointment"
-      click_button "Send Request"
-      current_path.should == signup_path
-      should have_content "You must create an account"
-    end
+    # it "allows non-user to request appointment" do
+    #   click_button "Request Appointment"
+    #   click_button "Send Request"
+    #   current_path.should == signup_path
+    #   should have_content "You must create an account"
+    # end
 
     it "has a link to the vet's answers" do
       find("#answers-table").click_link @question.content
